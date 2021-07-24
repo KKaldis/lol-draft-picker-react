@@ -1,7 +1,9 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
-import { getChampions } from "../reducers/reducer";
-
+import { getChampions } from '../reducers/reducer'
+import { useDrag } from 'react-dnd'
+import Pickable from '../scripts/pickable'
+import dropable from '../scripts/dropable'
 
 const jpgNameFix = (item) => {
   //remove from champion name special characters and spaces to make string with jpg file name
@@ -27,45 +29,37 @@ const App = ({ champions }) => {
           <div className="team">
             <div className="players">
               <p> Your Team </p>
-              <div id="1" className="champSpot" hovertext="Player 1" onDrop="drop(event)"
-                onDragOver="allowDrop(event)"></div>
-              <div id="2" className="champSpot" hovertext="Player 2" onDrop="drop(event)"
-                onDragOver="allowDrop(event)"></div>
-              <div className="champSpot" hovertext="Player 3" onDrop="drop(event)"
-                onDragOver="allowDrop(event)"></div>
-              <div className="champSpot" hovertext="Player 4" onDrop="drop(event)"
-                onDragOver="allowDrop(event)"></div>
-              <div className="champSpot" hovertext="Player 5" onDrop="drop(event)"
-                onDragOver="allowDrop(event)"></div>
+              <div className="champSpot" hovertext="Player 1"></div>
+              <div className="champSpot" hovertext="Player 2"></div>
+              <div className="champSpot" hovertext="Player 3"></div>
+              <div className="champSpot" hovertext="Player 4"></div>
+              <div className="champSpot" hovertext="Player 5"></div>
             </div>
             <div className="bans">
               <p> Your Bans </p>
-              <div className="champSpot" hovertext="Ban 1" onDrop="drop(event)"
-                onDragOver="allowDrop(event)"></div>
-              <div className="champSpot" hovertext="Ban 2" onDrop="drop(event)"
-                onDragOver="allowDrop(event)"></div>
-              <div className="champSpot" hovertext="Ban 3" onDrop="drop(event)"
-                onDragOver="allowDrop(event)"></div>
-              <div className="champSpot" hovertext="Ban 4" onDrop="drop(event)"
-                onDragOver="allowDrop(event)"></div>
-              <div className="champSpot" hovertext="Ban 5" onDrop="drop(event)"
-                onDragOver="allowDrop(event)"></div>
+              <div className="champSpot" hovertext="Ban 1"></div>
+              <div className="champSpot" hovertext="Ban 2"></div>
+              <div className="champSpot" hovertext="Ban 3"></div>
+              <div className="champSpot" hovertext="Ban 4"></div>
+              <div className="champSpot" hovertext="Ban 5"></div>
             </div>
           </div>
           <div className="mid">
             <div className="controls">
-              <input type="text" id="myInput" onKeyUp="searchFunction()"
-                placeholder="Search for names.." />
+              <input type="text" id="myInput"   placeholder="Search for names.." onChange=""/>
             </div>
             <div className="champs">
               <ul id="myUL">
-                {champions.map(station => (
+              //search results//
+                {champions.filter(champions => champions.includes('V')).map(station => (
+                  <pickable draggable="true">
                   <li id ="myUL" key={station}>
-                    <div className="champImg">
-                      <img className="myULli" src={process.env.PUBLIC_URL + '/champ/' + jpgNameFix(station)} alt={station} />
+                    <div className="champImg" draggable="true">
+                      <img className="myUL" src={process.env.PUBLIC_URL + '/champ/' + jpgNameFix(station)} alt={station} />
                       {station}
                     </div>
                   </li>
+                  </pickable>
                 ))}
               </ul>
             </div>
@@ -74,29 +68,19 @@ const App = ({ champions }) => {
           <div className="enemy">
             <div className="players">
               <p> Enemy Team </p>
-              <div className="champSpot" hovertext="Player 1" onDrop="drop(event)"
-                onDragOver="allowDrop(event)"></div>
-              <div className="champSpot" hovertext="Player 2" onDrop="drop(event)"
-                onDragOver="allowDrop(event)"></div>
-              <div className="champSpot" hovertext="Player 3" onDrop="drop(event)"
-                onDragOver="allowDrop(event)"></div>
-              <div className="champSpot" hovertext="Player 4" onDrop="drop(event)"
-                onDragOver="allowDrop(event)"></div>
-              <div className="champSpot" hovertext="Player 5" onDrop="drop(event)"
-                onDragOver="allowDrop(event)"></div>
+              <div className="champSpot" hovertext="Player 1"></div>
+              <div className="champSpot" hovertext="Player 2"></div>
+              <div className="champSpot" hovertext="Player 3"></div>
+              <div className="champSpot" hovertext="Player 4"></div>
+              <div className="champSpot" hovertext="Player 5"></div>
             </div>
             <div className="bans">
               <p> Enemy Bans </p>
-              <div className="champSpot" hovertext="Ban 1" onDrop="drop(event)"
-                onDragOver="allowDrop(event)"></div>
-              <div className="champSpot" hovertext="Ban 2" onDrop="drop(event)"
-                onDragOver="allowDrop(event)"></div>
-              <div className="champSpot" hovertext="Ban 3" onDrop="drop(event)"
-                onDragOver="allowDrop(event)"></div>
-              <div className="champSpot" hovertext="Ban 4" onDrop="drop(event)"
-                onDragOver="allowDrop(event)"></div>
-              <div className="champSpot" hovertext="Ban 5" onDrop="drop(event)"
-                onDragOver="allowDrop(event)"></div>
+              <div className="champSpot" hovertext="Ban 1"></div>
+              <div className="champSpot" hovertext="Ban 2"></div>
+              <div className="champSpot" hovertext="Ban 3"></div>
+              <div className="champSpot" hovertext="Ban 4"></div>
+              <div className="champSpot" hovertext="Ban 5"></div>
             </div>
           </div>
         </div>
