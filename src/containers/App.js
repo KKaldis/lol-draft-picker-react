@@ -1,23 +1,21 @@
-import React, { Fragment } from 'react'
+import React, { useState, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { getChampions } from '../reducers/reducer'
-import { useDrag } from 'react-dnd'
-import Pickable from '../scripts/pickable'
-import dropable from '../scripts/dropable'
+import { dropable, pickable } from '../scripts/dragndrop'
+import { handleChange, Scroll, Card, Search, SearchList } from '../scripts/search'
 
-const jpgNameFix = (item) => {
-  //remove from champion name special characters and spaces to make string with jpg file name
-  let imageName = item.replace(/[^A-Z0-9]/ig, "");
-  //make string and path for jpg images
-  imageName = imageName + ".jpg";
-  return imageName;
-
-}
 
 
 const App = ({ champions }) => {
+
   return (
-    <body>
+
+    <div className="tc bg-green ma0 pa4 min-vh-100">
+        <Search details={champions}/>
+      </div>
+
+    /*
+    <div className="body">
       <div className="addLeader">
         <img src={process.env.PUBLIC_URL + '/assets/970x90.jpg'} alt="Advertisment Leaderboard" />
       </div>
@@ -46,20 +44,21 @@ const App = ({ champions }) => {
           </div>
           <div className="mid">
             <div className="controls">
-              <input type="text" id="myInput" placeholder="Search for champion..." onChange=""/>
+              <input type="text" id="myInput" placeholder="Search for champion..." onChange={ handleChange } />
             </div>
             <div className="champs">
               <ul id="myUL">
-                {champions.filter(champions => champions.includes('V')).map(station => (
+                {champions.filter(champions => champions.includes(kostas)).map(station => (
                   <pickable draggable="true">
-                  <li id ="myUL" key={station}>
-                    <div className="champImg" draggable="true">
-                      <img className="myUL" src={process.env.PUBLIC_URL + '/champ/' + jpgNameFix(station)} alt={station} />
-                      {station}
-                    </div>
-                  </li>
+                    <li id="myUL" key={station}>
+                      <div className="champImg" draggable="true">
+                        <img className="myUL" src={process.env.PUBLIC_URL + '/champ/' + jpgNameFix(station)} alt={station} />
+                        <a> {station} </a>
+                      </div>
+                    </li>
                   </pickable>
                 ))}
+
               </ul>
             </div>
           </div>
@@ -90,8 +89,8 @@ const App = ({ champions }) => {
       <div className="addLeader">
         <img src={process.env.PUBLIC_URL + '/assets/970x90.jpg'} alt="Advertisment Leaderboard" />
       </div>
-    </body>
-
+    </div>
+*/
   );
 }
 
