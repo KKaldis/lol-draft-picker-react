@@ -1,17 +1,14 @@
-import React, { useState, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { getChampions } from '../reducers/reducer'
 import { dropable, pickable } from '../scripts/dragndrop'
-import { Scroll, Card, Search, handleChange, SearchList } from '../scripts/search'
+import { Search } from '../scripts/search'
 
 
 
 const App = ({ champions }) => {
 
   return (
-
-
-
     <div className="body">
       <div className="addLeader">
         <img src={process.env.PUBLIC_URL + '/assets/970x90.jpg'} alt="Advertisment Leaderboard" />
@@ -40,8 +37,7 @@ const App = ({ champions }) => {
             </div>
           </div>
 
-                <Search details={champions}/>
-        
+          <Search details={champions} />
 
           <div className="enemy">
             <div className="players">
@@ -70,8 +66,8 @@ const App = ({ champions }) => {
         <img src={process.env.PUBLIC_URL + '/assets/970x90.jpg'} alt="Advertisment Leaderboard" />
       </div>
     </div>
-
   );
+
 }
 
 const mapStateToProps = (state) => ({

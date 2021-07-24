@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-
 const jpgNameFix = (item) => {
   //remove from champion name special characters and spaces to make string with jpg file name
   let imageName = item.replace(/[^A-Z0-9]/ig, "");
@@ -10,22 +9,19 @@ const jpgNameFix = (item) => {
 
 }
 
-
-function Card({person}) {
-  return(
-    <li id="myUL" key={person}>
+const Card = ({ champ }) => {
+  return (
+    <li id="myUL" key={champ}>
       <div className="champImg" draggable="true">
-        <img className="myUL" src={process.env.PUBLIC_URL + '/champ/' + jpgNameFix(person)} alt={person} />
-        <a> {person} </a>
+        <img className="myUL" src={process.env.PUBLIC_URL + '/champ/' + jpgNameFix(champ)} alt={champ} />
+        <a> {champ} </a>
       </div>
     </li>
   );
 }
 
-
 const Scroll = (props) => {
-  return(
-
+  return (
     < div className="champs">
       {props.children}
     </div>
@@ -33,9 +29,8 @@ const Scroll = (props) => {
   );
 }
 
-
-function SearchList({ filteredPersons }) {
-  const filtered = filteredPersons.map(person =>  <Card key={person.id} person={person} />);
+const SearchList = ({ filteredchamps }) => {
+  const filtered = filteredchamps.map(champ => <Card champ={champ} id={champ.id} />);
   return (
     <ul id="myUL">
       {filtered}
@@ -43,22 +38,16 @@ function SearchList({ filteredPersons }) {
   );
 }
 
-
-
-
-
-
-
-function Search({ details }) {
+const Search = ({ details }) => {
 
   const [searchField, setSearchField] = useState("");
 
-  const filteredPersons = details.filter(
-    person => {
+  const filteredchamps = details.filter(
+    champ => {
       return (
-        person
-              .toLowerCase()
-        .includes(searchField.toLowerCase())
+        champ
+          .toLowerCase()
+          .includes(searchField.toLowerCase())
       );
     }
   );
@@ -67,10 +56,10 @@ function Search({ details }) {
     setSearchField(e.target.value);
   };
 
-  function searchList() {
+  const searchList = () => {
     return (
       <Scroll>
-        <SearchList filteredPersons={filteredPersons} />
+        <SearchList filteredchamps={filteredchamps} />
       </Scroll>
     );
   }
@@ -78,12 +67,12 @@ function Search({ details }) {
   return (
     <div className="mid">
 
-    <div className="controls">
+      <div className="controls">
         <input
-        id="myInput"
-        placeholder="Search for champion..."
-          type = "search"
-          onChange = {handleChange}
+          id="myInput"
+          placeholder="Search for champion..."
+          type="search"
+          onChange={handleChange}
         />
       </div>
       {searchList()}
@@ -91,8 +80,9 @@ function Search({ details }) {
   );
 }
 
-export  {
+export {
   Scroll,
   Card,
   Search,
-  SearchList}
+  SearchList
+}
