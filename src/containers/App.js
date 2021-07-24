@@ -46,11 +46,10 @@ const App = ({ champions }) => {
           </div>
           <div className="mid">
             <div className="controls">
-              <input type="text" id="myInput"   placeholder="Search for names.." onChange=""/>
+              <input type="text" id="myInput" placeholder="Search for champion..." onChange=""/>
             </div>
             <div className="champs">
               <ul id="myUL">
-              //search results//
                 {champions.filter(champions => champions.includes('V')).map(station => (
                   <pickable draggable="true">
                   <li id ="myUL" key={station}>
