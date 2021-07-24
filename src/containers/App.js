@@ -2,7 +2,7 @@ import React, { useState, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { getChampions } from '../reducers/reducer'
 import { dropable, pickable } from '../scripts/dragndrop'
-import { handleChange, Scroll, Card, Search, SearchList } from '../scripts/search'
+import { Scroll, Card, Search, handleChange, SearchList } from '../scripts/search'
 
 
 
@@ -10,11 +10,8 @@ const App = ({ champions }) => {
 
   return (
 
-    <div className="tc bg-green ma0 pa4 min-vh-100">
-        <Search details={champions}/>
-      </div>
 
-    /*
+
     <div className="body">
       <div className="addLeader">
         <img src={process.env.PUBLIC_URL + '/assets/970x90.jpg'} alt="Advertisment Leaderboard" />
@@ -42,26 +39,9 @@ const App = ({ champions }) => {
               <div className="champSpot" hovertext="Ban 5"></div>
             </div>
           </div>
-          <div className="mid">
-            <div className="controls">
-              <input type="text" id="myInput" placeholder="Search for champion..." onChange={ handleChange } />
-            </div>
-            <div className="champs">
-              <ul id="myUL">
-                {champions.filter(champions => champions.includes(kostas)).map(station => (
-                  <pickable draggable="true">
-                    <li id="myUL" key={station}>
-                      <div className="champImg" draggable="true">
-                        <img className="myUL" src={process.env.PUBLIC_URL + '/champ/' + jpgNameFix(station)} alt={station} />
-                        <a> {station} </a>
-                      </div>
-                    </li>
-                  </pickable>
-                ))}
 
-              </ul>
-            </div>
-          </div>
+                <Search details={champions}/>
+        
 
           <div className="enemy">
             <div className="players">
@@ -90,7 +70,7 @@ const App = ({ champions }) => {
         <img src={process.env.PUBLIC_URL + '/assets/970x90.jpg'} alt="Advertisment Leaderboard" />
       </div>
     </div>
-*/
+
   );
 }
 
