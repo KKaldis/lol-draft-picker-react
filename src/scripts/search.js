@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Draggable, Droppable, DragDropContext } from 'react-beautiful-dnd';
 
 // string set up for image url
 const jpgNameFix = (item) => {
@@ -12,20 +13,34 @@ const jpgNameFix = (item) => {
 
 const Card = ({ champ }) => {
   return (
-    <li id="myUL"  id ={champ} key={champ}>
-      <div className="champImg">
-        <img className="myUL" src={process.env.PUBLIC_URL + '/champ/' + jpgNameFix(champ)} alt={champ} />
-        <a> {champ} </a>
-      </div>
-    </li>
+    <Draggable key={champ} id={champ} draggableId={champ} index={champ}>
+      {(provided) => (
+
+
+        <li >
+          <div className="champImg" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+            <img src={process.env.PUBLIC_URL + '/champ/' + jpgNameFix(champ)} alt={champ} />
+            <a> {champ} </a>
+          </div>
+        </li>
+      )}
+    </Draggable>
   );
 }
 
 const Scroll = (props) => {
   return (
-    < div className="champs">
-      {props.children}
-    </div>
+    <Droppable droppableId="champSelect">
+      {(provided) => (
+
+        < div className="champs">
+          {props.children}
+           {provided.placeholder}
+        </div>
+
+      )}
+    </Droppable>
+
   );
 }
 
