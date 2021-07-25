@@ -81,8 +81,6 @@ const Search = ({ details }) => {
 }
 
 export {
-  Scroll,
-  Card,
-  Search,
-  SearchList
+  Search
+
 }

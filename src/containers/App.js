@@ -2,8 +2,12 @@ import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { getChampions } from '../reducers/reducer'
 import { Search } from '../scripts/search'
+import { Draggable, Droppable, DragDropContext } from 'react-beautiful-dnd';
+import ReactTooltip from 'react-tooltip';
 
 const App = ({ champions }) => {
+
+
 
   return (
     <div className="body">
@@ -33,9 +37,9 @@ const App = ({ champions }) => {
               <div className="champSpot"></div>
             </div>
           </div>
-
+          <DragDropContext>
           <Search details={champions} />
-
+          </DragDropContext>
           <div className="enemy">
             <div className="players">
               <p> Enemy Team </p>
