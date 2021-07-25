@@ -1,10 +1,7 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { getChampions } from '../reducers/reducer'
-import { dropable, pickable } from '../scripts/dragndrop'
 import { Search } from '../scripts/search'
-
-
 
 const App = ({ champions }) => {
 
@@ -21,19 +18,19 @@ const App = ({ champions }) => {
           <div className="team">
             <div className="players">
               <p> Your Team </p>
-              <div className="champSpot" hovertext="Player 1"></div>
-              <div className="champSpot" hovertext="Player 2"></div>
-              <div className="champSpot" hovertext="Player 3"></div>
-              <div className="champSpot" hovertext="Player 4"></div>
-              <div className="champSpot" hovertext="Player 5"></div>
+              <div className="champSpot"></div>
+              <div className="champSpot"></div>
+              <div className="champSpot"></div>
+              <div className="champSpot"></div>
+              <div className="champSpot"></div>
             </div>
             <div className="bans">
               <p> Your Bans </p>
-              <div className="champSpot" hovertext="Ban 1"></div>
-              <div className="champSpot" hovertext="Ban 2"></div>
-              <div className="champSpot" hovertext="Ban 3"></div>
-              <div className="champSpot" hovertext="Ban 4"></div>
-              <div className="champSpot" hovertext="Ban 5"></div>
+              <div className="champSpot"></div>
+              <div className="champSpot"></div>
+              <div className="champSpot"></div>
+              <div className="champSpot"></div>
+              <div className="champSpot"></div>
             </div>
           </div>
 
@@ -42,19 +39,19 @@ const App = ({ champions }) => {
           <div className="enemy">
             <div className="players">
               <p> Enemy Team </p>
-              <div className="champSpot" hovertext="Player 1"></div>
-              <div className="champSpot" hovertext="Player 2"></div>
-              <div className="champSpot" hovertext="Player 3"></div>
-              <div className="champSpot" hovertext="Player 4"></div>
-              <div className="champSpot" hovertext="Player 5"></div>
+              <div className="champSpot"></div>
+              <div className="champSpot"></div>
+              <div className="champSpot"></div>
+              <div className="champSpot"></div>
+              <div className="champSpot"></div>
             </div>
             <div className="bans">
               <p> Enemy Bans </p>
-              <div className="champSpot" hovertext="Ban 1"></div>
-              <div className="champSpot" hovertext="Ban 2"></div>
-              <div className="champSpot" hovertext="Ban 3"></div>
-              <div className="champSpot" hovertext="Ban 4"></div>
-              <div className="champSpot" hovertext="Ban 5"></div>
+              <div className="champSpot"></div>
+              <div className="champSpot"></div>
+              <div className="champSpot"></div>
+              <div className="champSpot"></div>
+              <div className="champSpot"></div>
             </div>
           </div>
         </div>

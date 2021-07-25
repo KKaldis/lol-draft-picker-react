@@ -1,14 +1,14 @@
 import React from 'react'
 
 
-const pickable = (props) => {
+const DragAble = (props) => {
 
   const dragStart = e => {
 
-    const target = e.target;
-    e.dataTransfer.setData('card_id', target.id);
+
+    e.dataTransfer.setData('card_id', e.target.id);
     /*  setTimeout(() => {
-        target.style.display = "none"
+        e.target.style.display = "none"
       }, 0);*/
   }
 
@@ -29,7 +29,7 @@ const pickable = (props) => {
   )
 }
 
-const dropable = (props) => {
+const DropAble = (props) => {
   const drop = e => {
     e.preventDefault();
     const card_id = e.dataTransfer.getData('card_id');
@@ -56,4 +56,4 @@ const dropable = (props) => {
   )
 }
 
-export { dropable, pickable }
+export { DropAble, DragAble }

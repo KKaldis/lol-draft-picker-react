@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+// string set up for image url
 const jpgNameFix = (item) => {
   //remove from champion name special characters and spaces to make string with jpg file name
   let imageName = item.replace(/[^A-Z0-9]/ig, "");
@@ -11,8 +12,8 @@ const jpgNameFix = (item) => {
 
 const Card = ({ champ }) => {
   return (
-    <li id="myUL" key={champ}>
-      <div className="champImg" draggable="true">
+    <li id="myUL"  id ={champ} key={champ}>
+      <div className="champImg">
         <img className="myUL" src={process.env.PUBLIC_URL + '/champ/' + jpgNameFix(champ)} alt={champ} />
         <a> {champ} </a>
       </div>
@@ -25,7 +26,6 @@ const Scroll = (props) => {
     < div className="champs">
       {props.children}
     </div>
-
   );
 }
 
