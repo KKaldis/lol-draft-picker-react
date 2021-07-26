@@ -1,49 +1,50 @@
-import React, { Fragment } from 'react'
-import { connect } from 'react-redux'
-import { getChampions } from '../reducers/reducer'
-import { Search } from '../scripts/search'
-import { Draggable, Droppable, DragDropContext } from 'react-beautiful-dnd';
-import ReactTooltip from 'react-tooltip';
+import React, { useState, Fragment } from "react";
+import { connect } from "react-redux";
+import { getChampions } from "../reducers/reducer";
+import { Search } from "../scripts/search";
+import { Draggable, Droppable, DragDropContext } from "react-beautiful-dnd";
+import ReactTooltip from "react-tooltip";
 
 const App = ({ champions }) => {
+  const [characters, updateCharacters] = useState({ champions });
 
+  function handleOnDragEnd(result) {
+    const items = Array.from(characters);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
 
+    updateCharacters(items);
+    if (!result.destination) return;
+  }
 
   return (
     <div className="body">
       <div className="addLeader">
-        <img src={process.env.PUBLIC_URL + '/assets/970x90.jpg'} alt="Advertisment Leaderboard" />
+        <img
+          src={process.env.PUBLIC_URL + "/assets/970x90.jpg"}
+          alt="Advertisment Leaderboard"
+        />
       </div>
       <div className="main">
         <div className="addSky">
-          <img src={process.env.PUBLIC_URL + '/assets/300x600.webp'} alt='Advertisment Skyscraper' />
+          <img
+            src={process.env.PUBLIC_URL + "/assets/300x600.webp"}
+            alt="Advertisment Skyscraper"
+          />
         </div>
         <div className="app">
-          <DragDropContext>
-            <div className="team">
-              <div className="players">
-                <p> Your Team </p>
-
-                <Droppable droppableId="champSpot1">
-                  {(provided) => (
-                    <div className="champSpot" {...provided.droppableProps} ref={provided.innerRef}></div>
-                  )}
-                </Droppable>
-
-                <div className="champSpot"></div>
-                <div className="champSpot"></div>
-                <div className="champSpot"></div>
-                <div className="champSpot"></div>
-              </div>
-              <div className="bans">
-                <p> Your Bans </p>
-                <div className="champSpot"></div>
-                <div className="champSpot"></div>
-                <div className="champSpot"></div>
-                <div className="champSpot"></div>
-                <div className="champSpot"></div>
-              </div>
-            </div>
+          <DragDropContext onDragEnd={handleOnDragEnd}>
+            <Droppable droppableId="team">
+              {(provided) => (
+                <div
+                  className="team"
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                >
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
 
             <Search details={champions} />
 
@@ -69,23 +70,28 @@ const App = ({ champions }) => {
         </div>
 
         <div className="addSky">
-          <img src={process.env.PUBLIC_URL + '/assets/300x600.webp'} alt="Advertisment Skyscraper" />
+          <img
+            src={process.env.PUBLIC_URL + "/assets/300x600.webp"}
+            alt="Advertisment Skyscraper"
+          />
         </div>
       </div>
       <div className="addLeader">
-        <img src={process.env.PUBLIC_URL + '/assets/970x90.jpg'} alt="Advertisment Leaderboard" />
+        <img
+          src={process.env.PUBLIC_URL + "/assets/970x90.jpg"}
+          alt="Advertisment Leaderboard"
+        />
       </div>
     </div>
   );
-
-}
+};
 
 const mapStateToProps = (state) => ({
-  champions: getChampions(state)
-})
+  champions: getChampions(state),
+});
 
-const mapDispatchToProps = (dispatch) => ({})
+const mapDispatchToProps = (dispatch) => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 // export default App;
