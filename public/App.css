@@ -70,6 +70,7 @@
 
 .team,
 .enemy {
+  text-shadow: 0px 0px 10px #ae9c6c;
   border: 5px double #ae9c6c;
   width: 7vw;
   display: flex;
@@ -176,7 +177,7 @@
   border: 1px solid #ae9c6c;
   color: #ae9c6c;
   margin: 12px 0px 12px;
-  box-shadow: 0px 5px 10px black;
+  box-shadow: 5px 5px 10px black;
 }
 
 #myInput:focus {
@@ -190,7 +191,7 @@
   grid-column-gap: 10px;
   grid-row-gap: 10px;
   list-style-type: none;
-  padding: 0;
+  padding: 15px;
   margin: 0;
 }
 
@@ -204,6 +205,7 @@
   display: block;
   font-family: monospace;
   vertical-align: middle;
+
 }
 
 #myUL li:hover:not(.header) {
