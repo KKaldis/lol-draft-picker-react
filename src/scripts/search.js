@@ -13,12 +13,12 @@ const jpgNameFix = (item) => {
 
 const Card = ({ champ }) => {
   return (
-    <Draggable key={champ} id={champ} draggableId={champ} index={champ}>
+    <Draggable draggableId={champ} index={champ}>
       {(provided) => (
 
 
-        <li >
-          <div className="champImg" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+        <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+          <div className="champImg" >
             <img src={process.env.PUBLIC_URL + '/champ/' + jpgNameFix(champ)} alt={champ} />
             <a> {champ} </a>
           </div>
@@ -33,9 +33,9 @@ const Scroll = (props) => {
     <Droppable droppableId="champSelect">
       {(provided) => (
 
-        < div className="champs">
+        < div className="champs"  ref={provided.innerRef}      {...provided.droppableProps}>
           {props.children}
-           {provided.placeholder}
+          {provided.placeholder}
         </div>
 
       )}
