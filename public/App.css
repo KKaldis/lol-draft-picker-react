@@ -1,4 +1,4 @@
-.bodyM {
+.body {
   background: radial-gradient(
       circle,
       rgba(2, 56, 56, 0.75) 0%,
@@ -51,6 +51,7 @@
   flex-wrap: nowrap;
   align-content: center;
   justify-content: space-between;
+  align-items: center;
 }
 
 .app {

@@ -19,7 +19,7 @@ const App = ({ champions }) => {
 
   return (
     <DragDropContext onDragEnd={this.handleOnDragEnd}>
-      <div className="bodyM">
+      <div className="body">
         <div className="addLeader">
           <img
             src={process.env.PUBLIC_URL + "/assets/970x90.jpg"}
