@@ -18,22 +18,22 @@ const App = ({ champions }) => {
   }
 
   return (
-    <div className="body">
-      <div className="addLeader">
-        <img
-          src={process.env.PUBLIC_URL + "/assets/970x90.jpg"}
-          alt="Advertisment Leaderboard"
-        />
-      </div>
-      <div className="main">
-        <div className="addSky">
+    <DragDropContext onDragEnd={this.handleOnDragEnd}>
+      <div className="bodyM">
+        <div className="addLeader">
           <img
-            src={process.env.PUBLIC_URL + "/assets/300x600.webp"}
-            alt="Advertisment Skyscraper"
+            src={process.env.PUBLIC_URL + "/assets/970x90.jpg"}
+            alt="Advertisment Leaderboard"
           />
         </div>
-        <div className="app">
-          <DragDropContext onDragEnd={handleOnDragEnd}>
+        <div className="main">
+          <div className="addSky">
+            <img
+              src={process.env.PUBLIC_URL + "/assets/300x600.webp"}
+              alt="Advertisment Skyscraper"
+            />
+          </div>
+          <div className="app">
             <Droppable droppableId="team">
               {(provided) => (
                 <div
@@ -66,23 +66,23 @@ const App = ({ champions }) => {
                 <div className="champSpot"></div>
               </div>
             </div>
-          </DragDropContext>
-        </div>
+          </div>
 
-        <div className="addSky">
+          <div className="addSky">
+            <img
+              src={process.env.PUBLIC_URL + "/assets/300x600.webp"}
+              alt="Advertisment Skyscraper"
+            />
+          </div>
+        </div>
+        <div className="addLeader">
           <img
-            src={process.env.PUBLIC_URL + "/assets/300x600.webp"}
-            alt="Advertisment Skyscraper"
+            src={process.env.PUBLIC_URL + "/assets/970x90.jpg"}
+            alt="Advertisment Leaderboard"
           />
         </div>
       </div>
-      <div className="addLeader">
-        <img
-          src={process.env.PUBLIC_URL + "/assets/970x90.jpg"}
-          alt="Advertisment Leaderboard"
-        />
-      </div>
-    </div>
+    </DragDropContext>
   );
 };
 
