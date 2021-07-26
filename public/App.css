@@ -83,6 +83,7 @@
   border-radius: 10px;
   margin: 12px 0px 12px;
   justify-content: space-around;
+  box-shadow: 0px 5px 10px black;
   /*background: linear-gradient(90deg,rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%,rgba(0, 0, 0, 0.5) 100%);*/
   /* background: radial-gradient(
     circle,
@@ -149,6 +150,7 @@
   background-color: #023838;
   border: 5px double #ae9c6c;
   margin: 12px 0px 12px;
+  box-shadow: 0px 5px 10px black;
 }
 
 .team {
@@ -174,6 +176,7 @@
   border: 1px solid #ae9c6c;
   color: #ae9c6c;
   margin: 12px 0px 12px;
+  box-shadow: 0px 5px 10px black;
 }
 
 #myInput:focus {
@@ -193,7 +196,7 @@
 
 #myUL li,
 #myUL li a {
-  border: 5px groove rgba(0, 0, 0, 0);
+  border: 5px solid rgba(174, 156, 108, 0);
   background-color: #010508;
   text-decoration: none;
   font-size: 10px;
@@ -204,6 +207,7 @@
 }
 
 #myUL li:hover:not(.header) {
+  box-shadow: 5px 5px 5px black;
   filter: drop-shadow(0 0 0.25rem #ae9c6c);
   border: 5px double #ae9c6c;
 }
@@ -223,7 +227,8 @@
     rgba(0, 0, 0, 0.5) 100%
   );
   border-color: #010508;
-  border: 0.1px solid rgba(174, 156, 108, 0.5);
+  border: 1px solid rgba(174, 156, 108, 0.5);
+  box-shadow: 0px 5px 10px black;
 }
 
 .hoverTooltip {
