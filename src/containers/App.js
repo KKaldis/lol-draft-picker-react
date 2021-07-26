@@ -46,7 +46,9 @@ const App = ({ champions }) => {
               )}
             </Droppable>
 
-            <Search details={champions} />
+            <div className="mid">
+              <Search details={champions} />
+            </div>
 
             <div className="enemy">
               <div className="players">

@@ -86,8 +86,8 @@ const Search = ({ details }) => {
   };
 
   return (
-    <div className="mid">
-      <div className="controls">
+    <div className="test">
+      <div>
         <input
           id="myInput"
           placeholder="Search for champion..."
@@ -96,6 +96,7 @@ const Search = ({ details }) => {
         />
       </div>
       {searchList()}
+      <div className="banSpot"></div>
     </div>
   );
 };
