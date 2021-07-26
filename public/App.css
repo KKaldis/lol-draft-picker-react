@@ -223,7 +223,7 @@
     rgba(0, 0, 0, 0.5) 100%
   );
   border-color: #010508;
-  border: 2px solid #ae9c6c;
+  border: 0.1px solid rgba(174, 156, 108, 0.5);
 }
 
 .hoverTooltip {
