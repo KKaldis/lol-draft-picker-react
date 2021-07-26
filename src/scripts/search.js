@@ -86,7 +86,7 @@ const Search = ({ details }) => {
   };
 
   return (
-    <div className="test">
+    <div className="contentFix">
       <div>
         <input
           id="myInput"
@@ -96,7 +96,20 @@ const Search = ({ details }) => {
         />
       </div>
       {searchList()}
-      <div className="banSpot"></div>
+      <div className="banSpot">
+        <div className="bans">
+          <div className="champSpot"></div>
+          <div className="champSpot"></div>
+          <div className="champSpot"></div>
+          <div className="champSpot"></div>
+          <div className="champSpot"></div>
+          <div className="champSpot"></div>
+          <div className="champSpot"></div>
+          <div className="champSpot"></div>
+          <div className="champSpot"></div>
+          <div className="champSpot"></div>
+        </div>
+      </div>
     </div>
   );
 };

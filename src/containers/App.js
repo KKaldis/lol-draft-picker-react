@@ -59,14 +59,6 @@ const App = ({ champions }) => {
                 <div className="champSpot"></div>
                 <div className="champSpot"></div>
               </div>
-              <div className="bans">
-                <p> Enemy Bans </p>
-                <div className="champSpot"></div>
-                <div className="champSpot"></div>
-                <div className="champSpot"></div>
-                <div className="champSpot"></div>
-                <div className="champSpot"></div>
-              </div>
             </div>
           </div>
 

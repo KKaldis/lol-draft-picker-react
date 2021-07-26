@@ -81,43 +81,72 @@
   font-weight: 600;
   border-radius: 10px;
   margin: 12px 0px 12px;
+  justify-content: space-around;
   /*background: linear-gradient(90deg,rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%,rgba(0, 0, 0, 0.5) 100%);*/
-  background: radial-gradient(
+  /* background: radial-gradient(
     circle,
     rgba(255, 255, 255, 0) 50%,
-    rgba(0, 0, 0, 0.5) 100%
-  );
+    rgba(0, 0, 0, 0.5) 100% );*/
 }
 
-.players,
-.bans {
-  padding: 20px;
+.team {
+  background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(0, 0, 0, 1) 100%
+    ),
+    url("assets/texture2.jpg");
+  background-repeat: repeat;
+  background-size: 300px auto;
+}
+
+.enemy {
+  background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(0, 0, 0, 1) 100%
+    ),
+    url("assets/texture3.jpg");
+  background-repeat: repeat;
+  background-size: 300px auto;
+}
+
+.players {
+  /* padding: 20px; */
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 }
-.test {
+
+.bans {
+  /* padding: 20px; */
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.contentFix {
   display: contents;
 }
 .banSpot {
   padding: 10px;
   height: 120px;
   width: auto;
-
   align-items: center;
   border-radius: 10px;
   background: radial-gradient(
       circle,
       rgba(255, 255, 255, 0) 0%,
-      rgba(0, 0, 0, 0.5) 100%
+      rgba(0, 0, 0, 1) 100%
     ),
-    url("assets/texture.jpg");
-  background-color: #023838;
-  border: 5px double #ae9c6c;
+    url("assets/texture1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: #023838;
+  border: 5px double #ae9c6c;
   margin: 12px 0px 12px;
 }
 
@@ -179,14 +208,14 @@
 }
 
 .champSpot:hover {
-  border-radius: 30px;
   filter: drop-shadow(0 0 0.25rem #ae9c6c);
 }
 
 .champSpot {
-  width: 50px;
-  height: 50px;
-  border-radius: 30px;
+  margin: 5px 0px 5px;
+  width: 90px;
+  height: 115px;
+  /* border-radius: 30px; */
   background: radial-gradient(
     circle,
     rgba(255, 255, 255, 0) 0%,
