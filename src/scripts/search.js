@@ -19,8 +19,10 @@ const nameFix = (string) => {
 const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
   filter: isDragging ? "drop-shadow(0 0 0.25rem #ae9c6c)" : "",
-  border: isDragging ? "5px double #ae9c6c" : "",
+  outline: isDragging ? "5px double #ae9c6c" : "",
+  offset: isDragging ?  "-5px" : "-5px",
   cursor: isDragging ? "all-scroll" : "pointer",
+  transition: isDragging ? "0.25" : "0.25",
   // styles we need to apply on draggables
   ...draggableStyle,
 });
@@ -39,13 +41,16 @@ const Card = ({ champ, index }) => {
           )}
           className={`item ${snapshot.isDragging ? "dragging" : ""}`}
         >
+
           <div className="li">
             <div className="champImg">
               <img
                 src={process.env.PUBLIC_URL + "/champ/" + jpgNameFix(champ)}
                 alt={champ}
               />
+              <div className="champTag">
               <a> {champ} </a>
+              </div>
             </div>
           </div>
         </li>
