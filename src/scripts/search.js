@@ -20,7 +20,7 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
   filter: isDragging ? "drop-shadow(0 0 0.25rem #ae9c6c)" : "",
   outline: isDragging ? "5px double #ae9c6c" : "",
-  offset: isDragging ?  "-5px" : "-5px",
+  offset: isDragging ? "-5px" : "-5px",
   cursor: isDragging ? "all-scroll" : "pointer",
   transition: isDragging ? "0.25" : "0.25",
   // styles we need to apply on draggables
@@ -29,7 +29,7 @@ const getItemStyle = (isDragging, draggableStyle) => ({
 
 const Card = ({ champ, index }) => {
   return (
-    <Draggable draggableId={nameFix(champ)}  key={nameFix(champ)} index={index}>
+    <Draggable draggableId={nameFix(champ)} key={nameFix(champ)} index={index}>
       {(provided, snapshot) => (
         <li
           ref={provided.innerRef}
@@ -41,7 +41,6 @@ const Card = ({ champ, index }) => {
           )}
           className={`item ${snapshot.isDragging ? "dragging" : ""}`}
         >
-
           <div className="li">
             <div className="champImg">
               <img
@@ -49,7 +48,7 @@ const Card = ({ champ, index }) => {
                 alt={champ}
               />
               <div className="champTag">
-              <a> {champ} </a>
+                <a> {champ} </a>
               </div>
             </div>
           </div>

@@ -157,7 +157,3 @@ const heroBase = availableHeroes
 {"index":155,"champion":"ZOE"},
 {"index":156,"champion":"ZYRA"}
 ]
-
-export default {
-    heroes
-}
