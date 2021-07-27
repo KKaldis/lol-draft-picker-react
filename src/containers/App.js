@@ -5,6 +5,7 @@ import { Search } from "../scripts/search";
 import { Draggable, Droppable, DragDropContext } from "react-beautiful-dnd";
 import ReactTooltip from "react-tooltip";
 
+
 const App = ({ champions }) => {
   const [characters, updateCharacters] = useState({ champions });
 
@@ -47,7 +48,7 @@ const App = ({ champions }) => {
             </Droppable>
 
             <div className="mid">
-              <Search details={champions} />
+              <Search details={champions} index={champions.indexOf(champions)} />
             </div>
 
             <div className="enemy">

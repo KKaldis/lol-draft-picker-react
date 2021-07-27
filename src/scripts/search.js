@@ -2,12 +2,18 @@ import React, { useState } from "react";
 import { Draggable, Droppable, DragDropContext } from "react-beautiful-dnd";
 
 // string set up for image url
-const jpgNameFix = (item) => {
+const jpgNameFix = (string) => {
   //remove from champion name special characters and spaces to make string with jpg file name
-  let imageName = item.replace(/[^A-Z0-9]/gi, "");
+  string = string.replace(/[^A-Z0-9]/gi, "");
   //make string and path for jpg images
-  imageName = imageName + ".jpg";
-  return imageName;
+  string = string + ".jpg";
+  return string;
+};
+
+const nameFix = (string) => {
+  //remove from champion name special characters and spaces to make string with jpg file name
+  string = string.replace(/[^A-Z0-9]/gi, "");
+  return string;
 };
 
 const getItemStyle = (isDragging, draggableStyle) => ({
@@ -19,9 +25,9 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   ...draggableStyle,
 });
 
-const Card = ({ champ }) => {
+const Card = ({ champ, index }) => {
   return (
-    <Draggable draggableId={champ} index={champ}>
+    <Draggable draggableId={nameFix(champ)}  key={nameFix(champ)} index={index}>
       {(provided, snapshot) => (
         <li
           ref={provided.innerRef}
@@ -33,12 +39,14 @@ const Card = ({ champ }) => {
           )}
           className={`item ${snapshot.isDragging ? "dragging" : ""}`}
         >
-          <div className="champImg">
-            <img
-              src={process.env.PUBLIC_URL + "/champ/" + jpgNameFix(champ)}
-              alt={champ}
-            />
-            <a> {champ} </a>
+          <div className="li">
+            <div className="champImg">
+              <img
+                src={process.env.PUBLIC_URL + "/champ/" + jpgNameFix(champ)}
+                alt={champ}
+              />
+              <a> {champ} </a>
+            </div>
           </div>
         </li>
       )}
@@ -46,13 +54,9 @@ const Card = ({ champ }) => {
   );
 };
 
-const Scroll = (props) => {
-  return <div className="champs">{props.children}</div>;
-};
-
 const SearchList = ({ filteredchamps }) => {
   const filtered = filteredchamps.map((champ) => (
-    <Card champ={champ} id={champ} index={champ} />
+    <Card champ={champ} index={filteredchamps.indexOf(champ)} />
   ));
   return (
     <Droppable droppableId="champSelect">
@@ -79,9 +83,9 @@ const Search = ({ details }) => {
 
   const searchList = () => {
     return (
-      <Scroll>
+      <div className="champs">
         <SearchList filteredchamps={filteredchamps} />
-      </Scroll>
+      </div>
     );
   };
 

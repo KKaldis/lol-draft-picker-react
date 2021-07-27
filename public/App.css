@@ -61,12 +61,12 @@
   justify-content: space-evenly;
 }
 
-.enemy img,
+/* .enemy img,
 .team img {
   width: 50px;
   height: 50px;
   border-radius: 30px;
-}
+} */
 
 .team,
 .enemy {
@@ -178,6 +178,7 @@
   color: #ae9c6c;
   margin: 12px 0px 12px;
   box-shadow: 5px 5px 10px black;
+  transition: 0.25s;
 }
 
 #myInput:focus {
@@ -195,6 +196,8 @@
   margin: 0;
 }
 
+
+
 #myUL li,
 #myUL li a {
   border: 5px solid rgba(174, 156, 108, 0);
@@ -205,7 +208,7 @@
   display: block;
   font-family: monospace;
   vertical-align: middle;
-
+  transition: 0.25s;
 }
 
 #myUL li:hover:not(.header) {
@@ -231,6 +234,7 @@
   border-color: #010508;
   border: 1px solid rgba(174, 156, 108, 0.5);
   box-shadow: 0px 5px 10px black;
+  transition: 0.25s;
 }
 
 .hoverTooltip {
