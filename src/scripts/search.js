@@ -21,8 +21,8 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   filter: isDragging ? "drop-shadow(0 0 0.25rem #ae9c6c)" : "",
   border: isDragging ? "5px double #ae9c6c" : "",
   cursor: isDragging ? "all-scroll" : "pointer",
-  borderradius: isDragging ? "20px" : "20px",
-  transition: isDragging ? "0.25" : "0.25",
+  borderradius: isDragging ? "25px" : "0px",
+  transition: isDragging ? "1" : "1",
   // styles we need to apply on draggables
   ...draggableStyle,
 });
