@@ -19,9 +19,9 @@ const nameFix = (string) => {
 const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
   filter: isDragging ? "drop-shadow(0 0 0.25rem #ae9c6c)" : "",
-  outline: isDragging ? "5px double #ae9c6c" : "",
-  offset: isDragging ? "-5px" : "-5px",
+  border: isDragging ? "5px double #ae9c6c" : "",
   cursor: isDragging ? "all-scroll" : "pointer",
+  borderradius: isDragging ? "20px" : "20px",
   transition: isDragging ? "0.25" : "0.25",
   // styles we need to apply on draggables
   ...draggableStyle,
