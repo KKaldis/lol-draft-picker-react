@@ -38,6 +38,7 @@
 
 .champs {
   overflow: scroll;
+  width: 960px;
   height: 55vh;
   -ms-overflow-style: none;
   /* IE and Edge */
@@ -59,11 +60,7 @@
 }
 
 .mid {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
   align-content: center;
-  justify-content: space-between;
   align-items: center;
 }
 
@@ -269,7 +266,7 @@
     rgba(0, 0, 0, 0.5) 100%
   );
   border-color: #010508;
-  border: 2px groove #ae9c6c;
+  border: 1px groove #ae9c6c;
   -moz-box-shadow: inset 0 0 10px #000000;
   -webkit-box-shadow: inset 0 0 10px #000000;
   box-shadow: inset 0 0 10px #000000;
