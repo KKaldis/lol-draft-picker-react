@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { getChampions } from "../reducers/reducer";
-import  Search  from "../scripts/Search";
+import Search from "../scripts/Search";
 import { DragDropContext } from "react-beautiful-dnd";
 import ChampSlot from "../components/ChampSlot";
-import {dragNdrop} from "../actions/actions"
+import { dragNdrop } from "../actions/actions";
 
 const App = ({ champions, onDragEnd }) => {
   const [characters, updateCharacters] = useState({ champions });
 
   return (
-    <DragDropContext onDragEnd={onDragEnd} >
+    <DragDropContext onDragEnd={onDragEnd}>
       <div className="body">
         <div className="addLeader">
           <img
@@ -37,7 +37,7 @@ const App = ({ champions, onDragEnd }) => {
               </div>
             </div>
             <div className="mid">
-              <Search/>
+              <Search />
               <div className="banSpot">
                 <div className="bans">
                   <ChampSlot playerId={"ban0"} />
@@ -87,14 +87,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onDragEnd: (e) => {
-      if (!e.destination) return;
-    dispatch(dragNdrop(e.draggableId , e.destination.droppableId))
-
+    if (!e.destination) return;
+    dispatch(dragNdrop(e.draggableId, e.destination.droppableId));
   },
 });
-
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 

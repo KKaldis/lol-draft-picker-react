@@ -26,10 +26,9 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   ...draggableStyle,
 });
 
-
 const Card = ({ champ, index }) => {
   return (
-    <Draggable draggableId={nameFix(champ)} key={nameFix(champ)} index={index}>
+    <Draggable draggableId={champ} key={champ} index={index}>
       {(provided, snapshot) => (
         <li
           ref={provided.innerRef}
@@ -57,7 +56,5 @@ const Card = ({ champ, index }) => {
     </Draggable>
   );
 };
-
-
 
 export default Card;
