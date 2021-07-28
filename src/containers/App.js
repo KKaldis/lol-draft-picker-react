@@ -34,28 +34,9 @@ const App = ({ champions }) => {
             />
           </div>
           <div className="app">
-            <Droppable droppableId="team">
-              {(provided) => (
-                <div
-                  className="team"
-                  ref={provided.innerRef}
-                  {...provided.droppableProps}
-                >
-                  {provided.placeholder}
-                </div>
-              )}
-            </Droppable>
-
-            <div className="mid">
-              <Search
-                details={champions}
-                index={champions.indexOf(champions)}
-              />
-            </div>
-
-            <div className="enemy">
-              <div className="players">
-                <p> Enemy Team </p>
+          <div className="team">
+            <div className="players">
+              <div className="champDiv">
                 <Droppable droppableId="emeny">
                   {(provided) => (
                     <div
@@ -67,10 +48,55 @@ const App = ({ champions }) => {
                     </div>
                   )}
                 </Droppable>
+              </div>
+              <div className="champDiv">
                 <div className="champSpot"></div>
+              </div>
+              <div className="champDiv">
                 <div className="champSpot"></div>
+              </div>
+              <div className="champDiv">
                 <div className="champSpot"></div>
+              </div>
+              <div className="champDiv">
                 <div className="champSpot"></div>
+              </div>
+            </div>
+          </div>
+            <div className="mid">
+              <Search
+                details={champions}
+                index={champions.indexOf(champions)}
+              />
+            </div>
+
+            <div className="enemy">
+              <div className="players">
+                <div className="champDiv">
+                  <Droppable droppableId="emeny">
+                    {(provided) => (
+                      <div
+                        className="champSpot"
+                        ref={provided.innerRef}
+                        {...provided.droppableProps}
+                      >
+                        {provided.placeholder}
+                      </div>
+                    )}
+                  </Droppable>
+                </div>
+                <div className="champDiv">
+                  <div className="champSpot"></div>
+                </div>
+                <div className="champDiv">
+                  <div className="champSpot"></div>
+                </div>
+                <div className="champDiv">
+                  <div className="champSpot"></div>
+                </div>
+                <div className="champDiv">
+                  <div className="champSpot"></div>
+                </div>
               </div>
             </div>
           </div>
