@@ -1,13 +1,9 @@
 .body {
-  background: radial-gradient(
-      circle,
-      rgba(2, 56, 56, 0.75) 0%,
-      rgba(0, 5, 9, 1) 100%
-    ),
-    url("assets/back.jpg");
+
   background-size: cover;
   height: 100vh;
-  width: 100vw;
+  min-width: 1820px;
+ width: 100vw;
   margin: 0px;
   display: flex;
   flex-direction: column;
@@ -19,7 +15,19 @@
   -khtml-user-select: none;
   -webkit-user-select: none;
   -o-user-select: none;
-  user-select: none;
+
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  min-height: 800px;
+
+  background: radial-gradient(
+      circle,
+      rgba(2, 56, 56, 0.75) 0%,
+      rgba(0, 5, 9, 1) 100%
+    ),
+    url("assets/back.jpg");
 }
 
 .main {
@@ -32,7 +40,6 @@
 .champs {
   overflow: scroll;
   height: 55vh;
-  width: 50vw;
   -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;
@@ -62,7 +69,7 @@
 }
 
 .app {
-  height: 100%;
+  min-height: 120px;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -77,9 +84,10 @@
 
 .team,
 .enemy {
+
   text-shadow: 0px 0px 10px #ae9c6c;
   border: 5px groove #ae9c6c;
-  width: 7vw;
+min-width: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -220,6 +228,8 @@
 
 #myUL li,
 #myUL li a {
+  max-width: 84px;
+  max-height: 116px;
   border-radius: 20px;
   text-decoration: none;
   font-size: 10px;
