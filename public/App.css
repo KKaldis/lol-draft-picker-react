@@ -1,7 +1,7 @@
 .body {
   background-size: cover;
   height: 100vh;
-  min-width: 1820px;
+  min-width: 1880px;
   width: 100vw;
   margin: 0px;
   display: flex;
@@ -37,6 +37,7 @@
 }
 
 .champs {
+  min-height: 400px;
   overflow: scroll;
   width: 960px;
   height: 55vh;
@@ -60,8 +61,6 @@
 }
 
 .mid {
-  align-content: center;
-  align-items: center;
 }
 
 .app {
@@ -142,12 +141,17 @@
 }
 
 .contentFix {
-  display: contents;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: space-between;
+  justify-content: space-around;
+  align-items: center;
 }
 .banSpot {
   padding: 10px;
   height: 120px;
-  width: auto;
+  width: 1000px;
   align-items: center;
   border-radius: 10px;
   background: radial-gradient(
