@@ -14,11 +14,10 @@
   -khtml-user-select: none;
   -webkit-user-select: none;
   -o-user-select: none;
-
   align-content: center;
   justify-content: center;
   align-items: center;
-  background-size: cover;
+
   min-height: 850px;
 
   background: radial-gradient(
@@ -27,6 +26,7 @@
       rgba(0, 5, 9, 1) 100%
     ),
     url("assets/back.jpg");
+      background-size: cover;
 }
 
 .main {
