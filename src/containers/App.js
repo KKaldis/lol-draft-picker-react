@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { getChampions } from "../reducers/reducer";
 import { Search } from "../scripts/search";
 import { DragDropContext } from "react-beautiful-dnd";
-import DrawChampSlot from "./DrawChampSlot";
+import DrawChampSlot from "../components/DrawChampSlot";
 
 const App = ({ champions }) => {
   const [characters, updateCharacters] = useState({ champions });

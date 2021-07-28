@@ -1,10 +1,10 @@
 import React from "react";
 import { Droppable } from "react-beautiful-dnd";
 
-export default function DrawChampSlot(props) {
+export default function DrawChampSlot({playerId}) {
   return (
     <div className="champDiv">
-      <Droppable droppableId={props.playerId}>
+      <Droppable droppableId={playerId}>
         {(provided) => (
           <div
             className="champSpot"
