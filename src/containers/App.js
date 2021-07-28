@@ -4,6 +4,7 @@ import { getChampions } from "../reducers/reducer";
 import { Search } from "../scripts/search";
 import { Draggable, Droppable, DragDropContext } from "react-beautiful-dnd";
 import ReactTooltip from "react-tooltip";
+import DrawChampSlot from "./DrawChampSlot";
 
 const App = ({ champions }) => {
   const [characters, updateCharacters] = useState({ champions });
@@ -26,6 +27,7 @@ const App = ({ champions }) => {
             alt="Advertisment Leaderboard"
           />
         </div>
+
         <div className="main">
           <div className="addSky">
             <img
@@ -34,73 +36,31 @@ const App = ({ champions }) => {
             />
           </div>
           <div className="app">
-          <div className="team">
-            <div className="players">
-              <div className="champDiv">
-                <Droppable droppableId="emeny">
-                  {(provided) => (
-                    <div
-                      className="champSpot"
-                      ref={provided.innerRef}
-                      {...provided.droppableProps}
-                    >
-                      {provided.placeholder}
-                    </div>
-                  )}
-                </Droppable>
-              </div>
-              <div className="champDiv">
-                <div className="champSpot"></div>
-              </div>
-              <div className="champDiv">
-                <div className="champSpot"></div>
-              </div>
-              <div className="champDiv">
-                <div className="champSpot"></div>
-              </div>
-              <div className="champDiv">
-                <div className="champSpot"></div>
+            <div className="team">
+              <div className="players">
+                <DrawChampSlot playerId={"teamplayer1"} />
+                <DrawChampSlot playerId={"teamplayer2"} />
+                <DrawChampSlot playerId={"teamplayer3"} />
+                <DrawChampSlot playerId={"teamplayer4"} />
+                <DrawChampSlot playerId={"teamplayer5"} />
               </div>
             </div>
-          </div>
             <div className="mid">
               <Search
                 details={champions}
                 index={champions.indexOf(champions)}
               />
             </div>
-
             <div className="enemy">
               <div className="players">
-                <div className="champDiv">
-                  <Droppable droppableId="emeny">
-                    {(provided) => (
-                      <div
-                        className="champSpot"
-                        ref={provided.innerRef}
-                        {...provided.droppableProps}
-                      >
-                        {provided.placeholder}
-                      </div>
-                    )}
-                  </Droppable>
-                </div>
-                <div className="champDiv">
-                  <div className="champSpot"></div>
-                </div>
-                <div className="champDiv">
-                  <div className="champSpot"></div>
-                </div>
-                <div className="champDiv">
-                  <div className="champSpot"></div>
-                </div>
-                <div className="champDiv">
-                  <div className="champSpot"></div>
-                </div>
+                <DrawChampSlot playerId={"enemyplayer1"} />
+                <DrawChampSlot playerId={"enemyplayer2"} />
+                <DrawChampSlot playerId={"enemyplayer3"} />
+                <DrawChampSlot playerId={"enemyplayer4"} />
+                <DrawChampSlot playerId={"enemyplayer5"} />
               </div>
             </div>
           </div>
-
           <div className="addSky">
             <img
               src={process.env.PUBLIC_URL + "/assets/300x600.webp"}

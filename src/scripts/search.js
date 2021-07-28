@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Draggable, Droppable, DragDropContext } from "react-beautiful-dnd";
-
+import DrawChampSlot from "../containers/DrawChampSlot";
 // string set up for image url
 const jpgNameFix = (string) => {
   //remove from champion name special characters and spaces to make string with jpg file name
@@ -106,16 +106,16 @@ const Search = ({ details }) => {
       {searchList()}
       <div className="banSpot">
         <div className="bans">
-          <div className="champSpot"></div>
-          <div className="champSpot"></div>
-          <div className="champSpot"></div>
-          <div className="champSpot"></div>
-          <div className="champSpot"></div>
-          <div className="champSpot"></div>
-          <div className="champSpot"></div>
-          <div className="champSpot"></div>
-          <div className="champSpot"></div>
-          <div className="champSpot"></div>
+          <DrawChampSlot playerId={"ban0"} />
+          <DrawChampSlot playerId={"ban1"} />
+          <DrawChampSlot playerId={"ban2"} />
+          <DrawChampSlot playerId={"ban3"} />
+          <DrawChampSlot playerId={"ban4"} />
+          <DrawChampSlot playerId={"ban5"} />
+          <DrawChampSlot playerId={"ban6"} />
+          <DrawChampSlot playerId={"ban7"} />
+          <DrawChampSlot playerId={"ban8"} />
+          <DrawChampSlot playerId={"ban9"} />
         </div>
       </div>
     </div>
