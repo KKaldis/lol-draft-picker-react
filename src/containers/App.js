@@ -1,24 +1,16 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { getChampions } from "../reducers/reducer";
-import { Search } from "../scripts/Search";
+import  Search  from "../scripts/Search";
 import { DragDropContext } from "react-beautiful-dnd";
 import ChampSlot from "../components/ChampSlot";
+import {dragNdrop} from "../actions/actions"
 
-const App = ({ champions }) => {
+const App = ({ champions, onDragEnd }) => {
   const [characters, updateCharacters] = useState({ champions });
 
-  function handleOnDragEnd(result) {
-    const items = Array.from(characters);
-    const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
-
-    updateCharacters(items);
-    if (!result.destination) return;
-  }
-
   return (
-    <DragDropContext onDragEnd={this.handleOnDragEnd}>
+    <DragDropContext onDragEnd={onDragEnd} >
       <div className="body">
         <div className="addLeader">
           <img
@@ -45,10 +37,7 @@ const App = ({ champions }) => {
               </div>
             </div>
             <div className="mid">
-              <Search
-                details={champions}
-                index={champions.indexOf(champions)}
-              />
+              <Search/>
               <div className="banSpot">
                 <div className="bans">
                   <ChampSlot playerId={"ban0"} />
@@ -96,7 +85,16 @@ const mapStateToProps = (state) => ({
   champions: getChampions(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  onDragEnd: (e) => {
+      if (!e.destination) return;
+    dispatch(dragNdrop(e.draggableId , e.destination.droppableId))
+
+  },
+});
+
+
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 

@@ -4,7 +4,7 @@ import { Droppable } from "react-beautiful-dnd";
 export default function ChampSlot({playerId}) {
   return (
     <div className="champDiv">
-      <Droppable droppableId={playerId}>
+      <Droppable droppableId={playerId} key={playerId}>
         {(provided) => (
           <div
             className="champSpot"
