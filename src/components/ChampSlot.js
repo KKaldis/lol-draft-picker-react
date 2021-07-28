@@ -1,7 +1,7 @@
 import React from "react";
 import { Droppable } from "react-beautiful-dnd";
 
-export default function DrawChampSlot({playerId}) {
+export default function ChampSlot({playerId}) {
   return (
     <div className="champDiv">
       <Droppable droppableId={playerId}>

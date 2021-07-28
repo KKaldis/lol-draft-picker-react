@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { getChampions } from "../reducers/reducer";
-import { Search } from "../scripts/search";
+import { Search } from "../scripts/Search";
 import { DragDropContext } from "react-beautiful-dnd";
-import DrawChampSlot from "../components/DrawChampSlot";
+import ChampSlot from "../components/ChampSlot";
 
 const App = ({ champions }) => {
   const [characters, updateCharacters] = useState({ champions });
@@ -37,11 +37,11 @@ const App = ({ champions }) => {
           <div className="app">
             <div className="team">
               <div className="players">
-                <DrawChampSlot playerId={"teamplayer1"} />
-                <DrawChampSlot playerId={"teamplayer2"} />
-                <DrawChampSlot playerId={"teamplayer3"} />
-                <DrawChampSlot playerId={"teamplayer4"} />
-                <DrawChampSlot playerId={"teamplayer5"} />
+                <ChampSlot playerId={"teamplayer1"} />
+                <ChampSlot playerId={"teamplayer2"} />
+                <ChampSlot playerId={"teamplayer3"} />
+                <ChampSlot playerId={"teamplayer4"} />
+                <ChampSlot playerId={"teamplayer5"} />
               </div>
             </div>
             <div className="mid">
@@ -49,14 +49,28 @@ const App = ({ champions }) => {
                 details={champions}
                 index={champions.indexOf(champions)}
               />
+              <div className="banSpot">
+                <div className="bans">
+                  <ChampSlot playerId={"ban0"} />
+                  <ChampSlot playerId={"ban1"} />
+                  <ChampSlot playerId={"ban2"} />
+                  <ChampSlot playerId={"ban3"} />
+                  <ChampSlot playerId={"ban4"} />
+                  <ChampSlot playerId={"ban5"} />
+                  <ChampSlot playerId={"ban6"} />
+                  <ChampSlot playerId={"ban7"} />
+                  <ChampSlot playerId={"ban8"} />
+                  <ChampSlot playerId={"ban9"} />
+                </div>
+              </div>
             </div>
             <div className="enemy">
               <div className="players">
-                <DrawChampSlot playerId={"enemyplayer1"} />
-                <DrawChampSlot playerId={"enemyplayer2"} />
-                <DrawChampSlot playerId={"enemyplayer3"} />
-                <DrawChampSlot playerId={"enemyplayer4"} />
-                <DrawChampSlot playerId={"enemyplayer5"} />
+                <ChampSlot playerId={"enemyplayer1"} />
+                <ChampSlot playerId={"enemyplayer2"} />
+                <ChampSlot playerId={"enemyplayer3"} />
+                <ChampSlot playerId={"enemyplayer4"} />
+                <ChampSlot playerId={"enemyplayer5"} />
               </div>
             </div>
           </div>
