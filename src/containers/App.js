@@ -1,9 +1,8 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { getChampions } from "../reducers/reducer";
 import { Search } from "../scripts/search";
-import { Draggable, Droppable, DragDropContext } from "react-beautiful-dnd";
-import ReactTooltip from "react-tooltip";
+import { DragDropContext } from "react-beautiful-dnd";
 import DrawChampSlot from "./DrawChampSlot";
 
 const App = ({ champions }) => {

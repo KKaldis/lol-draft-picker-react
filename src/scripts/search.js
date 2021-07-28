@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Draggable, Droppable, DragDropContext } from "react-beautiful-dnd";
+import { Draggable, Droppable } from "react-beautiful-dnd";
 import DrawChampSlot from "../containers/DrawChampSlot";
 // string set up for image url
 const jpgNameFix = (string) => {
