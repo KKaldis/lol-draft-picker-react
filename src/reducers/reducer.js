@@ -20,10 +20,6 @@ const filteredChampions = (state = champions, action) => {
   }
 };
 
-export const getChampions = (state) => {
-  return state.champions;
-};
-
 export const getSelection = (state,playerId) => state.selections[playerId]
 export const getSelectionIndex = (state,playerId) => state.filteredChampions.indexOf(state.selections[playerId])
 

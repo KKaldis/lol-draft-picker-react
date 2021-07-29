@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { Droppable } from "react-beautiful-dnd";
-import ChampSlot from "../components/ChampSlot";
 import Card from "../components/Card";
-import { getChampions, getFilteredChampions } from "../reducers/reducer";
+import { getFilteredChampions } from "../reducers/reducer";
 import { searchChanged } from "../actions/actions";
 // string set up for image url
 
 const Search = ({ filteredChampions, handleChange }) => {
+
   return (
     <div className="contentFix">
       <div>
@@ -38,6 +38,8 @@ const Search = ({ filteredChampions, handleChange }) => {
 
 const mapStateToProps = (state) => ({
   filteredChampions: getFilteredChampions(state),
+
+
 });
 
 const mapDispatchToProps = (dispatch) => ({

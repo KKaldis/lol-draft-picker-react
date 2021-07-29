@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { getChampions } from "../reducers/reducer";
-import Search from "../scripts/Search";
+import Search from "../scripts/search";
 import { DragDropContext } from "react-beautiful-dnd";
 import ChampSlot from "../components/ChampSlot";
 import { dragNdrop } from "../actions/actions";
 
-const App = ({ champions, onDragEnd }) => {
-  const [characters, updateCharacters] = useState({ champions });
+const App = ({ onDragEnd }) => {
+
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -82,7 +81,7 @@ const App = ({ champions, onDragEnd }) => {
 };
 
 const mapStateToProps = (state) => ({
-  champions: getChampions(state),
+
 });
 
 const mapDispatchToProps = (dispatch) => ({
