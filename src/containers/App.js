@@ -6,8 +6,6 @@ import ChampSlot from "../components/ChampSlot";
 import { dragNdrop } from "../actions/actions";
 
 const App = ({ onDragEnd }) => {
-
-
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div className="body">
@@ -80,9 +78,7 @@ const App = ({ onDragEnd }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-
-});
+const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = (dispatch) => ({
   onDragEnd: (e) => {
@@ -92,5 +88,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-
-// export default App;

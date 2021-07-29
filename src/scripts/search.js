@@ -7,7 +7,6 @@ import { searchChanged } from "../actions/actions";
 // string set up for image url
 
 const Search = ({ filteredChampions, handleChange }) => {
-
   return (
     <div className="contentFix">
       <div>
@@ -38,8 +37,6 @@ const Search = ({ filteredChampions, handleChange }) => {
 
 const mapStateToProps = (state) => ({
   filteredChampions: getFilteredChampions(state),
-
-
 });
 
 const mapDispatchToProps = (dispatch) => ({
