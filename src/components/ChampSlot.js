@@ -14,6 +14,7 @@ function ChampSlot({ playerId, selection, selectionIndex }) {
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
+            {provided.placeholder}
             {selection != null && (
               <Card champ={selection} index={selectionIndex} />
             )}

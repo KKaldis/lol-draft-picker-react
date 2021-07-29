@@ -30,8 +30,7 @@ export const getSelectionIndex = (state,playerId) => state.filteredChampions.ind
 const selections = (state = {}, action) => {
   switch (action.type) {
     case DRAG_END:
-      // if (action.drop.startsWith("teamplayer")) return [...state, action.drag];
-      // else return state;
+
       return {
         ...state,
         [action.drop]: action.drag
