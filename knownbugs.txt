@@ -1,4 +1,3 @@
 on search backspace no updated results
 of character is selected and moved to a new champ div it copies instad of replace or lock
 selected character cant dragback to character list
-on selected champ css stays to round  instead of squre
