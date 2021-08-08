@@ -5,38 +5,7 @@ export const getFilteredChampions = (state) => {
     return state.filteredChampions;
 };
 
-<<<<<<< HEAD
-const filteredChampions = (state = champions, action) => {
-  switch (action.type) {
-    case SEARCH_CHANGED:
-      return state.filter((champ) => {
-        return champ.toLowerCase().includes(action.lookup.toLowerCase());
-      });
 
-    case DRAG_END:
-      return state.filter((champ) => {
-        return champ !== action.drag;
-      });
-    default:
-      return state;
-  }
-};
-
-export const getSelection = (state, playerId) => state.selections[playerId];
-export const getSelectionIndex = (state, playerId) =>
-  state.filteredChampions.indexOf(state.selections[playerId]);
-
-const selections = (state = {}, action) => {
-  switch (action.type) {
-    case DRAG_END:
-      return {
-        ...state,
-        [action.drop]: action.drag,
-      };
-    default:
-      return state;
-  }
-=======
 const filteredChampions = (state = champions, action, rootState) => {
     switch (action.type) {
         case SEARCH_CHANGED:
@@ -99,7 +68,7 @@ const selections = (state = {}, action) => {
         default:
             return state;
     }
->>>>>>> 1108cd41ac644a0f37976c5ad8a0cd8fd2f65661
+
 };
 
 export const getChampions = (state) => state.champions
@@ -110,15 +79,11 @@ export const getAvailableChampions = (state) => {
 }
 
 const reducer = (state = {}, action) => ({
-<<<<<<< HEAD
-  champions: champions,
-  filteredChampions: filteredChampions(action.filteredChampions, action),
-  selections: selections(state.selections, action),
-=======
+
     champions: champions,
     selections: selections(state.selections, action),
     filteredChampions: filteredChampions(state.filteredChampions, action, state),
->>>>>>> 1108cd41ac644a0f37976c5ad8a0cd8fd2f65661
+
 });
 
 export default reducer;
