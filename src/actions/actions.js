@@ -6,7 +6,11 @@ export const searchChanged = (lookup) => ({
   lookup, // lookup: lookup / eqivalent code
 });
 
-export const dragNdrop = (sourceDraggable,sourceDroppable, destinationDroppable) => ({
+export const dragNdrop = (
+  sourceDraggable,
+  sourceDroppable,
+  destinationDroppable
+) => ({
   type: DRAG_END,
   sourceDraggable, // lookup: lookup / eqivalent code
   sourceDroppable,

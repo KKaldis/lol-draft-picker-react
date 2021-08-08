@@ -83,7 +83,9 @@ const mapStateToProps = (state) => ({});
 const mapDispatchToProps = (dispatch) => ({
   onDragEnd: (e) => {
     if (!e.destination) return;
-    dispatch(dragNdrop(e.draggableId,e.source.droppableId, e.destination.droppableId));
+    dispatch(
+      dragNdrop(e.draggableId, e.source.droppableId, e.destination.droppableId)
+    );
   },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);
