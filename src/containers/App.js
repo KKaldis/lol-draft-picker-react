@@ -86,5 +86,4 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(dragNdrop(e.draggableId, e.destination.droppableId));
   },
 });
-
 export default connect(mapStateToProps, mapDispatchToProps)(App);
