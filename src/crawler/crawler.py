@@ -39,13 +39,16 @@ for a in champLinks.find_all('a', href=True):
 
     #round stat box
     round = statBox.find("a", {"class":"radial-progress"}) #find graph div
-    roundCoutnerChamp = round.find("img")['alt'][18:] #get counter champ name
+    roundCoutnerChamp = round.find("img")['alt'][len("Counter Stats for "):] #get counter champ name
     roundCoutnerValue = round.find("span").text #get counter champ value
 
     #quare stat box
     square = statBox.find("div", {"class":"stats-bar"}) #find graph div
-    squareCounterChamp = square.find("img")['alt'][:12-len(champName)] #get counter champ name
+    squareCounterChamp = square.find("img")['alt'][:-len(champName)-len(" countering ")] #get counter champ name
     squareCounterValue = square.find("span").text  #get counter champ value
+
+        
+
 
     print(f'{champName} - {lane}')
     print(f'{roundCoutnerChamp} : {roundCoutnerValue}')
