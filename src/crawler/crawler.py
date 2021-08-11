@@ -15,37 +15,41 @@ req = requests.get(url, headers)
 soup = BeautifulSoup(req.content, 'html.parser')
 
 
-champLinks = soup.find("div", {"id":"champions"})
+champLinks = soup.find("div", {"id":"champions"}) #get champion urls
 
 for a in champLinks.find_all('a', href=True):
-    urlArray = "https://counterstats.net" + a['href']
+    urlArray = "https://counterstats.net" + a['href'] #add domain to urls
     reqChamp = requests.get(urlArray, headers)
     soupChamp = BeautifulSoup(reqChamp.content, 'html.parser')
     
     champName = soupChamp.h1.text[:-14] #champion name crawled variable
 
     
-    statBox = soupChamp.find("div", {"class":"champ-box__wrap new"}) 
+    statBox = soupChamp.find("div", {"class":"champ-box__wrap new"}) #find lane box
 
 
-    lane = statBox.find("h2")
-    span = lane.span
-    span.decompose()
-    span = lane.span
-    span.decompose()
-    lane = lane.text # lane export
-    lane = "".join([s for s in lane.splitlines(True) if s.strip("\r\n")])
+    lane = statBox.find("h2") #find heading with lane
+    span = lane.span    #remove 1st span
+    span.decompose()    #remove 1st span
+    span = lane.span    #remove 2nd span
+    span.decompose()    #remove 2nd span
+    lane = lane.text    #get lane text from div
+    lane = "".join([s for s in lane.splitlines(True) if s.strip("\r\n")]) #remove new lines created from removign <span>
 
 
+    #round stat box
+    round = statBox.find("a", {"class":"radial-progress"}) #find graph div
+    roundCoutnerChamp = round.find("img")['alt'][18:] #get counter champ name
+    roundCoutnerValue = round.find("span").text #get counter champ value
 
-    round = statBox.find("a", {"class":"radial-progress"})
-    coutnerChamp = round.find("img")['alt'][18:]
-    coutnerValue = round.find("span").text
-
-
+    #quare stat box
+    square = statBox.find("div", {"class":"stats-bar"}) #find graph div
+    squareCounterChamp = square.find("img")['alt'][:12-len(champName)] #get counter champ name
+    squareCounterValue = square.find("span").text  #get counter champ value
 
     print(f'{champName} - {lane}')
-    print(f'{coutnerChamp} : {coutnerValue}')
+    print(f'{roundCoutnerChamp} : {roundCoutnerValue}')
+    print(f'{squareCounterChamp} : {squareCounterValue}')
     time.sleep(1) # Sleep for (X) seconds
     print(f'')
     
