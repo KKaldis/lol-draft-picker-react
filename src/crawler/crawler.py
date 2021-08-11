@@ -24,37 +24,46 @@ for a in champLinks.find_all('a', href=True):
     
     champName = soupChamp.h1.text[:-14] #champion name crawled variable
 
-    
-    statBox = soupChamp.find("div", {"class":"champ-box__wrap new"}) #find lane box
+    for div in soupChamp.find_all("div", {"class":"champ-box__wrap new"}): #find lane box
+
+        statBox = soupChamp.find("div", {"class":"champ-box__wrap new"}) #find lane box
 
 
-    lane = statBox.find("h2") #find heading with lane
-    span = lane.span    #remove 1st span
-    span.decompose()    #remove 1st span
-    span = lane.span    #remove 2nd span
-    span.decompose()    #remove 2nd span
-    lane = lane.text    #get lane text from div
-    lane = "".join([s for s in lane.splitlines(True) if s.strip("\r\n")]) #remove new lines created from removign <span>
+        lane = statBox.find("h2") #find heading with lane
+        # span = lane.span    #remove 1st span
+        # span.decompose()    #remove 1st span
+        # span = lane.span    #remove 2nd span
+        # span.decompose()    #remove 2nd span
+        lane = lane.text    #get lane text from div
+        lane = "".join([s for s in lane.splitlines(True) if s.strip("\r\n")]) #remove new lines created from removign <span>
+
+        print(f'{champName} - {lane}')
+        print(f'')
+
+        #round stat box
+        for a in statBox.find_all("a", {"class":"radial-progress"}): #find graph div
+            round = a  #find graph div
+            roundCoutnerChamp = round.find("img")['alt'][len("Counter Stats for "):] #get counter champ name
+            roundCoutnerValue = round.find("span").text #get counter champ value
+
+            print(f'{roundCoutnerChamp} : {roundCoutnerValue}')
 
 
-    #round stat box
-    round = statBox.find("a", {"class":"radial-progress"}) #find graph div
-    roundCoutnerChamp = round.find("img")['alt'][len("Counter Stats for "):] #get counter champ name
-    roundCoutnerValue = round.find("span").text #get counter champ value
+            
+        #quare stat box
+        for div in statBox.find_all("div", {"class":"stats-bar"}): #find graph div
+            square = div
+            squareCounterChamp = square.find("img")['alt'][:-len(champName)-len(" countering ")] #get counter champ name
+            squareCounterValue = square.find("span").text  #get counter champ value
 
-    #quare stat box
-    square = statBox.find("div", {"class":"stats-bar"}) #find graph div
-    squareCounterChamp = square.find("img")['alt'][:-len(champName)-len(" countering ")] #get counter champ name
-    squareCounterValue = square.find("span").text  #get counter champ value
+            print(f'{squareCounterChamp} : {squareCounterValue}')
+
 
         
-
-
-    print(f'{champName} - {lane}')
-    print(f'{roundCoutnerChamp} : {roundCoutnerValue}')
-    print(f'{squareCounterChamp} : {squareCounterValue}')
-    time.sleep(1) # Sleep for (X) seconds
-    print(f'')
+        
+        
+        time.sleep(1) # Sleep for (X) seconds
+        
     
 
 
