@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import time
+import json
 
 headers = {
     'Access-Control-Allow-Origin': '*',
@@ -14,7 +15,6 @@ url = "https://www.counterstats.net/"
 req = requests.get(url, headers)
 soup = BeautifulSoup(req.content, 'html.parser')
 
-
 champLinks = soup.find("div", {"id":"champions"}) #get champion urls
 
 for a in champLinks.find_all('a', href=True):
@@ -22,12 +22,9 @@ for a in champLinks.find_all('a', href=True):
     reqChamp = requests.get(urlArray, headers)
     soupChamp = BeautifulSoup(reqChamp.content, 'html.parser')
     
-    champName = soupChamp.h1.text[:-14] #champion name crawled variable
+    champName = soupChamp.h1.text[:-14].replace("-", " ") #champion name crawled variable
 
-    for div in soupChamp.find_all("div", {"class":"champ-box__wrap new"}): #find lane box
-
-        statBox = soupChamp.find("div", {"class":"champ-box__wrap new"}) #find lane box
-
+    for statBox in soupChamp.find_all("div", {"class":"champ-box__wrap new"}): #find lane box
 
         lane = statBox.find("h2") #find heading with lane
         # span = lane.span    #remove 1st span
@@ -38,32 +35,28 @@ for a in champLinks.find_all('a', href=True):
         lane = "".join([s for s in lane.splitlines(True) if s.strip("\r\n")]) #remove new lines created from removign <span>
 
         print(f'{champName} - {lane}')
-        print(f'')
 
-        #round stat box
-        for a in statBox.find_all("a", {"class":"radial-progress"}): #find graph div
-            round = a  #find graph div
-            roundCoutnerChamp = round.find("img")['alt'][len("Counter Stats for "):] #get counter champ name
-            roundCoutnerValue = round.find("span").text #get counter champ value
+        for champDiv in statBox.find_all("div", {"class" : "champ-box"}):
 
-            print(f'{roundCoutnerChamp} : {roundCoutnerValue}')
+            pickType = champDiv.find("em").text
+            pickTag = champDiv.find("em")['class']
+            pickCategory = statBox.find("div", {"class":"champ-box"})['class']
+            del pickCategory [0]
 
+            print(f'{pickType} : {pickTag} : {pickCategory}')
 
-            
-        #quare stat box
-        for div in statBox.find_all("div", {"class":"stats-bar"}): #find graph div
-            square = div
-            squareCounterChamp = square.find("img")['alt'][:-len(champName)-len(" countering ")] #get counter champ name
-            squareCounterValue = square.find("span").text  #get counter champ value
+            #round stat box
+            for roundDiv in champDiv.find_all("a", {"class":"radial-progress"}): #find all graph div
+                roundCoutnerChamp = roundDiv.find("img")['alt'][len("Counter Stats for "):].replace("-", " ") #get counter champ name
+                roundCoutnerValue = roundDiv.find("span").text #get counter champ value
 
-            print(f'{squareCounterChamp} : {squareCounterValue}')
+                print(f'{roundCoutnerChamp} : {roundCoutnerValue}')
+                
+            #quare stat box
+            for squareDiv in champDiv.find_all("div", {"class":"stats-bar"}): #find all graph div
+                squareCounterChamp = squareDiv.find("img")['alt'][:-len(champName)-len(" countering ")].replace("-", " ") #get counter champ name
+                squareCounterValue = squareDiv.find("span").text #get counter champ value
 
-
-        
-        
-        
-        time.sleep(1) # Sleep for (X) seconds
-        
-    
-
-
+                print(f'{squareCounterChamp} : {squareCounterValue}')
+         
+    time.sleep(60) # Sleep for (X) seconds
