@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-
+import time
 
 headers = {
     'Access-Control-Allow-Origin': '*',
@@ -14,16 +14,32 @@ url = "https://www.counterstats.net/"
 req = requests.get(url, headers)
 soup = BeautifulSoup(req.content, 'html.parser')
 
-# print(soup.prettify())
-soup = soup.find("div", {"class":"foot-champs__links"})
 
-for a in soup.find_all('a', href=True):
+champLinks = soup.find("div", {"id":"champions"})
+
+for a in champLinks.find_all('a', href=True):
     urlArray = "https://counterstats.net" + a['href']
     reqChamp = requests.get(urlArray, headers)
-    soupChamp = BeautifulSoup(req.content, 'html.parser')
+    soupChamp = BeautifulSoup(reqChamp.content, 'html.parser')
+    
+    champName = soupChamp.h1.text[:-14] #champion name crawled variable
 
-    soupChamp = soupChamp.find_all("a", href=True)
-    print (soupChamp)
+    
+    statBox = soupChamp.find("div", {"class":"champ-box__wrap new"}) 
+
+    #lane find needs for all lanes (all)
+    lane = statBox.find("h2")
+
+
+    span = lane.span
+    span.decompose()
+    span = lane.span
+    span.decompose()
+    lane = lane.text
+
+    print(f'{champName}')
+    time.sleep(1) # Sleep for (X) seconds
+    print(f'{lane}')
     
 
 
