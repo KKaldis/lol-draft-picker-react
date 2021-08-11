@@ -27,19 +27,27 @@ for a in champLinks.find_all('a', href=True):
     
     statBox = soupChamp.find("div", {"class":"champ-box__wrap new"}) 
 
-    #lane find needs for all lanes (all)
+
     lane = statBox.find("h2")
-
-
     span = lane.span
     span.decompose()
     span = lane.span
     span.decompose()
-    lane = lane.text
+    lane = lane.text # lane export
+    lane = "".join([s for s in lane.splitlines(True) if s.strip("\r\n")])
 
-    print(f'{champName}')
+
+
+    round = statBox.find("a", {"class":"radial-progress"})
+    coutnerChamp = round.find("img")['alt'][18:]
+    coutnerValue = round.find("span").text
+
+
+
+    print(f'{champName} - {lane}')
+    print(f'{coutnerChamp} : {coutnerValue}')
     time.sleep(1) # Sleep for (X) seconds
-    print(f'{lane}')
+    print(f'')
     
 
 
