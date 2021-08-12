@@ -45,21 +45,31 @@ for a in champLinks.find_all('a', href=True):
     urlArray = "https://counterstats.net" + a['href'] #add domain to urls
     reqChamp = requests.get(urlArray, headers)
     soupChamp = BeautifulSoup(reqChamp.content, 'html.parser')
-
     champName = soupChamp.h1.text[:-14].replace("-", " ").replace('\n','') #champion name crawled variable
-
-
-
     counterData[champName] = {}
     # print(f'{champName}')
 
     for statBox in soupChamp.find_all("div", {"class":"champ-box__wrap new"}): #find lane box
 
-        lane = statBox.find("h2") #find heading with lane
-        lane = lane.text    #get lane text from div
-        lane = "".join([s for s in lane.splitlines(True) if s.strip("\r\n")]).replace('\n','') #remove new lines created from removign <span>
+        laneData = statBox.find("h2") #find heading with lane
+        laneData = laneData.text    #get lane text from div
+        laneData = "".join([s for s in laneData.splitlines(True) if s.strip("\r\n")]).replace('\n','')[1:].split(')')[0]+")"
+        lane = laneData.split('(')[0][:-1]
+        lanePersent = laneData.split('(')[1][:-1]
 
+        if (lane == "Top Lane"):
+            lane = "Top"
+        elif (lane == "In the Jungle"):
+            lane = "Jungle"
+        elif (lane == "Middle Lane"):
+            lane = "Middle"
+        elif (lane == "Bottom Lane"):
+            lane = "Bottom"
+        else:
+            lane = "Support"
+        
         counterData[champName][lane] = {}
+        # counterData[champName][lane + " : " + lanePersent] = {}
         # print(f'{lane}')
 
         for champDiv in statBox.find_all("div", {"class" : "champ-box"}):
@@ -101,6 +111,6 @@ for a in champLinks.find_all('a', href=True):
                 
                 # print(f'{counterChamp} : {counterValue}')
     
-    pp = pprint.PrettyPrinter(depth=2)
+    pp = pprint.PrettyPrinter(depth=6)
     pp.pprint(counterData)
     time.sleep(60) # Sleep for (X) seconds
