@@ -41,14 +41,14 @@ for a in champLinks.find_all('a', href=True):
     reqChamp = requests.get(urlArray, headers)
     soupChamp = BeautifulSoup(reqChamp.content, 'html.parser')
 
-    champName = soupChamp.h1.text[:-14].replace("-", " ") #champion name crawled variable
+    champName = soupChamp.h1.text[:-14].replace("-", " ").replace('\n','') #champion name crawled variable
     print(f'{champName}')
 
     for statBox in soupChamp.find_all("div", {"class":"champ-box__wrap new"}): #find lane box
 
         lane = statBox.find("h2") #find heading with lane
         lane = lane.text    #get lane text from div
-        lane = "".join([s for s in lane.splitlines(True) if s.strip("\r\n")]) #remove new lines created from removign <span>
+        lane = "".join([s for s in lane.splitlines(True) if s.strip("\r\n")]).replace('\n','') #remove new lines created from removign <span>
 
         print(f'{lane}')
 
