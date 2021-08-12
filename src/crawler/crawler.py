@@ -53,9 +53,9 @@ for a in champLinks.find_all('a', href=True):
 
         laneData = statBox.find("h2") #find heading with lane
         laneData = laneData.text    #get lane text from div
-        laneData = "".join([s for s in laneData.splitlines(True) if s.strip("\r\n")]).replace('\n','')[1:].split(')')[0]+")"
-        lane = laneData.split('(')[0][:-1]
-        lanePersent = laneData.split('(')[1][:-1]
+        laneData = "".join([s for s in laneData.splitlines(True) if s.strip("\r\n")]).replace('\n','')[1:].split(')')[0]+")" #styling cleaning from text
+        lane = laneData.split('(')[0][:-1] #clear lane data
+        lanePersent = laneData.split('(')[1][:-1] #lane persentage data
 
         if (lane == "Top Lane"):
             lane = "Top"
