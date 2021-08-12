@@ -75,19 +75,20 @@ for a in champLinks.find_all('a', href=True):
             pickTag = champDiv.find("em")['class'] #get class name green, red, blue for best, worst, popular
             pickCategory = statBox.find("div", {"class":"champ-box"})['class']
             del pickCategory [0]
-            category = (str(pickCategory))
+            category = (str(pickCategory))[2:-2]
 
             counterData[champName][lane][category] = {}
             counterData[champName][lane][category][pickType] = {}
             # print(f'{pickType} : {pickCategory}')
             # print(f'{counterData}')
+            # print(type(category))
 
             #round stat box
             for roundDiv in champDiv.find_all("a", {"class":"radial-progress"}): #find all graph div
                 counterChamp = roundDiv.find("img")['alt'][len("Counter Stats for "):].replace("-", " ").replace('\n','') #get counter champ name
                 counterValue = roundDiv.find("span").text.replace('\n','') #get counter champ value
                 counterValue = morphValues(counterValue)
-                counterData[champName][lane][category][pickType][counterChamp] = {counterValue}
+                counterData[champName][lane][category][pickType][counterChamp] = (counterValue)
 
                 # print(f'{counterChamp} : {counterValue}')
                 
@@ -96,7 +97,7 @@ for a in champLinks.find_all('a', href=True):
                 counterChamp = squareDiv.find("img")['alt'][:-len(champName)-len(" countering ")].replace("-", " ").replace('\n','') #get counter champ name
                 counterValue = squareDiv.find("span").text.replace('\n','') #get counter champ value
                 counterValue = morphValues(counterValue)
-                counterData[champName][lane][category][pickType][counterChamp] = {counterValue}
+                counterData[champName][lane][category][pickType][counterChamp] = (counterValue)
                 
                 # print(f'{counterChamp} : {counterValue}')
     
