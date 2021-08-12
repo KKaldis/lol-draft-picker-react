@@ -1,5 +1,5 @@
 dataChamp = {
-    "Aatrox": {
+    "Aatrox":  {
         "Jungle": {
             "All": {
                 "Best": {"Ahri": 55, "Vi": 45, "Zed": 60},

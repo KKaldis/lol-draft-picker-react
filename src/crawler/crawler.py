@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import time
+import pprint
 import json
 
 headers = {
@@ -15,7 +16,9 @@ url = "https://www.counterstats.net/"
 req = requests.get(url, headers)
 soup = BeautifulSoup(req.content, 'html.parser')
 champLinks = soup.find("div", {"id":"champions"}) #get champion urls
+counterData = {} #data storage dictionary
 
+#data manipulation (cleaning and fixing)
 def morphValues(val):
     val = val.replace(' ','')
     if (val[-1] == '%'):
@@ -36,13 +39,19 @@ def morphValues(val):
     intVal = int(val)
     return intVal
 
+
+
 for a in champLinks.find_all('a', href=True):
     urlArray = "https://counterstats.net" + a['href'] #add domain to urls
     reqChamp = requests.get(urlArray, headers)
     soupChamp = BeautifulSoup(reqChamp.content, 'html.parser')
 
     champName = soupChamp.h1.text[:-14].replace("-", " ").replace('\n','') #champion name crawled variable
-    print(f'{champName}')
+
+
+
+    counterData[champName] = {}
+    # print(f'{champName}')
 
     for statBox in soupChamp.find_all("div", {"class":"champ-box__wrap new"}): #find lane box
 
@@ -50,7 +59,8 @@ for a in champLinks.find_all('a', href=True):
         lane = lane.text    #get lane text from div
         lane = "".join([s for s in lane.splitlines(True) if s.strip("\r\n")]).replace('\n','') #remove new lines created from removign <span>
 
-        print(f'{lane}')
+        counterData[champName][lane] = {}
+        # print(f'{lane}')
 
         for champDiv in statBox.find_all("div", {"class" : "champ-box"}):
 
@@ -65,9 +75,12 @@ for a in champLinks.find_all('a', href=True):
             pickTag = champDiv.find("em")['class'] #get class name green, red, blue for best, worst, popular
             pickCategory = statBox.find("div", {"class":"champ-box"})['class']
             del pickCategory [0]
+            category = (str(pickCategory))
 
-
-            print(f'{pickType} : {pickCategory}')
+            counterData[champName][lane][category] = {}
+            counterData[champName][lane][category][pickType] = {}
+            # print(f'{pickType} : {pickCategory}')
+            # print(f'{counterData}')
 
             #round stat box
             for roundDiv in champDiv.find_all("a", {"class":"radial-progress"}): #find all graph div
@@ -75,14 +88,16 @@ for a in champLinks.find_all('a', href=True):
                 counterValue = roundDiv.find("span").text.replace('\n','') #get counter champ value
                 counterValue = morphValues(counterValue)
 
-                print(f'{counterChamp} : {counterValue}')
+                # print(f'{counterChamp} : {counterValue}')
                 
             #quare stat box
             for squareDiv in champDiv.find_all("div", {"class":"stats-bar"}): #find all graph div
                 counterChamp = squareDiv.find("img")['alt'][:-len(champName)-len(" countering ")].replace("-", " ").replace('\n','') #get counter champ name
                 counterValue = squareDiv.find("span").text.replace('\n','') #get counter champ value
                 counterValue = morphValues(counterValue)
-
-                print(f'{counterChamp} : {counterValue}')
-
-        time.sleep(60) # Sleep for (X) seconds
+                
+                # print(f'{counterChamp} : {counterValue}')
+        counterData[champName][lane][category][pickType][counterChamp] = {counterValue}
+        pp = pprint.PrettyPrinter(depth=2)
+        pp.pprint(counterData)
+        time.sleep(1) # Sleep for (X) seconds
