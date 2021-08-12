@@ -87,6 +87,7 @@ for a in champLinks.find_all('a', href=True):
                 counterChamp = roundDiv.find("img")['alt'][len("Counter Stats for "):].replace("-", " ").replace('\n','') #get counter champ name
                 counterValue = roundDiv.find("span").text.replace('\n','') #get counter champ value
                 counterValue = morphValues(counterValue)
+                counterData[champName][lane][category][pickType][counterChamp] = {counterValue}
 
                 # print(f'{counterChamp} : {counterValue}')
                 
@@ -95,9 +96,10 @@ for a in champLinks.find_all('a', href=True):
                 counterChamp = squareDiv.find("img")['alt'][:-len(champName)-len(" countering ")].replace("-", " ").replace('\n','') #get counter champ name
                 counterValue = squareDiv.find("span").text.replace('\n','') #get counter champ value
                 counterValue = morphValues(counterValue)
+                counterData[champName][lane][category][pickType][counterChamp] = {counterValue}
                 
                 # print(f'{counterChamp} : {counterValue}')
-        counterData[champName][lane][category][pickType][counterChamp] = {counterValue}
-        pp = pprint.PrettyPrinter(depth=2)
-        pp.pprint(counterData)
-        time.sleep(1) # Sleep for (X) seconds
+    
+    pp = pprint.PrettyPrinter(depth=2)
+    pp.pprint(counterData)
+    time.sleep(60) # Sleep for (X) seconds
