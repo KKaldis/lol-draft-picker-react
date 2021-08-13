@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import time
 import pprint
 import json
+import random
 
 headers = {
     'Access-Control-Allow-Origin': '*',
@@ -111,6 +112,17 @@ for a in champLinks.find_all('a', href=True):
                 
                 # print(f'{counterChamp} : {counterValue}')
     
-    pp = pprint.PrettyPrinter(depth=6)
+    pp = pprint.PrettyPrinter(depth=4)
     pp.pprint(counterData)
-    time.sleep(60) # Sleep for (X) seconds
+
+    # json_coutnerData = json.dumps(counterData, indent = 4)  
+    # print(json_coutnerData)
+
+    with open("data.json", "w") as outfile: 
+        json.dump(counterData, outfile)
+
+    randomTime = random.randint(3, 70)
+    print("next run", randomTime)
+    time.sleep(randomTime) # Sleep for (X) seconds
+    
+print("done")
