@@ -50,9 +50,9 @@ for a in champLinks.find_all('a', href=True):
     counterData[champName] = {}
     # print(f'{champName}')
 
-    for statBox in soupChamp.find_all("div", {"class":"champ-box__wrap new"}): #find lane box
+    for laneBox in soupChamp.find_all("div", {"class":"champ-box__wrap"}): #find lane box
 
-        laneData = statBox.find("h2") #find heading with lane
+        laneData = laneBox.find("h2") #find heading with lane
         laneData = laneData.text    #get lane text from div
         laneData = "".join([s for s in laneData.splitlines(True) if s.strip("\r\n")]).replace('\n','')[1:].split(')')[0]+")" #styling cleaning from text
         lane = laneData.split('(')[0][:-1] #clear lane data
@@ -73,9 +73,9 @@ for a in champLinks.find_all('a', href=True):
         # counterData[champName][lane + " : " + lanePersent] = {}
         # print(f'{lane}')
 
-        for champDiv in statBox.find_all("div", {"class" : "champ-box"}):
+        for pickTypeDiv in laneBox.find_all("div", {"class" : "champ-box"}):
 
-            pickType = champDiv.find("em").text
+            pickType = pickTypeDiv.find("em").text
             if (pickType == "Best Picks"):
                 pickType = "Best"
             elif (pickType == "Worst Picks"):
@@ -83,32 +83,32 @@ for a in champLinks.find_all('a', href=True):
             else:
                 pickType = "Popular"
 
-            pickTag = champDiv.find("em")['class'] #get class name green, red, blue for best, worst, popular
-            pickCategory = statBox.find("div", {"class":"champ-box"})['class']
+            pickCategory = pickTypeDiv['class']
             del pickCategory [0]
-            category = (str(pickCategory))[2:-2]
+            pickCategory = (str(pickCategory))[2:-2]
+            print(champName, lane, pickCategory)
 
-            counterData[champName][lane][category] = {}
-            counterData[champName][lane][category][pickType] = {}
+            counterData[champName][lane][pickCategory] = {}
+            counterData[champName][lane][pickCategory][pickType] = {}
             # print(f'{pickType} : {pickCategory}')
             # print(f'{counterData}')
-            # print(type(category))
+            
 
             #round stat box
-            for roundDiv in champDiv.find_all("a", {"class":"radial-progress"}): #find all graph div
+            for roundDiv in pickTypeDiv.find_all("a", {"class":"radial-progress"}): #find all graph div
                 counterChamp = roundDiv.find("img")['alt'][len("Counter Stats for "):].replace("-", " ").replace('\n','') #get counter champ name
                 counterValue = roundDiv.find("span").text.replace('\n','') #get counter champ value
                 counterValue = morphValues(counterValue)
-                counterData[champName][lane][category][pickType][counterChamp] = (counterValue)
+                counterData[champName][lane][pickCategory][pickType][counterChamp] = (counterValue)
 
                 # print(f'{counterChamp} : {counterValue}')
                 
             #quare stat box
-            for squareDiv in champDiv.find_all("div", {"class":"stats-bar"}): #find all graph div
+            for squareDiv in pickTypeDiv.find_all("div", {"class":"stats-bar"}): #find all graph div
                 counterChamp = squareDiv.find("img")['alt'][:-len(champName)-len(" countering ")].replace("-", " ").replace('\n','') #get counter champ name
                 counterValue = squareDiv.find("span").text.replace('\n','') #get counter champ value
                 counterValue = morphValues(counterValue)
-                counterData[champName][lane][category][pickType][counterChamp] = (counterValue)
+                counterData[champName][lane][pickCategory][pickType][counterChamp] = (counterValue)
                 
                 # print(f'{counterChamp} : {counterValue}')
     
