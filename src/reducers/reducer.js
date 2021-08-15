@@ -12,7 +12,10 @@ const filteredChampions = (state = champions, action, rootState) => {
         return champ.toLowerCase().includes(action.lookup.toLowerCase());
       });
     case DRAG_END:
-      if (action.destinationDroppable === "champSelect") {
+      if (
+        action.destinationDroppable === "champSelect" &&
+        action.sourceDroppable !== "champSelect"
+      ) {
         const filteredArray = [...state, action.sourceDraggable];
         return filteredArray.sort();
       } else {
@@ -25,8 +28,10 @@ const filteredChampions = (state = champions, action, rootState) => {
             getSelection(rootState, action.destinationDroppable),
           ];
           return newState.sort();
-        } else {
+        } else if (action.destinationDroppable !== "champSelect") {
           return state.filter((champ) => champ !== action.sourceDraggable);
+        } else {
+          return state;
         }
       }
     default:
