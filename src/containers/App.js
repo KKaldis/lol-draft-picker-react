@@ -4,6 +4,7 @@ import Search from "../scripts/search";
 import { DragDropContext } from "react-beautiful-dnd";
 import ChampSlot from "../components/ChampSlot";
 import { dragNdrop } from "../actions/actions";
+import data from "../app/data.json";
 
 const App = ({ onDragEnd }) => {
   return (
@@ -15,7 +16,6 @@ const App = ({ onDragEnd }) => {
             alt="Advertisment Leaderboard"
           />
         </div>
-
         <div className="main">
           <div className="addSky">
             <img
@@ -34,6 +34,8 @@ const App = ({ onDragEnd }) => {
               </div>
             </div>
             <div className="mid">
+              {console.log(data["Aatrox"]["Top"]["ALL"]["Rating"])}
+              {/* console log scraped counter data example with selectors */}
               <Search />
               <div className="banSpot">
                 <div className="bans">
