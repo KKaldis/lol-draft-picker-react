@@ -10,23 +10,31 @@ const Search = ({ filteredChampions, handleChange }) => {
   return (
     <div className="contentFix">
       <div class="filterBar">
-        <div class = "buttonWrap">
-          <button class= "button" onclick="activateLasers()">By Name</button>
-          <button class= "button" onclick="activateLasers()">By Score</button>
+        <div class="buttonWrap Filter">
+          <button class="button" onclick="activateLasers()">
+            By Name
+          </button>
+          <button class="button" onclick="activateLasers()">
+            By Score
+          </button>
         </div>
         <div>
-        <input
-          id="myInput"
-          placeholder="Search for champion..."
-          type="search"
-          onChange={handleChange}
-        />
+          <input
+            id="myInput"
+            placeholder="Search for champion..."
+            type="search"
+            onChange={handleChange}
+          />
         </div>
-        <div class = "buttonWrap">
-          <button class= "button" onclick="activateLasers()">ALL</button>
-          <button class= "button" onclick="activateLasers()">Master</button>
-          <button class= "button" onclick="activateLasers()">Diamond</button>
-          <button class= "button" onclick="activateLasers()">Platinum</button>
+        <div class="buttonWrap Tier">
+          {/* <button class= "button" onclick="activateLasers()">ALL</button>
+        <div class= "tierSelect" onclick="activateLasers()"><img src={"assets/platinum.png"}/></div>
+        <div class= "tierSelect" onclick="activateLasers()"><img src={"assets/diamond.png"}/></div>
+        <div class= "tierSelect" onclick="activateLasers()"><img src={"assets/master.png"}/></div> */}
+          <button class="button" onclick="activateLasers()">ALL</button>
+          <button class="button" onclick="activateLasers()">Master</button>
+          <button class="button" onclick="activateLasers()">Diamond</button>
+          <button class="button" onclick="activateLasers()">Platinum</button>
         </div>
       </div>
       <div className="champs">

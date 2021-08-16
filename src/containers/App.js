@@ -36,7 +36,7 @@ const App = ({ onDragEnd }) => {
             <div className="mid">
               {console.log(data["Aatrox"]["Top"]["ALL"]["Rating"]["Akali"])}
               {/* console log scraped counter data example with selectors 
-              [Champion][Lane][Tier][Data Type (counter rating or popularity][Counter Champ]*/}
+              [Champion][Lane][Tier][Data Type(counter rating or popularity][Counter Champ]*/}
               <Search />
               <div className="banSpot">
                 <div className="bans">
