@@ -1,5 +1,5 @@
 import { champions } from "../app/heroes";
-import { SEARCH_CHANGED, DRAG_END } from "../actions/actions";
+import { SEARCH_CHANGED, DRAG_END } from "./actions";
 
 export const getFilteredChampions = (state) => {
   return state.filteredChampions;

@@ -9,12 +9,6 @@ const jpgNameFix = (string) => {
   return string;
 };
 
-const nameFix = (string) => {
-  //remove from champion name special characters and spaces to make string with jpg file name
-  string = string.replace(/[^A-Z0-9]/gi, "");
-  return string;
-};
-
 const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
   filter: isDragging ? "drop-shadow(0 0 0.25rem #ae9c6c)" : "",

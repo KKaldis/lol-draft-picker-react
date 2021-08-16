@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getSelection, getSelectionIndex } from "../reducers/reducer";
+import { getSelection, getSelectionIndex } from "../redux/reducer";
 import { Droppable } from "react-beautiful-dnd";
 import Card from "./Card";
 

@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import Search from "../scripts/search";
+import Search from "../components/Search";
 import { DragDropContext } from "react-beautiful-dnd";
 import ChampSlot from "../components/ChampSlot";
-import { dragNdrop } from "../actions/actions";
+import { dragNdrop } from "../redux/actions";
 import data from "../app/data.json";
 
 const App = ({ onDragEnd }) => {
@@ -34,8 +34,9 @@ const App = ({ onDragEnd }) => {
               </div>
             </div>
             <div className="mid">
-              {console.log(data["Aatrox"]["Top"]["ALL"]["Rating"])}
-              {/* console log scraped counter data example with selectors */}
+              {console.log(data["Aatrox"]["Top"]["ALL"]["Rating"]["Akali"])}
+              {/* console log scraped counter data example with selectors 
+              [Champion][Lane][Tier][Data Type (counter rating or popularity][Counter Champ]*/}
               <Search />
               <div className="banSpot">
                 <div className="bans">
