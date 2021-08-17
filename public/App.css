@@ -115,15 +115,19 @@
 }
 
 .score {
-  font-family:monospace;
-  font-weight: bold;
+  font-family: monospace;
   background-color: #010508;
-  font-size: 16px !important;
+  font-size: 14px;
   box-shadow: 5px 5px 10px black;
-  padding: 12px 20px 12px 20px;
+  padding: 0px 10px 0px 10px;
   border: 1px solid #ae9c6c;
   color: #ae9c6c;
   margin: 12px;
+  height: 50px;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 
 .app {
