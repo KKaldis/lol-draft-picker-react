@@ -18,10 +18,19 @@ const Search = ({ filteredChampions, handleChange }) => {
             </div>{" "}
           </a>
           <ReactTooltip id="sorting" className="tooltip" effect="solid" />
-
-          <button class="button" onclick="activateLasers()">
-            By Score
-          </button>
+          <a data-tip="Counter Rating Ordering" data-for="sorting">
+            <div class="tierSelect" onclick="activateLasers()">
+              <img src={"assets/counter.png"} alt="counter" />
+            </div>{" "}
+          </a>
+          <ReactTooltip id="sorting" className="tooltip" effect="solid" />
+          <a data-tip="Sort By Popular Selections" data-for="sorting">
+            <div class="tierSelect" onclick="activateLasers()">
+              <img src={"assets/popular.png"} alt="counter" />
+            </div>{" "}
+          </a>
+          <ReactTooltip id="sorting" className="tooltip" effect="solid" />
+          
         </div>
         <div>
           <input
