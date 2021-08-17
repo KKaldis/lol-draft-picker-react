@@ -4,16 +4,21 @@ import { Droppable } from "react-beautiful-dnd";
 import Card from "./Card";
 import { getFilteredChampions } from "../redux/reducer";
 import { searchChanged } from "../redux/actions";
+import ReactTooltip from "react-tooltip";
 // string set up for image url
 
 const Search = ({ filteredChampions, handleChange }) => {
   return (
     <div className="contentFix">
       <div class="filterBar">
-        <div class="buttonWrap Filter">
-          <button class="button" onclick="activateLasers()">
-            By Name
-          </button>
+        <div class="buttonWrap">
+          <a data-tip="Alphabetical Ordering" data-for="sorting">
+            <div class="tierSelect" onclick="activateLasers()">
+              <img src={"assets/alphab.png"} alt="alphabetical" />
+            </div>{" "}
+          </a>
+          <ReactTooltip id="sorting" className="tooltip" effect="solid" />
+
           <button class="button" onclick="activateLasers()">
             By Score
           </button>
@@ -26,15 +31,34 @@ const Search = ({ filteredChampions, handleChange }) => {
             onChange={handleChange}
           />
         </div>
-        <div class="buttonWrap Tier">
-          {/* <button class= "button" onclick="activateLasers()">ALL</button>
-        <div class= "tierSelect" onclick="activateLasers()"><img src={"assets/platinum.png"}/></div>
-        <div class= "tierSelect" onclick="activateLasers()"><img src={"assets/diamond.png"}/></div>
-        <div class= "tierSelect" onclick="activateLasers()"><img src={"assets/master.png"}/></div> */}
-          <button class="button" onclick="activateLasers()">ALL</button>
-          <button class="button" onclick="activateLasers()">Master</button>
-          <button class="button" onclick="activateLasers()">Diamond</button>
-          <button class="button" onclick="activateLasers()">Platinum</button>
+        <div class="buttonWrap">
+          <a data-tip="All" data-for="tier">
+            <div class="tierSelect" onclick="activateLasers()">
+              <img src={"assets/all.png"} alt="all" />
+            </div>{" "}
+          </a>
+          <ReactTooltip id="tier" className="tooltip" effect="solid" />
+
+          <a data-tip="Platinum" data-for="tier">
+            <div class="tierSelect" onclick="activateLasers()">
+              <img src={"assets/platinum.png"} alt="platinum" />
+            </div>{" "}
+          </a>
+          <ReactTooltip id="tier" className="tooltip" effect="solid" />
+
+          <a data-tip="Diamond" data-for="tier">
+            <div class="tierSelect" onclick="activateLasers()">
+              <img src={"assets/diamond.png"} alt="diamond" />
+            </div>{" "}
+          </a>
+          <ReactTooltip id="tier" className="tooltip" effect="solid" />
+
+          <a data-tip="Master" data-for="tier">
+            <div class="tierSelect" onclick="activateLasers()">
+              <img src={"assets/master.png"} alt="master" />
+            </div>{" "}
+          </a>
+          <ReactTooltip id="tier" className="tooltip" effect="solid" />
         </div>
       </div>
       <div className="champs">
