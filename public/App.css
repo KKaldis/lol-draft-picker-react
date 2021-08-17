@@ -63,10 +63,6 @@
   flex-direction: row;
 }
 
-#buttonWrap Tier {
-  flex: auto;
-}
-
 .main {
   height: 100%;
   width: 100%;
@@ -118,33 +114,16 @@
   pointer-events: auto !important;
 }
 
-.button {
-  background-color: #010508 !important;
-  font-size: 12px !important;
-  box-shadow: 5px 5px 10px black !important;
-  padding: 12px 20px 12px 20px !important;
-  border: 1px solid #ae9c6c !important;
-  color: #ae9c6c !important;
-  margin: 12px !important;
-  transition: 0.25s !important;
-  font-size: 20px !important;
-  pointer-events: auto !important;
-}
-
-.button img {
-  height: 50px;
-}
-
-.button:hover {
-  box-shadow: inset 0px 0px 10px 5px rgba(172, 147, 80, 0.5) !important;
-  outline: none !important;
-  text-shadow: 0px 0px 6px #ae9c6c !important;
-  filter: drop-shadow(0 0 0.5rem #ae9c6c);
-}
-
-.button:active {
-  color: #010508;
-  background-color: #ae9c6c;
+.score {
+  font-family:monospace;
+  font-weight: bold;
+  background-color: #010508;
+  font-size: 16px !important;
+  box-shadow: 5px 5px 10px black;
+  padding: 12px 20px 12px 20px;
+  border: 1px solid #ae9c6c;
+  color: #ae9c6c;
+  margin: 12px;
 }
 
 .app {

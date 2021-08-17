@@ -5,7 +5,7 @@ const HoverThing = ({ dataTip, imgFile, hoverFamily, altText }) => {
   return (
     <div>
       <a data-tip={dataTip} data-for={hoverFamily}>
-        <div class="tierSelect" onclick="activateLasers()">
+        <div className="tierSelect" onClick="activateLasers()">
           <img src={"assets/" + imgFile + ".png"} alt={altText} />
         </div>{" "}
       </a>

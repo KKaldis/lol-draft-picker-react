@@ -9,8 +9,10 @@ import HoverThing from "./HoverTooltip";
 const Search = ({ filteredChampions, handleChange, dataTip }) => {
   return (
     <div className="contentFix">
-      <div class="filterBar">
-        <div class="buttonWrap">
+      <div className="filterBar">
+        
+        <div className="buttonWrap">
+        <div className="score">10000</div>
           <HoverThing dataTip={"Sort Alphabetical"} imgFile={"alphab"}
             hoverFamily={"sorting"} altText={"alphabetical"}/>
 
@@ -28,7 +30,7 @@ const Search = ({ filteredChampions, handleChange, dataTip }) => {
             onChange={handleChange}
           />
         </div>
-        <div class="buttonWrap">
+        <div className="buttonWrap">
           <HoverThing dataTip={"All"} imgFile={"all"}
             hoverFamily={"tier"} altText={"all"}/>
 
@@ -40,7 +42,9 @@ const Search = ({ filteredChampions, handleChange, dataTip }) => {
 
           <HoverThing dataTip={"Master"} imgFile={"master"}
             hoverFamily={"tier"} altText={"master"}/>
+            <div className="score">10000</div>
         </div>
+        
       </div>
       <div className="champs">
         <Droppable droppableId="champSelect" key={"champSelect"}>
