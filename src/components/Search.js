@@ -4,48 +4,21 @@ import { Droppable } from "react-beautiful-dnd";
 import Card from "./Card";
 import { getFilteredChampions } from "../redux/reducer";
 import { searchChanged } from "../redux/actions";
-import ReactTooltip from "react-tooltip";
+import HoverThing from "./HoverTooltip";
 
-const hoverThing = ({ dataTip, imgFile, hoverFamily, altText }) => {
-  return (
-    <div>
-      <a data-tip={dataTip} data-for={hoverFamily}>
-        <div class="tierSelect" onclick="activateLasers()">
-          <img src={"assets/" + imgFile + ".png"} alt={altText} />
-        </div>{" "}
-      </a>
-      <ReactTooltip id={hoverFamily} className="tooltip" effect="solid" />
-    </div>
-  );
-};
-
-const Search = ({ filteredChampions, handleChange }) => {
+const Search = ({ filteredChampions, handleChange, dataTip }) => {
   return (
     <div className="contentFix">
       <div class="filterBar">
         <div class="buttonWrap">
-          <hoverThing dataTip={"Alphabetical Ordering"} imgFile={"alphab"}
+          <HoverThing dataTip={"Sort Alphabetical"} imgFile={"alphab"}
             hoverFamily={"sorting"} altText={"alphabetical"}/>
 
-          <a data-tip="Sort Alphabetical" data-for="sorting">
-            <div class="tierSelect" onclick="activateLasers()">
-              <img src={"assets/alphab.png"} alt="alphabetical" />
-            </div>
-          </a>
-          <ReactTooltip id="sorting" className="tooltip" effect="solid" />
+          <HoverThing dataTip={"Sort by Rating"} imgFile={"counter"}
+            hoverFamily={"sorting"} altText={"counter"}/>
 
-          <a data-tip="Sort by Counter Rating" data-for="sorting">
-            <div class="tierSelect" onclick="activateLasers()">
-              <img src={"assets/counter.png"} alt="counter" />
-            </div>
-          </a>
-          <ReactTooltip id="sorting" className="tooltip" effect="solid" />
-          <a data-tip="Sort By Popularity" data-for="sorting">
-            <div class="tierSelect" onclick="activateLasers()">
-              <img src={"assets/popular.png"} alt="counter" />
-            </div>
-          </a>
-          <ReactTooltip id="sorting" className="tooltip" effect="solid" />
+          <HoverThing dataTip={"Sort By Popularity"} imgFile={"popular"}
+            hoverFamily={"sorting"} altText={"popular"} />
         </div>
         <div>
           <input
@@ -56,33 +29,17 @@ const Search = ({ filteredChampions, handleChange }) => {
           />
         </div>
         <div class="buttonWrap">
-          <a data-tip="All" data-for="tier">
-            <div class="tierSelect" onclick="activateLasers()">
-              <img src={"assets/all.png"} alt="all" />
-            </div>
-          </a>
-          <ReactTooltip id="tier" className="tooltip" effect="solid" />
+          <HoverThing dataTip={"All"} imgFile={"all"}
+            hoverFamily={"tier"} altText={"all"}/>
 
-          <a data-tip="Platinum" data-for="tier">
-            <div class="tierSelect" onclick="activateLasers()">
-              <img src={"assets/platinum.png"} alt="platinum" />
-            </div>
-          </a>
-          <ReactTooltip id="tier" className="tooltip" effect="solid" />
+          <HoverThing dataTip={"Platinum"} imgFile={"platinum"}
+            hoverFamily={"tier"} altText={"platinum"}/>
 
-          <a data-tip="Diamond" data-for="tier">
-            <div class="tierSelect" onclick="activateLasers()">
-              <img src={"assets/diamond.png"} alt="diamond" />
-            </div>
-          </a>
-          <ReactTooltip id="tier" className="tooltip" effect="solid" />
+          <HoverThing dataTip={"Diamond"} imgFile={"diamond"}
+            hoverFamily={"tier"} altText={"diamond"}/>
 
-          <a data-tip="Master" data-for="tier">
-            <div class="tierSelect" onclick="activateLasers()">
-              <img src={"assets/master.png"} alt="master" />
-            </div>
-          </a>
-          <ReactTooltip id="tier" className="tooltip" effect="solid" />
+          <HoverThing dataTip={"Master"} imgFile={"master"}
+            hoverFamily={"tier"} altText={"master"}/>
         </div>
       </div>
       <div className="champs">

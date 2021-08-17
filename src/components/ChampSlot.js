@@ -23,7 +23,7 @@ const ChampSlot = ({ playerId, selection, selectionIndex }) => {
       </Droppable>
     </div>
   );
-}
+};
 
 const mapStateToProps = (state, ownProps) => ({
   selection: getSelection(state, ownProps.playerId),
