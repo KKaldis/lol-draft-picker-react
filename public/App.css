@@ -33,6 +33,11 @@
   height: 50px;
 }
 .tierSelect img {
+  cursor: pointer;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
   padding: 12px;
   height: -webkit-fill-available;
   background-color: #000000;

@@ -4,7 +4,7 @@ import { getSelection, getSelectionIndex } from "../redux/reducer";
 import { Droppable } from "react-beautiful-dnd";
 import Card from "./Card";
 
-function ChampSlot({ playerId, selection, selectionIndex }) {
+const ChampSlot = ({ playerId, selection, selectionIndex }) => {
   return (
     <div className="champDiv">
       <Droppable droppableId={playerId} key={playerId}>
