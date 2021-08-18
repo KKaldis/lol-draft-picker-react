@@ -21,6 +21,9 @@ const Search = ({ filteredChampions, handleChange, dataTip }) => {
 
           <HoverThing dataTip={"Sort By Popularity"} imgFile={"popular"}
             hoverFamily={"sorting"} altText={"popular"} />
+
+<HoverThing dataTip={"Reset Selections"} imgFile={"reset"}
+            hoverFamily={"sorting"} altText={"reset"} />
         </div>
         <div>
           <input
