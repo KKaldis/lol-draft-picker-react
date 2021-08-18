@@ -96,12 +96,42 @@ export const getButtonType = (state = {}, action) => {
       if (action.sortingType === "all") {
         return {
           ...state,
-          [action.previewFiltering]: action.sortingType,
+          Tier: action.sortingType,
         };
-      } else if (action.sortingType === "popular") {
+      } else if (action.sortingType === "diamond") {
         return {
           ...state,
-          [action.previewFiltering]: action.sortingType,
+          Tier: action.sortingType,
+        };
+      }
+      else if (action.sortingType === "master") {
+        return {
+          ...state,
+          Tier: action.sortingType,
+        };
+      }
+      else if (action.sortingType === "platinum") {
+        return {
+          ...state,
+          Tier: action.sortingType,
+        };
+      }
+      else if (action.sortingType === "alphabetical") {
+        return {
+          ...state,
+          Sorting: action.sortingType,
+        };
+      }
+      else if (action.sortingType === "popular") {
+        return {
+          ...state,
+          Sorting: action.sortingType,
+        };
+      }
+      else if (action.sortingType === "rating") {
+        return {
+          ...state,
+          Sorting: action.sortingType,
         };
       }
       break;
@@ -110,15 +140,12 @@ export const getButtonType = (state = {}, action) => {
   }
 };
 
-
-
 const reducer = (state = {}, action) => ({
   champions: champions,
   selections: selections(state.selections, action),
   filteredChampions: filteredChampions(state.filteredChampions, action, state),
-  // previewSelections: (state.previewSelections, action)
-
-  previewFiltering: getButtonType(state.previewFiltering, action, state),
+  previewSorting: getButtonType(state.previewSorting, action),
+  // previewTier: getButtonType([state.previewTier], action),
 });
 
 export default reducer;
