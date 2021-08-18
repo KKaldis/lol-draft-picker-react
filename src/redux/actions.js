@@ -8,9 +8,9 @@ export const searchChanged = (lookup) => ({
   lookup, // lookup: lookup / eqivalent code
 });
 
-export const previewStyle = (sortingType) =>({
+export const previewStyle = (viewSelection) =>({
   type: CHANGE_PREVIEW,
-  sortingType,
+  viewSelection,
 });
 
 export const dragNdrop = (

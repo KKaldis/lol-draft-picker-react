@@ -93,48 +93,29 @@ export const getAvailableChampions = (state) => {
 export const getButtonType = (state = {}, action) => {
   switch (action.type) {
     case CHANGE_PREVIEW:
-      if (action.sortingType === "all") {
+      if (
+        action.viewSelection === "all" ||
+        action.viewSelection === "diamond" ||
+        action.viewSelection === "master" ||
+        action.viewSelection === "platinum"
+      ) {
         return {
           ...state,
-          Tier: action.sortingType,
+          Tier: action.viewSelection,
         };
-      } else if (action.sortingType === "diamond") {
+      } else if (
+        action.viewSelection === "alphabetical" ||
+        action.viewSelection === "popular" ||
+        action.viewSelection === "rating"
+      ) {
         return {
           ...state,
-          Tier: action.sortingType,
+          Sorting: action.viewSelection,
         };
+      } else {
+        return {...state};
       }
-      else if (action.sortingType === "master") {
-        return {
-          ...state,
-          Tier: action.sortingType,
-        };
-      }
-      else if (action.sortingType === "platinum") {
-        return {
-          ...state,
-          Tier: action.sortingType,
-        };
-      }
-      else if (action.sortingType === "alphabetical") {
-        return {
-          ...state,
-          Sorting: action.sortingType,
-        };
-      }
-      else if (action.sortingType === "popular") {
-        return {
-          ...state,
-          Sorting: action.sortingType,
-        };
-      }
-      else if (action.sortingType === "rating") {
-        return {
-          ...state,
-          Sorting: action.sortingType,
-        };
-      }
-      break;
+
     default:
       return state;
   }
