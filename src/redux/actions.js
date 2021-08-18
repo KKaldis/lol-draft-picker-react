@@ -1,9 +1,16 @@
 export const SEARCH_CHANGED = "SEARCH_CHANGED";
 export const DRAG_END = "DRAG_END";
+export const CHANGE_PREVIEW = "CHANGE_PREVIEW"
+
 
 export const searchChanged = (lookup) => ({
   type: SEARCH_CHANGED,
   lookup, // lookup: lookup / eqivalent code
+});
+
+export const previewStyle = (sortingType) =>({
+  type: CHANGE_PREVIEW,
+  sortingType,
 });
 
 export const dragNdrop = (

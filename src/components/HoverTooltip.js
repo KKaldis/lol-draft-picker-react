@@ -1,11 +1,14 @@
 import React from "react";
 import ReactTooltip from "react-tooltip";
+import { previewStyle } from "../redux/actions";
+import { connect } from "react-redux";
 
-const HoverThing = ({ dataTip, imgFile, hoverFamily, altText }) => {
+const HoverThing = ({ dataTip, imgFile, hoverFamily, altText, handleChange }) => {
+
   return (
-    <div>
+    <div >
       <a data-tip={dataTip} data-for={hoverFamily}>
-        <div className="tierSelect" onClick="activateLasers()">
+        <div className="tierSelect" onClick={handleChange} id={altText}>
           <img src={"assets/" + imgFile + ".png"} alt={altText} />
         </div>{" "}
       </a>
@@ -14,4 +17,12 @@ const HoverThing = ({ dataTip, imgFile, hoverFamily, altText }) => {
   );
 };
 
-export default HoverThing;
+
+const mapStateToProps = (state) => ({
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  handleChange: (e) => dispatch(previewStyle(e.target.alt)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HoverThing);

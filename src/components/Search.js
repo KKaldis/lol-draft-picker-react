@@ -17,7 +17,7 @@ const Search = ({ filteredChampions, handleChange, dataTip }) => {
             hoverFamily={"sorting"} altText={"alphabetical"}/>
 
           <HoverThing dataTip={"Sort by Rating"} imgFile={"counter"}
-            hoverFamily={"sorting"} altText={"counter"}/>
+            hoverFamily={"sorting"} altText={"rating"}/>
 
           <HoverThing dataTip={"Sort By Popularity"} imgFile={"popular"}
             hoverFamily={"sorting"} altText={"popular"} />

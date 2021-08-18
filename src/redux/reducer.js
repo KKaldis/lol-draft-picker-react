@@ -1,5 +1,5 @@
 import { champions } from "../app/heroes";
-import { SEARCH_CHANGED, DRAG_END } from "./actions";
+import { SEARCH_CHANGED, DRAG_END, CHANGE_PREVIEW } from "./actions";
 
 export const getFilteredChampions = (state) => {
   return state.filteredChampions;
@@ -90,10 +90,35 @@ export const getAvailableChampions = (state) => {
   });
 };
 
+export const getButtonType = (state = {}, action) => {
+  switch (action.type) {
+    case CHANGE_PREVIEW:
+      if (action.sortingType === "all") {
+        return {
+          ...state,
+          [action.previewFiltering]: action.sortingType,
+        };
+      } else if (action.sortingType === "popular") {
+        return {
+          ...state,
+          [action.previewFiltering]: action.sortingType,
+        };
+      }
+      break;
+    default:
+      return state;
+  }
+};
+
+
+
 const reducer = (state = {}, action) => ({
   champions: champions,
   selections: selections(state.selections, action),
   filteredChampions: filteredChampions(state.filteredChampions, action, state),
+  // previewSelections: (state.previewSelections, action)
+
+  previewFiltering: getButtonType(state.previewFiltering, action, state),
 });
 
 export default reducer;
