@@ -8,6 +8,7 @@ export const getFilteredChampions = (state) => {
 const filteredChampions = (state = champions, action, rootState) => {
   switch (action.type) {
     case CHANGE_PREVIEW: {
+      action.lookup =''
       return champions;
     }
 
