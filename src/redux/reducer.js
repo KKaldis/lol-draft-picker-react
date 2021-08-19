@@ -5,6 +5,7 @@ export const getFilteredChampions = (state) => {
   return state.filteredChampions;
 };
 
+
 const filteredChampions = (state = champions, action, rootState) => {
   switch (action.type) {
     case CHANGE_PREVIEW:
