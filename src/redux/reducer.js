@@ -107,7 +107,10 @@ export const getAvailableChampions = (state) => {
   });
 };
 
-export const getButtonType = (state = {}, action) => {
+export const getButtonType = (
+  state = { Sorting: "rating", Tier: "all" },
+  action
+) => {
   switch (action.type) {
     case CHANGE_PREVIEW:
       if (
@@ -134,7 +137,7 @@ export const getButtonType = (state = {}, action) => {
       }
 
     default:
-      return { Sorting: "rating", Tier: "all" };
+      return state;
   }
 };
 
