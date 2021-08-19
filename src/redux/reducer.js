@@ -7,6 +7,12 @@ export const getFilteredChampions = (state) => {
 
 const filteredChampions = (state = champions, action, rootState) => {
   switch (action.type) {
+    case CHANGE_PREVIEW: {
+      return {
+        ...state = champions,
+      };
+    }
+
     case SEARCH_CHANGED:
       return getAvailableChampions(rootState).filter((champ) => {
         return champ.toLowerCase().includes(action.lookup.toLowerCase());
@@ -77,20 +83,20 @@ const selections = (state = {}, action) => {
             };
           }
         }
-         
       }
-      case CHANGE_PREVIEW:
-        if (action.viewSelection === "reset")
+    case CHANGE_PREVIEW:
+      if (action.viewSelection === "reset")
         return {
-          ...state,
-          selections : {}
+          ...(state = {}),
+
           // ...state.selections = {},
           // ...state.filteredChampions = state.champpions,
         };
-        else{
-          return{
-          ...state
-        }}
+      else {
+        return {
+          ...state,
+        };
+      }
 
     default:
       return state;
@@ -126,8 +132,7 @@ export const getButtonType = (state = {}, action, selections) => {
           ...state,
           Sorting: action.viewSelection,
         };
-      } 
-      else {
+      } else {
         return { ...state };
       }
 
