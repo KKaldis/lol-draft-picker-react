@@ -7,10 +7,13 @@ export const getFilteredChampions = (state) => {
 
 const filteredChampions = (state = champions, action, rootState) => {
   switch (action.type) {
-    case CHANGE_PREVIEW: {
-      action.lookup = "";
-      return champions;
-    }
+    case CHANGE_PREVIEW:
+      if (action.viewSelection === "reset") {
+        action.lookup = "";
+        return champions;
+      } else {
+        return [...state];
+      }
 
     case SEARCH_CHANGED:
       return getAvailableChampions(rootState).filter((champ) => {
@@ -83,6 +86,7 @@ const selections = (state = {}, action) => {
           }
         }
       }
+
     case CHANGE_PREVIEW:
       if (action.viewSelection === "reset") return {};
       else {
@@ -102,6 +106,15 @@ export const getAvailableChampions = (state) => {
     return Object.values(getSelections(state)).indexOf(champ) === -1;
   });
 };
+
+// INITILIAZATION FOR SORTING //
+// if (state.previewSorting === undefined) {
+//   return {
+
+//     Sorting: "rating",
+//     Tier: "all",
+//   };
+// }
 
 export const getButtonType = (state = {}, action) => {
   switch (action.type) {
