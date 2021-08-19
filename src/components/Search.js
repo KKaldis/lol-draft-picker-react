@@ -2,12 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import { Droppable } from "react-beautiful-dnd";
 import Card from "./Card";
-import { getFilteredChampions } from "../redux/reducer";
+import { getFilteredChampions, lookup } from "../redux/reducer";
 import { searchChanged } from "../redux/actions";
 import HoverThing from "./HoverTooltip";
 
 
-const Search = ({ filteredChampions, handleChange, lookupValue}) => {
+const Search = ({ filteredChampions, handleChange, lookup}) => {
   return (
     <div className="contentFix">
       <div className="filterBar">
@@ -46,7 +46,7 @@ const Search = ({ filteredChampions, handleChange, lookupValue}) => {
             id="myInput"
             placeholder="Search for champion..."
             type="search"
-            value={lookupValue}
+            value={lookup}
             onChange={handleChange}
           />
         </div>
@@ -98,9 +98,10 @@ const Search = ({ filteredChampions, handleChange, lookupValue}) => {
 };
 
 
-const mapStateToProps = (state, action) => ({
+
+const mapStateToProps = (state) => ({
   filteredChampions: getFilteredChampions(state),
-  lookupValue: "skordat"
+  lookup: state.lookup
 });
 
 const mapDispatchToProps = (dispatch) => ({

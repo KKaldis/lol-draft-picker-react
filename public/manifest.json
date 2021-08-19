@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "LOL Draft Picker",
+  "name": "Leage of Legends Draft Selection Tool",
   "icons": [
     {
       "src": "favicon.ico",
