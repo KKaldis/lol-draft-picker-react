@@ -3,7 +3,7 @@ import ReactTooltip from "react-tooltip";
 import { previewStyle } from "../redux/actions";
 import { connect } from "react-redux";
 
-const HoverThing = ({
+const HoverButton = ({
   dataTip,
   imgFile,
   hoverFamily,
@@ -28,4 +28,4 @@ const mapDispatchToProps = (dispatch) => ({
   handleChange: (e) => dispatch(previewStyle(e.target.alt)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(HoverThing);
+export default connect(mapStateToProps, mapDispatchToProps)(HoverButton);

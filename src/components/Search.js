@@ -4,7 +4,7 @@ import { Droppable } from "react-beautiful-dnd";
 import Card from "./Card";
 import { getFilteredChampions } from "../redux/reducer";
 import { searchChanged } from "../redux/actions";
-import HoverThing from "./HoverTooltip";
+import HoverButton from "./HoverButton";
 
 const Search = ({ filteredChampions, handleChange, lookup }) => {
   return (
@@ -12,28 +12,28 @@ const Search = ({ filteredChampions, handleChange, lookup }) => {
       <div className="filterBar">
         <div className="buttonWrap">
           <div className="score">10000</div>
-          <HoverThing
+          <HoverButton
             dataTip={"Sort Alphabetical"}
             imgFile={"alphab"}
             hoverFamily={"sorting"}
             altText={"alphabetical"}
           />
 
-          <HoverThing
+          <HoverButton
             dataTip={"Sort by Rating"}
             imgFile={"counter"}
             hoverFamily={"sorting"}
             altText={"rating"}
           />
 
-          <HoverThing
+          <HoverButton
             dataTip={"Sort By Popularity"}
             imgFile={"popular"}
             hoverFamily={"sorting"}
             altText={"popular"}
           />
 
-          <HoverThing
+          <HoverButton
             dataTip={"Reset Selections"}
             imgFile={"reset"}
             hoverFamily={"sorting"}
@@ -50,28 +50,28 @@ const Search = ({ filteredChampions, handleChange, lookup }) => {
           />
         </div>
         <div className="buttonWrap">
-          <HoverThing
+          <HoverButton
             dataTip={"All"}
             imgFile={"all"}
             hoverFamily={"tier"}
             altText={"all"}
           />
 
-          <HoverThing
+          <HoverButton
             dataTip={"Platinum"}
             imgFile={"platinum"}
             hoverFamily={"tier"}
             altText={"platinum"}
           />
 
-          <HoverThing
+          <HoverButton
             dataTip={"Diamond"}
             imgFile={"diamond"}
             hoverFamily={"tier"}
             altText={"diamond"}
           />
 
-          <HoverThing
+          <HoverButton
             dataTip={"Master"}
             imgFile={"master"}
             hoverFamily={"tier"}
