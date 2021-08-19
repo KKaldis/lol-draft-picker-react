@@ -77,7 +77,21 @@ const selections = (state = {}, action) => {
             };
           }
         }
+         
       }
+      case CHANGE_PREVIEW:
+        if (action.viewSelection === "reset")
+        return {
+          ...state,
+          selections : {}
+          // ...state.selections = {},
+          // ...state.filteredChampions = state.champpions,
+        };
+        else{
+          return{
+          ...state
+        }}
+
     default:
       return state;
   }
@@ -90,7 +104,7 @@ export const getAvailableChampions = (state) => {
   });
 };
 
-export const getButtonType = (state = {}, action) => {
+export const getButtonType = (state = {}, action, selections) => {
   switch (action.type) {
     case CHANGE_PREVIEW:
       if (
@@ -112,8 +126,9 @@ export const getButtonType = (state = {}, action) => {
           ...state,
           Sorting: action.viewSelection,
         };
-      } else {
-        return {...state};
+      } 
+      else {
+        return { ...state };
       }
 
     default:

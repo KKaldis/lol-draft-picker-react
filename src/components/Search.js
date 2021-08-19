@@ -10,20 +10,35 @@ const Search = ({ filteredChampions, handleChange, dataTip }) => {
   return (
     <div className="contentFix">
       <div className="filterBar">
-        
         <div className="buttonWrap">
-        <div className="score">10000</div>
-          <HoverThing dataTip={"Sort Alphabetical"} imgFile={"alphab"}
-            hoverFamily={"sorting"} altText={"alphabetical"}/>
+          <div className="score">10000</div>
+          <HoverThing
+            dataTip={"Sort Alphabetical"}
+            imgFile={"alphab"}
+            hoverFamily={"sorting"}
+            altText={"alphabetical"}
+          />
 
-          <HoverThing dataTip={"Sort by Rating"} imgFile={"counter"}
-            hoverFamily={"sorting"} altText={"rating"}/>
+          <HoverThing
+            dataTip={"Sort by Rating"}
+            imgFile={"counter"}
+            hoverFamily={"sorting"}
+            altText={"rating"}
+          />
 
-          <HoverThing dataTip={"Sort By Popularity"} imgFile={"popular"}
-            hoverFamily={"sorting"} altText={"popular"} />
+          <HoverThing
+            dataTip={"Sort By Popularity"}
+            imgFile={"popular"}
+            hoverFamily={"sorting"}
+            altText={"popular"}
+          />
 
-<HoverThing dataTip={"Reset Selections"} imgFile={"reset"}
-            hoverFamily={"sorting"} altText={"reset"} />
+          <HoverThing
+            dataTip={"Reset Selections"}
+            imgFile={"reset"}
+            hoverFamily={"sorting"}
+            altText={"reset"}
+          />
         </div>
         <div>
           <input
@@ -34,20 +49,35 @@ const Search = ({ filteredChampions, handleChange, dataTip }) => {
           />
         </div>
         <div className="buttonWrap">
-          <HoverThing dataTip={"All"} imgFile={"all"}
-            hoverFamily={"tier"} altText={"all"}/>
+          <HoverThing
+            dataTip={"All"}
+            imgFile={"all"}
+            hoverFamily={"tier"}
+            altText={"all"}
+          />
 
-          <HoverThing dataTip={"Platinum"} imgFile={"platinum"}
-            hoverFamily={"tier"} altText={"platinum"}/>
+          <HoverThing
+            dataTip={"Platinum"}
+            imgFile={"platinum"}
+            hoverFamily={"tier"}
+            altText={"platinum"}
+          />
 
-          <HoverThing dataTip={"Diamond"} imgFile={"diamond"}
-            hoverFamily={"tier"} altText={"diamond"}/>
+          <HoverThing
+            dataTip={"Diamond"}
+            imgFile={"diamond"}
+            hoverFamily={"tier"}
+            altText={"diamond"}
+          />
 
-          <HoverThing dataTip={"Master"} imgFile={"master"}
-            hoverFamily={"tier"} altText={"master"}/>
-            <div className="score">10000</div>
+          <HoverThing
+            dataTip={"Master"}
+            imgFile={"master"}
+            hoverFamily={"tier"}
+            altText={"master"}
+          />
+          <div className="score">10000</div>
         </div>
-        
       </div>
       <div className="champs">
         <Droppable droppableId="champSelect" key={"champSelect"}>
