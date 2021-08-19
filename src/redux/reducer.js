@@ -105,7 +105,7 @@ export const getAvailableChampions = (state) => {
   });
 };
 
-export const getButtonType = (state = {}, action, selections) => {
+export const getButtonType = (state = {}, action) => {
   switch (action.type) {
     case CHANGE_PREVIEW:
       if (
@@ -141,7 +141,6 @@ const reducer = (state = {}, action) => ({
   selections: selections(state.selections, action),
   filteredChampions: filteredChampions(state.filteredChampions, action, state),
   previewSorting: getButtonType(state.previewSorting, action),
-  // previewTier: getButtonType([state.previewTier], action),
 });
 
 export default reducer;

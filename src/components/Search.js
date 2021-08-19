@@ -6,7 +6,8 @@ import { getFilteredChampions } from "../redux/reducer";
 import { searchChanged } from "../redux/actions";
 import HoverThing from "./HoverTooltip";
 
-const Search = ({ filteredChampions, handleChange, dataTip }) => {
+
+const Search = ({ filteredChampions, handleChange, lookupValue}) => {
   return (
     <div className="contentFix">
       <div className="filterBar">
@@ -45,6 +46,7 @@ const Search = ({ filteredChampions, handleChange, dataTip }) => {
             id="myInput"
             placeholder="Search for champion..."
             type="search"
+            value={lookupValue}
             onChange={handleChange}
           />
         </div>
@@ -95,10 +97,10 @@ const Search = ({ filteredChampions, handleChange, dataTip }) => {
   );
 };
 
-// export { Search };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, action) => ({
   filteredChampions: getFilteredChampions(state),
+  lookupValue: "skordat"
 });
 
 const mapDispatchToProps = (dispatch) => ({
