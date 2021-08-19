@@ -4,14 +4,11 @@ import { SEARCH_CHANGED, DRAG_END, CHANGE_PREVIEW } from "./actions";
 export const getFilteredChampions = (state) => {
   return state.filteredChampions;
 };
-// export const getLookup = (state) =>{
-//   return state.lookupState;
-// };
 
 const filteredChampions = (state = champions, action, rootState) => {
   switch (action.type) {
     case CHANGE_PREVIEW: {
-      action.lookup =''
+      action.lookup = "";
       return champions;
     }
 
@@ -87,9 +84,7 @@ const selections = (state = {}, action) => {
         }
       }
     case CHANGE_PREVIEW:
-      if (action.viewSelection === "reset")
-        return {
-        };
+      if (action.viewSelection === "reset") return {};
       else {
         return {
           ...state,
@@ -144,7 +139,7 @@ const reducer = (state = {}, action) => ({
   selections: selections(state.selections, action),
   filteredChampions: filteredChampions(state.filteredChampions, action, state),
   previewSorting: getButtonType(state.previewSorting, action),
-  lookup: action.lookup
+  lookup: action.lookup,
 });
 
 export default reducer;

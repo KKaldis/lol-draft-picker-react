@@ -2,12 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { Droppable } from "react-beautiful-dnd";
 import Card from "./Card";
-import { getFilteredChampions, lookup } from "../redux/reducer";
+import { getFilteredChampions } from "../redux/reducer";
 import { searchChanged } from "../redux/actions";
 import HoverThing from "./HoverTooltip";
 
-
-const Search = ({ filteredChampions, handleChange, lookup}) => {
+const Search = ({ filteredChampions, handleChange, lookup }) => {
   return (
     <div className="contentFix">
       <div className="filterBar">
@@ -97,11 +96,9 @@ const Search = ({ filteredChampions, handleChange, lookup}) => {
   );
 };
 
-
-
 const mapStateToProps = (state) => ({
   filteredChampions: getFilteredChampions(state),
-  lookup: state.lookup
+  lookup: state.lookup,
 });
 
 const mapDispatchToProps = (dispatch) => ({
