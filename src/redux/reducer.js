@@ -5,7 +5,6 @@ export const getFilteredChampions = (state) => {
   return state.filteredChampions;
 };
 
-
 const filteredChampions = (state = champions, action, rootState) => {
   switch (action.type) {
     case CHANGE_PREVIEW:
@@ -108,15 +107,6 @@ export const getAvailableChampions = (state) => {
   });
 };
 
-// INITILIAZATION FOR SORTING //
-// if (state.previewSorting === undefined) {
-//   return {
-
-//     Sorting: "rating",
-//     Tier: "all",
-//   };
-// }
-
 export const getButtonType = (state = {}, action) => {
   switch (action.type) {
     case CHANGE_PREVIEW:
@@ -144,7 +134,7 @@ export const getButtonType = (state = {}, action) => {
       }
 
     default:
-      return state;
+      return { Sorting: "rating", Tier: "all" };
   }
 };
 
