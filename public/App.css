@@ -29,9 +29,19 @@
   background-size: cover;
 }
 
+.mid {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
 .tierSelect {
   height: 40px;
 }
+
 .tierSelect img {
   cursor: pointer;
   -webkit-user-drag: none;

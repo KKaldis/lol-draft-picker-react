@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import Controls from "../components/Controls";
 import Champions from "../components/Champions";
 import { DragDropContext } from "react-beautiful-dnd";
-import ChampSlot from "../components/ChampSlot";
 import { dragNdrop } from "../redux/actions";
 import data from "../app/data.json";
 import { getSorting, getTier } from "../redux/reducer";
