@@ -5,8 +5,9 @@ import { DragDropContext } from "react-beautiful-dnd";
 import ChampSlot from "../components/ChampSlot";
 import { dragNdrop } from "../redux/actions";
 import data from "../app/data.json";
+import { getSorting, getTier } from "../redux/reducer";
 
-const App = ({ onDragEnd }) => {
+const App = ({ onDragEnd, sorting, tier }) => {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div className="body">
@@ -34,9 +35,9 @@ const App = ({ onDragEnd }) => {
               </div>
             </div>
             <div className="mid">
-              {console.log(data["Aatrox"]["Top"]["ALL"]["Rating"]["Akali"])}
+              {console.log(data["Aatrox"]["Top"][tier][sorting])}
               {/* console log scraped counter data example with selectors 
-              [Champion][Lane][Tier][Data Type(counter rating or popularity][Counter Champ]*/}
+              [Champion][Lane][tier][Data Type(counter rating or popularity][Counter Champ]*/}
               <Search />
               <div className="banSpot">
                 <div className="bans">
@@ -81,7 +82,10 @@ const App = ({ onDragEnd }) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  sorting: getSorting(state),
+  tier: getTier(state)
+});
 
 const mapDispatchToProps = (dispatch) => ({
   onDragEnd: (e) => {

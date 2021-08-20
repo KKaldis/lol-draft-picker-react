@@ -108,29 +108,29 @@ export const getAvailableChampions = (state) => {
 };
 
 export const getButtonType = (
-  state = { Sorting: "rating", Tier: "all" },
+  state = { sorting: "Rating", tier: "ALL" },
   action
 ) => {
   switch (action.type) {
     case CHANGE_PREVIEW:
       if (
-        action.viewSelection === "all" ||
-        action.viewSelection === "diamond" ||
-        action.viewSelection === "master" ||
-        action.viewSelection === "platinum"
+        action.viewSelection === "ALL" ||
+        action.viewSelection === "DIAMOND" ||
+        action.viewSelection === "MASTER" ||
+        action.viewSelection === "PLATINUM"
       ) {
         return {
           ...state,
-          Tier: action.viewSelection,
+          tier: action.viewSelection,
         };
       } else if (
-        action.viewSelection === "alphabetical" ||
-        action.viewSelection === "popular" ||
-        action.viewSelection === "rating"
+        action.viewSelection === "Alphabetical" ||
+        action.viewSelection === "Popular" ||
+        action.viewSelection === "Rating"
       ) {
         return {
           ...state,
-          Sorting: action.viewSelection,
+          sorting: action.viewSelection,
         };
       } else {
         return { ...state };
@@ -140,6 +140,9 @@ export const getButtonType = (
       return state;
   }
 };
+
+export const getSorting = (state) => {return state.previewSorting.sorting}
+export const getTier = (state) => {return state.previewSorting.tier};
 
 const reducer = (state = {}, action) => ({
   champions: champions,

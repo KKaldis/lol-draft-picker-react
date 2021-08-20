@@ -16,28 +16,28 @@ const Search = ({ filteredChampions, handleChange, lookup }) => {
             dataTip={"Sort Alphabetical"}
             imgFile={"alphab"}
             hoverFamily={"sorting"}
-            altText={"alphabetical"}
+            altText={"Alphabetical"}
           />
 
           <HoverButton
             dataTip={"Sort by Rating"}
             imgFile={"counter"}
             hoverFamily={"sorting"}
-            altText={"rating"}
+            altText={"Rating"}
           />
 
           <HoverButton
             dataTip={"Sort By Popularity"}
             imgFile={"popular"}
             hoverFamily={"sorting"}
-            altText={"popular"}
+            altText={"Popular"}
           />
 
           <HoverButton
             dataTip={"Reset Selections"}
             imgFile={"reset"}
             hoverFamily={"sorting"}
-            altText={"reset"}
+            altText={"Reset"}
           />
         </div>
         <div>
@@ -54,28 +54,28 @@ const Search = ({ filteredChampions, handleChange, lookup }) => {
             dataTip={"All"}
             imgFile={"all"}
             hoverFamily={"tier"}
-            altText={"all"}
+            altText={"ALL"}
           />
 
           <HoverButton
             dataTip={"Platinum"}
             imgFile={"platinum"}
             hoverFamily={"tier"}
-            altText={"platinum"}
+            altText={"PLATINUM"}
           />
 
           <HoverButton
             dataTip={"Diamond"}
             imgFile={"diamond"}
             hoverFamily={"tier"}
-            altText={"diamond"}
+            altText={"DIAMOND"}
           />
 
           <HoverButton
             dataTip={"Master"}
             imgFile={"master"}
             hoverFamily={"tier"}
-            altText={"master"}
+            altText={"MASTER"}
           />
           <div className="score">10000</div>
         </div>
