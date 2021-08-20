@@ -5,7 +5,7 @@ import { DragDropContext } from "react-beautiful-dnd";
 import ChampSlot from "../components/ChampSlot";
 import { dragNdrop } from "../redux/actions";
 import data from "../app/data.json";
-import { getSorting, getTier } from "../redux/reducer";
+import { getSorting, getTier} from "../redux/reducer";
 
 const App = ({ onDragEnd, sorting, tier }) => {
   return (
@@ -36,7 +36,6 @@ const App = ({ onDragEnd, sorting, tier }) => {
             </div>
             <div className="mid">
               {console.log(data["Aatrox"]["Top"][tier][sorting])}
-              
               {/* console log scraped counter data example with selectors 
               [Champion][Lane][tier][Data Type(counter rating or popularity][Counter Champ]*/}
               <Search />

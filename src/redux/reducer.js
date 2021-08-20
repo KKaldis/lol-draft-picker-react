@@ -136,11 +136,11 @@ export const getButtonType = (
       if (action.viewSelection === "Reset") {
         return {
           ...state,
-          tier: "ALL",
-          sorting: "Rating",
+          // tier: "ALL",
+          // sorting: "Rating",
         };
       } else {
-        return [...state];
+        return { ...state };
       }
 
     default:

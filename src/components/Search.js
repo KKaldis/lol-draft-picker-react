@@ -10,8 +10,8 @@ const Search = ({ filteredChampions, handleChange, lookup }) => {
   return (
     <div className="contentFix">
       <div className="filterBar">
+        <div className="score">10000</div>
         <div className="buttonWrap">
-          <div className="score">10000</div>
           <HoverButton
             dataTip={"Sort Alphabetical"}
             imgFile={"alphab"}
@@ -77,8 +77,8 @@ const Search = ({ filteredChampions, handleChange, lookup }) => {
             hoverFamily={"tier"}
             altText={"MASTER"}
           />
-          <div className="score">10000</div>
         </div>
+        <div className="score">10000</div>
       </div>
       <div className="champs">
         <Droppable droppableId="champSelect" key={"champSelect"}>
