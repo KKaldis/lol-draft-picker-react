@@ -1,5 +1,5 @@
 import data from "../app/data.json";
-import { getSelections } from "../redux/reducer"
+import { getSelections } from "../redux/reducer";
 import { connect } from "react-redux";
 
 for (const i in x) {
@@ -7,8 +7,7 @@ for (const i in x) {
 }
 
 const mapStateToProps = (state) => ({
-  x: getSelections (state)
-
+  x: getSelections(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({});

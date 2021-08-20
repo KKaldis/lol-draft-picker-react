@@ -1,12 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Droppable } from "react-beautiful-dnd";
-import Card from "./Card";
-import { getFilteredChampions } from "../redux/reducer";
 import { searchChanged } from "../redux/actions";
 import HoverButton from "./HoverButton";
 
-const Search = ({ filteredChampions, handleChange, lookup }) => {
+const Controls = ({ handleChange, lookup }) => {
   return (
     <div className="contentFix">
       <div className="filterBar">
@@ -80,24 +77,11 @@ const Search = ({ filteredChampions, handleChange, lookup }) => {
         </div>
         <div className="score">10000</div>
       </div>
-      <div className="champs">
-        <Droppable droppableId="champSelect" key={"champSelect"}>
-          {(provided) => (
-            <ul id="myUL" ref={provided.innerRef} {...provided.droppableProps}>
-              {filteredChampions.map((champ) => (
-                <Card champ={champ} index={filteredChampions.indexOf(champ)} />
-              ))}
-              {provided.placeholder}
-            </ul>
-          )}
-        </Droppable>
-      </div>
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
-  filteredChampions: getFilteredChampions(state),
   lookup: state.lookup,
 });
 
@@ -105,4 +89,4 @@ const mapDispatchToProps = (dispatch) => ({
   handleChange: (e) => dispatch(searchChanged(e.target.value)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(mapStateToProps, mapDispatchToProps)(Controls);

@@ -1,29 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
-import Search from "../components/Search";
+import Controls from "../components/Controls";
+import Champions from "../components/Champions";
 import { DragDropContext } from "react-beautiful-dnd";
 import ChampSlot from "../components/ChampSlot";
 import { dragNdrop } from "../redux/actions";
 import data from "../app/data.json";
-import { getSorting, getTier} from "../redux/reducer";
+import { getSorting, getTier } from "../redux/reducer";
+import { Leaderboard, Skyscraper } from "../components/Ads";
 
 const App = ({ onDragEnd, sorting, tier }) => {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div className="body">
-        <div className="addLeader">
-          <img
-            src={process.env.PUBLIC_URL + "/assets/970x90.jpg"}
-            alt="Advertisment Leaderboard"
-          />
-        </div>
+        <Leaderboard />
         <div className="main">
-          <div className="addSky">
-            <img
-              src={process.env.PUBLIC_URL + "/assets/300x600.webp"}
-              alt="Advertisment Skyscraper"
-            />
-          </div>
+          <Skyscraper />
           <div className="app">
             <div className="team">
               <div className="players">
@@ -38,7 +30,8 @@ const App = ({ onDragEnd, sorting, tier }) => {
               {console.log(data["Aatrox"]["Top"][tier][sorting])}
               {/* console log scraped counter data example with selectors 
               [Champion][Lane][tier][Data Type(counter rating or popularity][Counter Champ]*/}
-              <Search />
+              <Controls />
+              <Champions />
               <div className="banSpot">
                 <div className="bans">
                   <ChampSlot playerId={"ban0"} />
@@ -64,19 +57,9 @@ const App = ({ onDragEnd, sorting, tier }) => {
               </div>
             </div>
           </div>
-          <div className="addSky">
-            <img
-              src={process.env.PUBLIC_URL + "/assets/300x600.webp"}
-              alt="Advertisment Skyscraper"
-            />
-          </div>
+          <Skyscraper />
         </div>
-        <div className="addLeader">
-          <img
-            src={process.env.PUBLIC_URL + "/assets/970x90.jpg"}
-            alt="Advertisment Leaderboard"
-          />
-        </div>
+        <Leaderboard />
       </div>
     </DragDropContext>
   );
@@ -84,7 +67,7 @@ const App = ({ onDragEnd, sorting, tier }) => {
 
 const mapStateToProps = (state) => ({
   sorting: getSorting(state),
-  tier: getTier(state)
+  tier: getTier(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
