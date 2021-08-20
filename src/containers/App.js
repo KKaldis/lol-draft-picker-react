@@ -10,6 +10,9 @@ import { Leaderboard, Skyscraper } from "../components/Ads";
 import { EnemyPicks, TeamPicks, BanPicks } from "../components/Picks";
 
 const App = ({ onDragEnd, sorting, tier }) => {
+
+  {console.log(data["Aatrox"]["Top"][tier][sorting]);}
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div className="body">
@@ -20,9 +23,6 @@ const App = ({ onDragEnd, sorting, tier }) => {
             <TeamPicks />
             <div className="mid">
               <Controls />
-              {console.log(data["Aatrox"]["Top"][tier][sorting])}
-              {/* console log scraped counter data example with selectors 
-              [Champion][Lane][tier][Data Type(counter rating or popularity][Counter Champ]*/}
               <Champions />
               <BanPicks />
             </div>
