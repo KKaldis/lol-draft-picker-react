@@ -8,7 +8,7 @@ export const getFilteredChampions = (state) => {
 const filteredChampions = (state = champions, action, rootState) => {
   switch (action.type) {
     case CHANGE_PREVIEW:
-      if (action.viewSelection === "reset") {
+      if (action.viewSelection === "Reset") {
         action.lookup = "";
         return champions;
       } else {
@@ -88,7 +88,7 @@ const selections = (state = {}, action) => {
       }
 
     case CHANGE_PREVIEW:
-      if (action.viewSelection === "reset") return {};
+      if (action.viewSelection === "Reset") return {};
       else {
         return {
           ...state,
