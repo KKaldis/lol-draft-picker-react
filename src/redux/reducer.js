@@ -132,8 +132,15 @@ export const getButtonType = (
           ...state,
           sorting: action.viewSelection,
         };
+      }
+      if (action.viewSelection === "Reset") {
+        return {
+          ...state,
+          tier: "ALL",
+          sorting: "Rating",
+        };
       } else {
-        return { ...state };
+        return [...state];
       }
 
     default:
@@ -141,8 +148,12 @@ export const getButtonType = (
   }
 };
 
-export const getSorting = (state) => {return state.previewSorting.sorting}
-export const getTier = (state) => {return state.previewSorting.tier};
+export const getSorting = (state) => {
+  return state.previewSorting.sorting;
+};
+export const getTier = (state) => {
+  return state.previewSorting.tier;
+};
 
 const reducer = (state = {}, action) => ({
   champions: champions,
