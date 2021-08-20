@@ -30,7 +30,7 @@
 }
 
 .tierSelect {
-  height: 50px;
+  height: 40px;
 }
 .tierSelect img {
   cursor: pointer;
@@ -38,7 +38,7 @@
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
-  padding: 12px;
+  padding: 5px;
   height: -webkit-fill-available;
   background-color: #000000;
   border: 1px solid #ae9c6c;
@@ -109,7 +109,7 @@
   padding: 12px 20px 12px 20px !important;
   border: 1px solid black !important;
   color: #010508 !important;
-  font-size: 18px !important;
+  font-size: 14px !important;
   pointer-events: auto !important;
 }
 
@@ -121,7 +121,7 @@
   padding: 0px 10px 0px 10px;
   border: 1px solid #ae9c6c;
   color: #ae9c6c;
-  margin: 12px;
+  margin: 10px;
   height: 50px;
   align-content: center;
   align-items: center;
