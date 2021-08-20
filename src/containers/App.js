@@ -8,6 +8,7 @@ import { dragNdrop } from "../redux/actions";
 import data from "../app/data.json";
 import { getSorting, getTier } from "../redux/reducer";
 import { Leaderboard, Skyscraper } from "../components/Ads";
+import { EnemyPicks, TeamPicks, BanPicks } from "../components/Picks";
 
 const App = ({ onDragEnd, sorting, tier }) => {
   return (
@@ -17,45 +18,16 @@ const App = ({ onDragEnd, sorting, tier }) => {
         <div className="main">
           <Skyscraper />
           <div className="app">
-            <div className="team">
-              <div className="players">
-                <ChampSlot playerId={"teamplayer1"} />
-                <ChampSlot playerId={"teamplayer2"} />
-                <ChampSlot playerId={"teamplayer3"} />
-                <ChampSlot playerId={"teamplayer4"} />
-                <ChampSlot playerId={"teamplayer5"} />
-              </div>
-            </div>
+            <TeamPicks />
             <div className="mid">
+              <Controls />
               {console.log(data["Aatrox"]["Top"][tier][sorting])}
               {/* console log scraped counter data example with selectors 
               [Champion][Lane][tier][Data Type(counter rating or popularity][Counter Champ]*/}
-              <Controls />
               <Champions />
-              <div className="banSpot">
-                <div className="bans">
-                  <ChampSlot playerId={"ban0"} />
-                  <ChampSlot playerId={"ban1"} />
-                  <ChampSlot playerId={"ban2"} />
-                  <ChampSlot playerId={"ban3"} />
-                  <ChampSlot playerId={"ban4"} />
-                  <ChampSlot playerId={"ban5"} />
-                  <ChampSlot playerId={"ban6"} />
-                  <ChampSlot playerId={"ban7"} />
-                  <ChampSlot playerId={"ban8"} />
-                  <ChampSlot playerId={"ban9"} />
-                </div>
-              </div>
+              <BanPicks />
             </div>
-            <div className="enemy">
-              <div className="players">
-                <ChampSlot playerId={"enemyplayer1"} />
-                <ChampSlot playerId={"enemyplayer2"} />
-                <ChampSlot playerId={"enemyplayer3"} />
-                <ChampSlot playerId={"enemyplayer4"} />
-                <ChampSlot playerId={"enemyplayer5"} />
-              </div>
-            </div>
+            <EnemyPicks />
           </div>
           <Skyscraper />
         </div>

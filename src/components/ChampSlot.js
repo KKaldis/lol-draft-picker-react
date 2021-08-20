@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { getSelection, getSelectionIndex } from "../redux/reducer";
 import { Droppable } from "react-beautiful-dnd";
-import Card from "./Card";
+import Card from "../components/Card";
 
 const ChampSlot = ({ playerId, selection, selectionIndex }) => {
   return (

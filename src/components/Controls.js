@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { searchChanged } from "../redux/actions";
-import HoverButton from "./HoverButton";
+import HoverButton from "../components/HoverButton";
 
 const Controls = ({ handleChange, lookup }) => {
   return (

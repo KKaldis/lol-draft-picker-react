@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Droppable } from "react-beautiful-dnd";
-import Card from "./Card";
+import Card from "../components/Card";
 import { getFilteredChampions } from "../redux/reducer";
 
 
