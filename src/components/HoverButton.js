@@ -14,9 +14,19 @@ const HoverButton = ({
     <div>
       <a data-tip={dataTip} data-for={hoverFamily}>
         <div className="tierSelect">
-        <div className="tierSelectImg" onClick={handleChange} id={altText}>
-          <img src={"assets/" + imgFile + "30.png"} alt={altText} />
-        </div>{" "}
+          <div
+            className="tierSelectImg"
+            alt={altText}
+            onClick={handleChange}
+            id={altText}
+          >
+            <img
+              src={"assets/" + imgFile + "30.png"}
+              alt={altText}
+              onClick={handleChange}
+              id={altText}
+            />
+          </div>{" "}
         </div>
       </a>
       <ReactTooltip id={hoverFamily} className="tooltip" effect="solid" />
@@ -27,7 +37,7 @@ const HoverButton = ({
 const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = (dispatch) => ({
-  handleChange: (e) => dispatch(previewStyle(e.target.alt)),
+  handleChange: (e) => dispatch(previewStyle(e.target.id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HoverButton);
