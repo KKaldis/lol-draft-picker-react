@@ -19,6 +19,7 @@ const filteredChampions = (state = champions, action, rootState) => {
       return getAvailableChampions(rootState).filter((champ) => {
         return champ.toLowerCase().includes(action.lookup.toLowerCase());
       });
+
     case DRAG_END:
       if (
         action.destinationDroppable === "champSelect" &&
@@ -26,22 +27,21 @@ const filteredChampions = (state = champions, action, rootState) => {
       ) {
         const filteredArray = [...state, action.sourceDraggable];
         return filteredArray.sort();
+      } else if (
+        action.destinationDroppable in getSelections(rootState) &&
+        action.sourceDroppable === "champSelect"
+      ) {
+        const newState = [
+          ...state.filter((champ) => champ !== action.sourceDraggable),
+          getSelection(rootState, action.destinationDroppable),
+        ];
+        return newState.sort();
+      } else if (action.destinationDroppable !== "champSelect") {
+        return state.filter((champ) => champ !== action.sourceDraggable);
       } else {
-        if (
-          action.destinationDroppable in getSelections(rootState) &&
-          action.sourceDroppable === "champSelect"
-        ) {
-          const newState = [
-            ...state.filter((champ) => champ !== action.sourceDraggable),
-            getSelection(rootState, action.destinationDroppable),
-          ];
-          return newState.sort();
-        } else if (action.destinationDroppable !== "champSelect") {
-          return state.filter((champ) => champ !== action.sourceDraggable);
-        } else {
-          return state;
-        }
+        return state;
       }
+      
     default:
       return state;
   }
@@ -61,32 +61,26 @@ const selections = (state = {}, action) => {
         );
         const { [key]: removed, ...rest } = state;
         return rest;
+      } else if (
+        action.destinationDroppable in state &&
+        action.sourceDroppable !== "champSelect"
+      ) {
+        return {
+          ...state,
+          [action.destinationDroppable]: action.sourceDraggable,
+          [action.sourceDroppable]: state[action.destinationDroppable],
+        };
+      } else if (action.sourceDroppable !== "champSelect") {
+        const { [action.sourceDroppable]: removed, ...rest } = state;
+        return {
+          ...rest,
+          [action.destinationDroppable]: action.sourceDraggable,
+        };
       } else {
-        if (
-          action.destinationDroppable in state &&
-          action.sourceDroppable !== "champSelect"
-        ) {
-          return {
-            ...state,
-            [action.destinationDroppable]: action.sourceDraggable,
-            [action.sourceDroppable]: state[action.destinationDroppable],
-            
-          };
-        } else {
-          if (action.sourceDroppable !== "champSelect") {
-            const { [action.sourceDroppable]: removed, ...rest } = state;
-            return {
-              ...rest,
-              [action.destinationDroppable]: action.sourceDraggable,
-            };
-          } else {
-            return {
-              ...state,
-              [action.destinationDroppable]: action.sourceDraggable,
-
-            };
-          }
-        }
+        return {
+          ...state,
+          [action.destinationDroppable]: action.sourceDraggable,
+        };
       }
 
     case CHANGE_PREVIEW:
@@ -160,14 +154,13 @@ export const getTier = (state) => {
 export const teamSelections = (state = [], action, teamString) => {
   switch (action.type) {
     case DRAG_END:
-    
-    // const sel = [];
-    // Object.entries(selections).forEach(([key, value]) => {
-    //   if (key.startsWith(teamString)) {
-    //     sel.push(value);
-    //   }
-    // });
-    // return [...state], sel;
+      // const sel = [];
+      // Object.entries(selections).forEach(([key, value]) => {
+      //   if (key.startsWith(teamString)) {
+      //     sel.push(value);
+      //   }
+      // });
+      // return [...state], sel;
 
       if (action.destinationDroppable.startsWith(teamString)) {
         return [...state, action.sourceDraggable];
@@ -177,9 +170,7 @@ export const teamSelections = (state = [], action, teamString) => {
       ) {
         var arrRemove = state;
         var arrIndex = arrRemove.indexOf(action.sourceDraggable);
-
         arrRemove.splice(arrIndex, 1);
-
         return state, arrRemove;
       }
 
@@ -194,10 +185,9 @@ export const teamSelections = (state = [], action, teamString) => {
   }
 };
 
-
 const reducer = (state = {}, action) => ({
   champions: champions,
-  selections: selections(state.selections, action,),
+  selections: selections(state.selections, action),
   filteredChampions: filteredChampions(state.filteredChampions, action, state),
   previewSorting: getPreviewType(state.previewSorting, action),
   lookup: action.lookup,
