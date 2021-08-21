@@ -70,6 +70,7 @@ const selections = (state = {}, action) => {
             ...state,
             [action.destinationDroppable]: action.sourceDraggable,
             [action.sourceDroppable]: state[action.destinationDroppable],
+            
           };
         } else {
           if (action.sourceDroppable !== "champSelect") {
@@ -82,6 +83,7 @@ const selections = (state = {}, action) => {
             return {
               ...state,
               [action.destinationDroppable]: action.sourceDraggable,
+
             };
           }
         }
@@ -107,7 +109,7 @@ export const getAvailableChampions = (state) => {
   });
 };
 
-export const getButtonType = (
+export const getPreviewType = (
   state = { sorting: "Rating", tier: "ALL" },
   action
 ) => {
@@ -132,8 +134,7 @@ export const getButtonType = (
           ...state,
           sorting: action.viewSelection,
         };
-      }
-      if (action.viewSelection === "Reset") {
+      } else if (action.viewSelection === "Reset") {
         return {
           ...state,
           // tier: "ALL",
@@ -151,37 +152,45 @@ export const getButtonType = (
 export const getSorting = (state) => {
   return state.previewSorting.sorting;
 };
+
 export const getTier = (state) => {
   return state.previewSorting.tier;
 };
 
-export const enemySelections = (state = [], selections) => {
-  
-  // for (const property in selections) {
-  //   if (${property} === "enemyPlayer1"){
-  //    return [...state,  ${selections[property]}]
-  //   };
-  //   else {
-  //      return [...state]
-  //     }
-  // }
-  
+export const teamSelections = (state = [], action, teamString, selections) => {
+  switch (action.type) {
+    case DRAG_END:
+      const sel = [];
+      Object.entries(selections).forEach(([key, value]) => {
+        if (key.startsWith(teamString)) {
+          sel.push(value);
+        }
+      });
+      return [...state], sel;
 
+    case CHANGE_PREVIEW:
+      if (action.viewSelection === "Reset") return {};
+      else {
+        return [
+          ...state,
+        ];
+      }
 
+    default:
+      return state;
+  }
 };
 
-export const teamSelections = (state = [], selections ) => {
-  return [...state];
-};
 
 const reducer = (state = {}, action) => ({
   champions: champions,
-  selections: selections(state.selections, action),
+  selections: selections(state.selections, action,),
   filteredChampions: filteredChampions(state.filteredChampions, action, state),
-  previewSorting: getButtonType(state.previewSorting, action),
+  previewSorting: getPreviewType(state.previewSorting, action),
   lookup: action.lookup,
-  enemySelections: enemySelections(state.enemySelections),
-  teamSelections: teamSelections(state.teamSelections),
+  enemySelections: teamSelections(state.enemySelections, action, "enemy", getSelections(state)),
+  teamSelections: teamSelections(state.teamSelections, action, "team", getSelections(state)),
+  banSelections: teamSelections(state.banSelections, action, "ban", getSelections(state)),
 });
 
 export default reducer;
