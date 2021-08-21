@@ -41,7 +41,7 @@ const filteredChampions = (state = champions, action, rootState) => {
       } else {
         return state;
       }
-      
+
     default:
       return state;
   }
@@ -161,8 +161,11 @@ export const teamSelections = (state = [], action, teamString) => {
       //   }
       // });
       // return [...state], sel;
-
-      if (action.destinationDroppable.startsWith(teamString)) {
+      if (
+        action.sourceDroppable.startsWith(teamString) &&
+        action.destinationDroppable.startsWith(teamString)
+      ) {
+      } else if (action.destinationDroppable.startsWith(teamString)) {
         return [...state, action.sourceDraggable];
       } else if (
         !action.destinationDroppable.startsWith(teamString) &&
