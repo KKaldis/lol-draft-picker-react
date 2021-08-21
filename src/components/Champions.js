@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Droppable } from "react-beautiful-dnd";
-import Card from "../components/Card";
+import Card from "./Card";
 import { getFilteredChampions } from "../redux/reducer";
 
 
-const Champions = ({ filteredChampions, handleChange, lookup }) => {
+const Champions = ({ filteredChampions }) => {
   return (
    
       <div className="champs">

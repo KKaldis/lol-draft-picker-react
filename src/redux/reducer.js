@@ -155,12 +155,33 @@ export const getTier = (state) => {
   return state.previewSorting.tier;
 };
 
+export const enemySelections = (state = [], selections) => {
+  
+  // for (const property in selections) {
+  //   if (${property} === "enemyPlayer1"){
+  //    return [...state,  ${selections[property]}]
+  //   };
+  //   else {
+  //      return [...state]
+  //     }
+  // }
+  
+
+
+};
+
+export const teamSelections = (state = [], selections ) => {
+  return [...state];
+};
+
 const reducer = (state = {}, action) => ({
   champions: champions,
   selections: selections(state.selections, action),
   filteredChampions: filteredChampions(state.filteredChampions, action, state),
   previewSorting: getButtonType(state.previewSorting, action),
   lookup: action.lookup,
+  enemySelections: enemySelections(state.enemySelections),
+  teamSelections: teamSelections(state.teamSelections),
 });
 
 export default reducer;
