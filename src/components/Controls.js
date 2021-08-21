@@ -7,7 +7,9 @@ const Controls = ({ handleChange, lookup }) => {
   return (
     <div className="contentFix">
       <div className="filterBar">
-        <div className="score">10000</div>
+        <div className="scoreShadow">
+          <div className="score">10000</div>
+        </div>
         <div className="buttonWrap">
           <HoverButton
             dataTip={"Sort Alphabetical"}
@@ -75,7 +77,9 @@ const Controls = ({ handleChange, lookup }) => {
             altText={"MASTER"}
           />
         </div>
-        <div className="score">10000</div>
+        <div className="scoreShadow">
+          <div className="score">10000</div>
+        </div>
       </div>
     </div>
   );

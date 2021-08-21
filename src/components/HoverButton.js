@@ -13,9 +13,11 @@ const HoverButton = ({
   return (
     <div>
       <a data-tip={dataTip} data-for={hoverFamily}>
-        <div className="tierSelect" onClick={handleChange} id={altText}>
+        <div className="tierSelect">
+        <div className="tierSelectImg" onClick={handleChange} id={altText}>
           <img src={"assets/" + imgFile + "30.png"} alt={altText} />
         </div>{" "}
+        </div>
       </a>
       <ReactTooltip id={hoverFamily} className="tooltip" effect="solid" />
     </div>

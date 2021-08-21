@@ -9,7 +9,6 @@
   align-items: center;
   justify-content: space-between;
   text-align: center;
-
   -moz-user-select: -moz-none;
   -khtml-user-select: none;
   -webkit-user-select: none;
@@ -17,9 +16,7 @@
   align-content: center;
   justify-content: center;
   align-items: center;
-
   min-height: 850px;
-
   background: radial-gradient(
       circle,
       rgba(2, 56, 56, 0.75) 0%,
@@ -42,24 +39,36 @@
   height: 40px;
 }
 
-.tierSelect img {
+.tierSelectImg img {
+  width: 20px;
+  height: 20px;
+}
+
+.tierSelectImg {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   -webkit-user-drag: none;
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
-  padding: 5px;
   height: -webkit-fill-available;
   background-color: #000000;
   border: 1px solid #ae9c6c;
-  /* border-radius: 50px; */
   margin-left: 10px;
   margin-right: 10px;
+  transition: 0.25s;
 }
 
-.tierSelect img:hover {
+.tierSelectImg:hover {
+  border-radius: 10px;
   filter: drop-shadow(0 0 0.5rem #ae9c6c);
-  box-shadow: inset 0px 0px 10px 5px rgba(172, 147, 80, 0.5) !important;
+  box-shadow: inset 0px 0px 5px 5px rgba(172, 147, 80, 0.5) !important;
   outline: none !important;
   text-shadow: 0px 0px 6px #ae9c6c !important;
 }
@@ -127,16 +136,22 @@
   font-family: monospace;
   background-color: #010508;
   font-size: 14px;
-  box-shadow: 5px 5px 10px black;
+  box-shadow: inset 0px 0px 10px #ae9c6c;
   padding: 0px 10px 0px 10px;
   border: 1px solid #ae9c6c;
   color: #ae9c6c;
-  margin: 10px;
+  text-shadow: 0px 0px 10px #ae9c6c;
+  color: #ae9c6c;
   height: 50px;
   align-content: center;
   align-items: center;
   justify-content: center;
   display: flex;
+}
+
+.scoreShadow {
+  margin: 10px;
+  box-shadow: 5px 5px 10px black;
 }
 
 .app {
@@ -256,7 +271,6 @@
 
 .enemy {
   background-color: #75051b;
-
   color: #ae9c6c;
   font-family: monospace;
   vertical-align: middle;
@@ -268,7 +282,7 @@
 }
 
 #myInput {
-  background-image: url("assets/searchicon.png");
+  background-image: url("assets/search.png");
   background-position: 8px 8px;
   background-repeat: no-repeat;
   background-color: #010508;
@@ -281,9 +295,27 @@
   transition: 0.25s;
 }
 
+::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-image: url("assets/clear30.png");
+  background-repeat: no-repeat;
+  background-size: 10px;
+  /* note: this positioning will need to be tweaked for iOS */
+  background-position: center left;
+}
+
 #myInput:focus {
   filter: drop-shadow(0 0 0.25rem #ae9c6c);
   outline: none;
+  border-radius: 10px;
+}
+
+#myInput:hover {
+  border-radius: 10px;
 }
 
 #myUL {
