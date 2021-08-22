@@ -93,12 +93,6 @@
 }
 
 .champs {
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-self: center;
   min-height: 400px;
   overflow: scroll;
   /* width: 960px; */
@@ -345,6 +339,10 @@
 }
 
 #myUL {
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-column-gap: 15px;
