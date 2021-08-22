@@ -38,7 +38,7 @@ const App = ({ onDragEnd, sorting, tier }) => {
 
 const mapStateToProps = (state) => ({
   sorting: getSorting(state),
-  tier: getTier(state),
+  tier: getTier(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
