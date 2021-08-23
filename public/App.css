@@ -67,6 +67,30 @@
   box-shadow: 5px 5px 10px black;
   /* filter: drop-shadow(5px 5px 5px black); */
 }
+.tierSelectImgActive {
+  height: 40px;
+  width: 35px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  height: -webkit-fill-available;
+  background-color: #000000;
+  margin-left: 10px;
+  margin-right: 10px;
+  transition: 0.25s;
+  border: 3px groove #ae9c6c;
+  border-radius: 25px;
+  box-shadow: inset 0px 0px 8px 2px rgba(172, 147, 80, 1) !important;
+  /* filter: drop-shadow(5px 5px 5px black); */
+  filter: drop-shadow(0 0 0.2rem #ae9c6c);
+}
 
 .tierSelectImg:hover {
   border-radius: 10px;
@@ -163,6 +187,23 @@
   font-family: monospace;
   background-color: #010508;
   font-size: 14px;
+  padding: 0px 10px 0px 10px;
+  color: #ae9c6c;
+  text-shadow: 0px 0px 10px #ae9c6c;
+  color: #ae9c6c;
+  height: 50px;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border: 3px ridge #ae9c6c;
+  border-radius: 25px;
+}
+.scoreHigh {
+  width: 50px;
+  font-family: monospace;
+  background-color: #010508;
+  font-size: 14px;
   box-shadow: inset 0px 0px 10px #ae9c6c;
   padding: 0px 10px 0px 10px;
   color: #ae9c6c;
@@ -177,7 +218,13 @@
   border-radius: 25px;
 }
 
+
 .scoreShadow {
+  border-radius: 25px;
+  margin: 10px;
+  box-shadow: 0px 0px 15px black;
+}
+.scoreShadowHigh {
   border-radius: 25px;
   margin: 10px;
   box-shadow: 0px 0px 15px #ae9c6c;

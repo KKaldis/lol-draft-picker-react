@@ -19,8 +19,18 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
   return (
     <div className="contentFix">
       <div className="filterBar">
-        <div className="scoreShadow">
-          <div className="score">{teamScore}</div>
+        <div
+          className={`scoreShadow ${
+            teamScore > enemyScore ? `scoreShadowHigh` : `scoreShadow`
+          }`}
+        >
+          <div
+            className={`score ${
+              teamScore > enemyScore ? `scoreHigh` : `score`
+            }`}
+          >
+            {teamScore}
+          </div>
         </div>
         <div className="buttonWrap">
           <HoverButton
@@ -28,6 +38,7 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
             imgFile={"alphab"}
             hoverFamily={"sorting"}
             altText={"Alphabetical"}
+            buttonType={sorting}
           />
 
           <HoverButton
@@ -35,6 +46,7 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
             imgFile={"counter"}
             hoverFamily={"sorting"}
             altText={"Rating"}
+            buttonType={sorting}
           />
 
           <HoverButton
@@ -42,6 +54,7 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
             imgFile={"popular"}
             hoverFamily={"sorting"}
             altText={"Popular"}
+            buttonType={sorting}
           />
 
           <HoverButton
@@ -49,6 +62,7 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
             imgFile={"reset"}
             hoverFamily={"sorting"}
             altText={"Reset"}
+            buttonType={sorting}
           />
         </div>
         <div>
@@ -66,6 +80,7 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
             imgFile={"all"}
             hoverFamily={"tier"}
             altText={"ALL"}
+            buttonType={tier}
           />
 
           <HoverButton
@@ -73,6 +88,7 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
             imgFile={"platinum"}
             hoverFamily={"tier"}
             altText={"PLATINUM"}
+            buttonType={tier}
           />
 
           <HoverButton
@@ -80,6 +96,7 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
             imgFile={"diamond"}
             hoverFamily={"tier"}
             altText={"DIAMOND"}
+            buttonType={tier}
           />
 
           <HoverButton
@@ -87,10 +104,21 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
             imgFile={"master"}
             hoverFamily={"tier"}
             altText={"MASTER"}
+            buttonType={tier}
           />
         </div>
-        <div className="scoreShadow">
-          <div className="score">{enemyScore}</div>
+        <div
+          className={`scoreShadow ${
+            enemyScore > teamScore ? `scoreShadowHigh` : `scoreShadow`
+          }`}
+        >
+          <div
+            className={`score ${
+              enemyScore > teamScore ? `scoreHigh` : `score`
+            }`}
+          >
+            {enemyScore}
+          </div>
         </div>
       </div>
     </div>
