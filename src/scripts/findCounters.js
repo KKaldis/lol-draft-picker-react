@@ -1,5 +1,4 @@
 import data from "../app/data.json";
-import { connect } from "react-redux";
 
 export const countAllChamps = (type, tier, sorting, selections) => {
   if (sorting === "Rating" || sorting === "Popular") {
@@ -15,11 +14,11 @@ export const countAllChamps = (type, tier, sorting, selections) => {
             const laneKeyObj = valLane;
             Object.entries(laneKeyObj).forEach(([keyLane, valTier]) => {
               var newRating = valTier[tier][sorting];
-              // iterate over map2 entries with acc set to map1 at start
               oldRating = Object.entries(newRating).reduce(
-                (acc, [key, value]) =>
-                  // if key is already in map1, add the values, otherwise, create new pair
-                  ({ ...acc, [key]: (acc[key] || 0) + value }),
+                (acc, [key, value]) => ({
+                  ...acc,
+                  [key]: (acc[key] || 0) + value,
+                }),
                 { ...oldRating }
               );
               // console.log(valChamp, " : " ,keyLane, " : ", newRating);
@@ -45,27 +44,20 @@ export const countAllChamps = (type, tier, sorting, selections) => {
 };
 
 export const countScore = (type, championScore, selections) => {
-  let score = 0;
-  Object.entries(selections).forEach(([keyChampDiv, valChamp]) => {
-    if (keyChampDiv.startsWith(type)) {
-      Object.entries(championScore).forEach(([keyChamp, valScore]) => {
-        if (
-          keyChamp.toUpperCase().replace(/([^\w]+|\s+)/g, "") ===
-          valChamp.toUpperCase().replace(/([^\w]+|\s+)/g, "")
-        ) {
-          score = score + valScore;
-        }
-      });
-    }
-  });
-  return score;
+  if (championScore != null) {
+    let score = 0;
+    Object.entries(selections).forEach(([keyChampDiv, valChamp]) => {
+      if (keyChampDiv.startsWith(type)) {
+        Object.entries(championScore).forEach(([keyChamp, valScore]) => {
+          if (
+            keyChamp.toUpperCase().replace(/([^\w]+|\s+)/g, "") ===
+            valChamp.toUpperCase().replace(/([^\w]+|\s+)/g, "")
+          ) {
+            score = score + valScore;
+          }
+        });
+      }
+    });
+    return score;
+  }
 };
-
-const mapStateToProps = (state) => ({});
-
-const mapDispatchToProps = (dispatch) => ({});
-
-export default connect(mapStateToProps, mapDispatchToProps)(
-  countAllChamps,
-  countScore
-);
