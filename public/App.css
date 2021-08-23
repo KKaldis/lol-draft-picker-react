@@ -148,6 +148,16 @@
   pointer-events: auto !important;
 }
 
+/* .cardTooltip {
+  background-color: #ae9c6c !important;
+  padding: 12px 20px 12px 20px !important;
+  border: 1px solid black !important;
+  color: #010508 !important;
+  font-size: 14px !important;
+  pointer-events: auto !important;
+  transition: 2s;
+} */
+
 .score {
   font-family: monospace;
   background-color: #010508;
