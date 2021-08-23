@@ -9,12 +9,11 @@ import { Leaderboard, Skyscraper } from "../components/Ads";
 import { EnemyPicks, TeamPicks, BanPicks } from "../components/Picks";
 import data from "../app/data.json";
 
-const App = ({ onDragEnd, sorting, tier, selections}) => {
-
+const countAllChamps = (type, tier, sorting, selections) => {
   if (sorting === "Rating" || sorting === "Popular") {
     var oldRating = {};
     Object.entries(selections).forEach(([keyChampDiv, valChamp]) => {
-      if (keyChampDiv.startsWith("enemy")) {
+      if (keyChampDiv.startsWith(type)) {
         // console.log(valChamp);
         Object.entries(data).forEach(([keyChamp, valLane]) => {
           if (keyChamp.toUpperCase() === valChamp.toUpperCase()) {
@@ -34,8 +33,18 @@ const App = ({ onDragEnd, sorting, tier, selections}) => {
         });
       }
     });
-    console.log(" Champ Scores ", oldRating);
+    console.log(
+      "Couter Champion Scores for",
+      type,
+      "Selections: ",
+      oldRating
+    );
   }
+};
+
+const App = ({ onDragEnd, sorting, tier, selections }) => {
+  countAllChamps("enemy", tier, sorting, selections);
+  countAllChamps("player", tier, sorting, selections);
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>

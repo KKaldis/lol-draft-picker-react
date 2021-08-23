@@ -2,7 +2,7 @@ import data from "../app/data.json";
 import { getSelections, getTier, getSorting } from "../redux/reducer";
 import { connect } from "react-redux";
 
-export const count = (type, selections, tier, sorting) => {
+export const FindCounters = (type, selections, tier, sorting) => {
   var oldRating = {};
   Object.entries(selections).forEach(([keyChampDiv, valChamp]) => {
     if (keyChampDiv.startsWith("enemy")) {
@@ -25,7 +25,7 @@ export const count = (type, selections, tier, sorting) => {
       });
     }
   });
-  console.log(" Champ Scores ", oldRating);
+   console.log(" Champ Scores ", oldRating);
 };
 
 const mapStateToProps = (state) => ({
@@ -36,4 +36,4 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps);
+export default connect(mapStateToProps, mapDispatchToProps) (FindCounters);
