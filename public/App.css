@@ -87,13 +87,12 @@
   transition: 0.25s;
   border: 3px groove #ae9c6c;
   border-radius: 25px;
-  box-shadow: inset 0px 0px 8px 2px rgba(172, 147, 80, 1) !important;
+  box-shadow: inset 0px 0px 10px 1px rgba(172, 147, 80, 1) !important;
   /* filter: drop-shadow(5px 5px 5px black); */
   filter: drop-shadow(0 0 0.2rem #ae9c6c);
 }
 
 .tierSelectImg:hover {
-  border-radius: 10px;
   filter: drop-shadow(0 0 0.5rem #ae9c6c);
   box-shadow: inset 0px 0px 5px 2px rgba(172, 147, 80, 0.5) !important;
   outline: none !important;
@@ -198,6 +197,8 @@
   display: flex;
   border: 3px ridge #ae9c6c;
   border-radius: 25px;
+  transition: 1s;
+  transition-timing-function: ease-in-out;
 }
 .scoreHigh {
   width: 50px;
@@ -214,20 +215,25 @@
   align-items: center;
   justify-content: center;
   display: flex;
-  border: 3px ridge #ae9c6c;
+  border: 3px groove #ae9c6c;
   border-radius: 25px;
+  transition: 1s;
+  transition-timing-function: ease-in-out;
 }
-
 
 .scoreShadow {
   border-radius: 25px;
   margin: 10px;
   box-shadow: 0px 0px 15px black;
+  transition: 1s;
+  transition-timing-function: ease-in-out;
 }
 .scoreShadowHigh {
   border-radius: 25px;
   margin: 10px;
   box-shadow: 0px 0px 15px #ae9c6c;
+  transition: 1s;
+  transition-timing-function: ease-in-out;
 }
 
 .app {
@@ -260,7 +266,6 @@
   color: #ae9c6c;
   font-family: monospace;
   vertical-align: middle;
-  transition: 0.25s;
 }
 
 .team {
@@ -304,7 +309,6 @@
   color: #ae9c6c;
   font-family: monospace;
   vertical-align: middle;
-  transition: 0.25s;
   font-size: 10px;
 }
 
@@ -343,7 +347,6 @@
   color: #ae9c6c;
   font-family: monospace;
   vertical-align: middle;
-  transition: 0.25s;
 }
 
 .enemy {
@@ -351,7 +354,6 @@
   color: #ae9c6c;
   font-family: monospace;
   vertical-align: middle;
-  transition: 0.25s;
 }
 
 .addLeader,
@@ -454,14 +456,41 @@
 }
 
 .champSpot:hover {
+  border-radius: 20px;
   width: 90px;
   height: 120px;
-  border-radius: 25px;
   box-shadow: 0px 0px 10px 5px rgba(174, 156, 108, 0.5);
+  transition-timing-function: ease-in-out;
 }
 
 .champSpot {
-  border-radius: 15px;
+  border-radius: 50px;
+  margin: 5px 0px 5px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 90px;
+  height: 90px;
+  /* border-radius: 30px; */
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  border-color: #010508;
+  border: 1px groove #ae9c6c;
+  -moz-box-shadow: inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow: inset 0 0 10px #000000;
+  transition: 0.25s;
+  transition-timing-function: ease-in-out;
+}
+
+.champSpotFilled {
+  border-radius: 20px;
   margin: 5px 0px 5px;
   display: flex;
   flex-direction: row;
@@ -483,6 +512,7 @@
   -webkit-box-shadow: inset 0 0 10px #000000;
   box-shadow: inset 0 0 10px #000000;
   transition: 0.25s;
+  transition-timing-function: ease-in-out;
 }
 
 .champDiv {

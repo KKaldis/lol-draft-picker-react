@@ -21,12 +21,12 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
       <div className="filterBar">
         <div
           className={`scoreShadow ${
-            teamScore > enemyScore ? `scoreShadowHigh` : `scoreShadow`
+            teamScore > enemyScore ? `scoreShadowHigh` : ``
           }`}
         >
           <div
             className={`score ${
-              teamScore > enemyScore ? `scoreHigh` : `score`
+              teamScore > enemyScore ? `scoreHigh` : ``
             }`}
           >
             {teamScore}
@@ -109,12 +109,12 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
         </div>
         <div
           className={`scoreShadow ${
-            enemyScore > teamScore ? `scoreShadowHigh` : `scoreShadow`
+            enemyScore > teamScore ? `scoreShadowHigh` : ``
           }`}
         >
           <div
             className={`score ${
-              enemyScore > teamScore ? `scoreHigh` : `score`
+              enemyScore > teamScore ? `scoreHigh` : ``
             }`}
           >
             {enemyScore}
