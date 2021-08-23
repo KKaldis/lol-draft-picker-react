@@ -389,6 +389,7 @@
 }
 
 #myInput:focus {
+  border: 3px groove #ae9c6c;
   filter: drop-shadow(0 0 0.25rem #ae9c6c);
   outline: none;
   border-radius: 10px;
@@ -507,7 +508,7 @@
     rgba(0, 0, 0, 0.5) 100%
   );
   border-color: #010508;
-  border: 1px groove #ae9c6c;
+  border: 1px ridge #ae9c6c;
   -moz-box-shadow: inset 0 0 10px #000000;
   -webkit-box-shadow: inset 0 0 10px #000000;
   box-shadow: inset 0 0 10px #000000;
