@@ -4,14 +4,28 @@ import Controls from "../components/Controls";
 import Champions from "../components/Champions";
 import { DragDropContext } from "react-beautiful-dnd";
 import { dragNdrop } from "../redux/actions";
-import data from "../app/data.json";
-import { getSorting, getTier } from "../redux/reducer";
+import { getSelections, getSorting, getTier } from "../redux/reducer";
 import { Leaderboard, Skyscraper } from "../components/Ads";
 import { EnemyPicks, TeamPicks, BanPicks } from "../components/Picks";
+import data from "../app/data.json";
 
-const App = ({ onDragEnd, sorting, tier }) => {
+const App = ({ onDragEnd, sorting, tier, selections}) => {
 
-  {console.log(data["Aatrox"]["Top"][tier][sorting]);}
+  
+  Object.entries(selections).forEach(([keyChampDiv, valChamp]) => {
+    if (keyChampDiv.startsWith("enemy")) {
+      console.log(valChamp);
+      Object.entries(data).forEach(([keyChamp, valLane]) => {
+        if (keyChamp.toUpperCase() === valChamp.toUpperCase()) {
+          const laneKeyObj = valLane;
+          Object.entries(laneKeyObj).forEach(([keyLane, valTier]) => {
+            console.log(keyLane, " : ", valTier[tier][sorting]);
+          });
+        }
+      });
+    }
+  });
+
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -37,6 +51,7 @@ const App = ({ onDragEnd, sorting, tier }) => {
 };
 
 const mapStateToProps = (state) => ({
+  selections: getSelections(state),
   sorting: getSorting(state),
   tier: getTier(state),
 });
