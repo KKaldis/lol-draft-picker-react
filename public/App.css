@@ -508,7 +508,7 @@
     rgba(0, 0, 0, 0.5) 100%
   );
   border-color: #010508;
-  border: 1px ridge #ae9c6c;
+  border: 3px ridge #ae9c6c;
   transition: 0.25s;
   transition-timing-function: ease-in-out;
 }
