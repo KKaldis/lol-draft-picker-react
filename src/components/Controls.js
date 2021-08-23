@@ -2,13 +2,25 @@ import React from "react";
 import { connect } from "react-redux";
 import { searchChanged } from "../redux/actions";
 import HoverButton from "../components/HoverButton";
+import { getSelections, getTier, getSorting } from "../redux/reducer";
+import { countAllChamps, countScore } from "../scripts/findCounters";
 
-const Controls = ({ handleChange, lookup }) => {
+const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
+  const enemyChampionsScores = countAllChamps(
+    "enemy",
+    tier,
+    sorting,
+    selections
+  );
+  const teamChampionsScores = countAllChamps("team", tier, sorting, selections);
+  const enemyScore = countScore("enemy", teamChampionsScores, selections);
+  const teamScore = countScore("team", enemyChampionsScores, selections);
+
   return (
     <div className="contentFix">
       <div className="filterBar">
         <div className="scoreShadow">
-          <div className="score">10000</div>
+          <div className="score">{teamScore}</div>
         </div>
         <div className="buttonWrap">
           <HoverButton
@@ -78,7 +90,7 @@ const Controls = ({ handleChange, lookup }) => {
           />
         </div>
         <div className="scoreShadow">
-          <div className="score">10000</div>
+          <div className="score">{enemyScore}</div>
         </div>
       </div>
     </div>
@@ -86,6 +98,9 @@ const Controls = ({ handleChange, lookup }) => {
 };
 
 const mapStateToProps = (state) => ({
+  selections: getSelections(state),
+  sorting: getSorting(state),
+  tier: getTier(state),
   lookup: state.lookup,
 });
 

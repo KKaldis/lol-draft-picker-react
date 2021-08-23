@@ -1,39 +1,71 @@
 import data from "../app/data.json";
-import { getSelections, getTier, getSorting } from "../redux/reducer";
 import { connect } from "react-redux";
 
-export const FindCounters = (type, selections, tier, sorting) => {
-  var oldRating = {};
+export const countAllChamps = (type, tier, sorting, selections) => {
+  if (sorting === "Rating" || sorting === "Popular") {
+    var oldRating = {};
+    Object.entries(selections).forEach(([keyChampDiv, valChamp]) => {
+      if (keyChampDiv.startsWith(type)) {
+        // console.log(valChamp);
+        Object.entries(data).forEach(([keyChamp, valLane]) => {
+          if (
+            keyChamp.toUpperCase().replace(/([^\w]+|\s+)/g, "") ===
+            valChamp.toUpperCase().replace(/([^\w]+|\s+)/g, "")
+          ) {
+            const laneKeyObj = valLane;
+            Object.entries(laneKeyObj).forEach(([keyLane, valTier]) => {
+              var newRating = valTier[tier][sorting];
+              // iterate over map2 entries with acc set to map1 at start
+              oldRating = Object.entries(newRating).reduce(
+                (acc, [key, value]) =>
+                  // if key is already in map1, add the values, otherwise, create new pair
+                  ({ ...acc, [key]: (acc[key] || 0) + value }),
+                { ...oldRating }
+              );
+              // console.log(valChamp, " : " ,keyLane, " : ", newRating);
+            });
+          }
+        });
+      }
+    });
+
+    const highestSort = Object.fromEntries(
+      Object.entries(oldRating).sort(([, a], [, b]) => b - a)
+    );
+
+    // console.log(type, "counter results : ", highestSort);
+    // print json with object order
+    // console.log(
+    //   type,
+    //   "counter results : ",
+    //   JSON.stringify(highestSort, null, 4)
+    // );
+    return highestSort;
+  }
+};
+
+export const countScore = (type, championScore, selections) => {
+  let score = 0;
   Object.entries(selections).forEach(([keyChampDiv, valChamp]) => {
-    if (keyChampDiv.startsWith("enemy")) {
-      // console.log(valChamp);
-      Object.entries(data).forEach(([keyChamp, valLane]) => {
-        if (keyChamp.toUpperCase() === valChamp.toUpperCase()) {
-          const laneKeyObj = valLane;
-          Object.entries(laneKeyObj).forEach(([keyLane, valTier]) => {
-            var newRating = valTier[tier][sorting];
-            // iterate over map2 entries with acc set to map1 at start
-            oldRating = Object.entries(newRating).reduce(
-              (acc, [key, value]) =>
-                // if key is already in map1, add the values, otherwise, create new pair
-                ({ ...acc, [key]: (acc[key] || 0) + value }),
-              { ...oldRating }
-            );
-            // console.log(valChamp, " : " ,keyLane, " : ", newRating);
-          });
+    if (keyChampDiv.startsWith(type)) {
+      Object.entries(championScore).forEach(([keyChamp, valScore]) => {
+        if (
+          keyChamp.toUpperCase().replace(/([^\w]+|\s+)/g, "") ===
+          valChamp.toUpperCase().replace(/([^\w]+|\s+)/g, "")
+        ) {
+          score = score + valScore;
         }
       });
     }
   });
-   console.log(" Champ Scores ", oldRating);
+  return score;
 };
 
-const mapStateToProps = (state) => ({
-  selections: getSelections(state),
-  sorting: getSorting(state),
-  tier: getTier(state),
-});
+const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = (dispatch) => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps) (FindCounters);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  countAllChamps,
+  countScore
+);

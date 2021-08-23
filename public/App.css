@@ -159,6 +159,7 @@
 } */
 
 .score {
+  width: 50px;
   font-family: monospace;
   background-color: #010508;
   font-size: 14px;
