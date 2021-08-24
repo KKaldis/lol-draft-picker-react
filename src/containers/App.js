@@ -4,15 +4,10 @@ import Controls from "../components/Controls";
 import Champions from "../components/Champions";
 import { DragDropContext } from "react-beautiful-dnd";
 import { dragNdrop } from "../redux/actions";
-import data from "../app/data.json";
-import { getSorting, getTier } from "../redux/reducer";
 import { Leaderboard, Skyscraper } from "../components/Ads";
 import { EnemyPicks, TeamPicks, BanPicks } from "../components/Picks";
 
-const App = ({ onDragEnd, sorting, tier }) => {
-
-  {console.log(data["Aatrox"]["Top"][tier][sorting]);}
-
+const App = ({ onDragEnd }) => {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div className="body">
@@ -36,10 +31,8 @@ const App = ({ onDragEnd, sorting, tier }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  sorting: getSorting(state),
-  tier: getTier(state)
-});
+const mapStateToProps = (state) => ({});
+
 
 const mapDispatchToProps = (dispatch) => ({
   onDragEnd: (e) => {

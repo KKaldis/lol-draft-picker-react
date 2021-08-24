@@ -2,20 +2,38 @@ import React from "react";
 import { connect } from "react-redux";
 import { searchChanged } from "../redux/actions";
 import HoverButton from "../components/HoverButton";
+import Score from "../components/Score";
+import { getSelections, getTier, getSorting } from "../redux/reducer";
+import { countAllChamps, countScore } from "../scripts/findCounters";
 
-const Controls = ({ handleChange, lookup }) => {
+const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
+  const enemyChampionsScores = countAllChamps(
+    "enemy",
+    tier,
+    sorting,
+    selections
+  );
+  const teamChampionsScores = countAllChamps("team", tier, sorting, selections);
+  const enemyScore = countScore("enemy", teamChampionsScores, selections);
+  const teamScore = countScore("team", enemyChampionsScores, selections);
+  const enemyPers = ((100 * enemyScore) / (teamScore + enemyScore)).toFixed(1);
+  const teamPers = ((100 * teamScore) / (teamScore + enemyScore)).toFixed(1);
+
   return (
     <div className="contentFix">
       <div className="filterBar">
-        <div className="scoreShadow">
-          <div className="score">10000</div>
-        </div>
+        <Score
+          returnScore={teamScore}
+          compScore={enemyScore}
+          returnPers={teamPers}
+        />
         <div className="buttonWrap">
           <HoverButton
             dataTip={"Sort Alphabetical"}
             imgFile={"alphab"}
             hoverFamily={"sorting"}
             altText={"Alphabetical"}
+            buttonType={sorting}
           />
 
           <HoverButton
@@ -23,6 +41,7 @@ const Controls = ({ handleChange, lookup }) => {
             imgFile={"counter"}
             hoverFamily={"sorting"}
             altText={"Rating"}
+            buttonType={sorting}
           />
 
           <HoverButton
@@ -30,6 +49,7 @@ const Controls = ({ handleChange, lookup }) => {
             imgFile={"popular"}
             hoverFamily={"sorting"}
             altText={"Popular"}
+            buttonType={sorting}
           />
 
           <HoverButton
@@ -37,6 +57,7 @@ const Controls = ({ handleChange, lookup }) => {
             imgFile={"reset"}
             hoverFamily={"sorting"}
             altText={"Reset"}
+            buttonType={sorting}
           />
         </div>
         <div>
@@ -54,6 +75,7 @@ const Controls = ({ handleChange, lookup }) => {
             imgFile={"all"}
             hoverFamily={"tier"}
             altText={"ALL"}
+            buttonType={tier}
           />
 
           <HoverButton
@@ -61,6 +83,7 @@ const Controls = ({ handleChange, lookup }) => {
             imgFile={"platinum"}
             hoverFamily={"tier"}
             altText={"PLATINUM"}
+            buttonType={tier}
           />
 
           <HoverButton
@@ -68,6 +91,7 @@ const Controls = ({ handleChange, lookup }) => {
             imgFile={"diamond"}
             hoverFamily={"tier"}
             altText={"DIAMOND"}
+            buttonType={tier}
           />
 
           <HoverButton
@@ -75,17 +99,23 @@ const Controls = ({ handleChange, lookup }) => {
             imgFile={"master"}
             hoverFamily={"tier"}
             altText={"MASTER"}
+            buttonType={tier}
           />
         </div>
-        <div className="scoreShadow">
-          <div className="score">10000</div>
-        </div>
+        <Score
+          returnScore={enemyScore}
+          compScore={teamScore}
+          returnPers={enemyPers}
+        />
       </div>
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
+  selections: getSelections(state),
+  sorting: getSorting(state),
+  tier: getTier(state),
   lookup: state.lookup,
 });
 

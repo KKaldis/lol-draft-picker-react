@@ -151,52 +151,12 @@ export const getTier = (state) => {
   return state.previewSorting.tier;
 };
 
-export const teamSelections = (state = [], action, teamString) => {
-  switch (action.type) {
-    case DRAG_END:
-      // const sel = [];
-      // Object.entries(selections).forEach(([key, value]) => {
-      //   if (key.startsWith(teamString)) {
-      //     sel.push(value);
-      //   }
-      // });
-      // return [...state], sel;
-      if (
-        action.sourceDroppable.startsWith(teamString) &&
-        action.destinationDroppable.startsWith(teamString)
-      ) {
-      } else if (action.destinationDroppable.startsWith(teamString)) {
-        return [...state, action.sourceDraggable];
-      } else if (
-        !action.destinationDroppable.startsWith(teamString) &&
-        action.sourceDroppable.startsWith(teamString)
-      ) {
-        var arrRemove = state;
-        var arrIndex = arrRemove.indexOf(action.sourceDraggable);
-        arrRemove.splice(arrIndex, 1);
-        return state, arrRemove;
-      }
-
-    case CHANGE_PREVIEW:
-      if (action.viewSelection === "Reset") return {};
-      else {
-        return [...state];
-      }
-
-    default:
-      return state;
-  }
-};
-
 const reducer = (state = {}, action) => ({
   champions: champions,
   selections: selections(state.selections, action),
   filteredChampions: filteredChampions(state.filteredChampions, action, state),
   previewSorting: getPreviewType(state.previewSorting, action),
   lookup: action.lookup,
-  enemySelections: teamSelections(state.enemySelections, action, "enemy"),
-  teamSelections: teamSelections(state.teamSelections, action, "team"),
-  banSelections: teamSelections(state.banSelections, action, "ban"),
 });
 
 export default reducer;

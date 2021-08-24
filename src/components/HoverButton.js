@@ -9,13 +9,16 @@ const HoverButton = ({
   hoverFamily,
   altText,
   handleChange,
+  buttonType,
 }) => {
   return (
     <div>
       <a data-tip={dataTip} data-for={hoverFamily}>
         <div className="tierSelect">
           <div
-            className="tierSelectImg"
+            className={`tierSelectImg ${
+              buttonType === altText ? `tierSelectImgActive` : ``
+            }`}
             alt={altText}
             onClick={handleChange}
             id={altText}

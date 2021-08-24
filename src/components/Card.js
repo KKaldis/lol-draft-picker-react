@@ -1,5 +1,6 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
+// import ReactTooltip from "react-tooltip";
 
 const jpgNameFix = (string) => {
   //remove from champion name special characters and spaces to make string with jpg file name
@@ -22,6 +23,8 @@ const getItemStyle = (isDragging, draggableStyle) => ({
 
 const Card = ({ champ, index }) => {
   return (
+    // <div>
+    //   <a data-tip = { champ} data-for={'cards'}>
     <Draggable draggableId={champ} key={champ} index={index}>
       {(provided, snapshot) => (
         <li
@@ -48,6 +51,9 @@ const Card = ({ champ, index }) => {
         </li>
       )}
     </Draggable>
+    /* </a> 
+       <ReactTooltip id={'cards'} className="cardTooltip" effect="solid" />
+    </div> */
   );
 };
 
