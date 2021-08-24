@@ -2,8 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { searchChanged } from "../redux/actions";
 import HoverButton from "../components/HoverButton";
+import Score from "../components/Score";
 import { getSelections, getTier, getSorting } from "../redux/reducer";
-import { countAllChamps, countScore, persent } from "../scripts/findCounters";
+import { countAllChamps, countScore } from "../scripts/findCounters";
 
 const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
   const enemyChampionsScores = countAllChamps(
@@ -21,16 +22,11 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
   return (
     <div className="contentFix">
       <div className="filterBar">
-        <div
-          className={`scoreShadow ${
-            teamScore > enemyScore ? `scoreShadowHigh` : ``
-          }`}
-        >
-          <div className={`score ${teamScore > enemyScore ? `scoreHigh` : ``}`}>
-            <div className="scoreLine">{teamScore} CP</div>{" "}
-            <div>{teamPers} %</div>
-          </div>
-        </div>
+        <Score
+          returnScore={teamScore}
+          compScore={enemyScore}
+          returnPers={teamPers}
+        />
         <div className="buttonWrap">
           <HoverButton
             dataTip={"Sort Alphabetical"}
@@ -106,16 +102,11 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
             buttonType={tier}
           />
         </div>
-        <div
-          className={`scoreShadow ${
-            enemyScore > teamScore ? `scoreShadowHigh` : ``
-          }`}
-        >
-          <div className={`score ${enemyScore > teamScore ? `scoreHigh` : ``}`}>
-            <div className="scoreLine">{enemyScore} CP</div>{" "}
-            <div>{enemyPers} %</div>
-          </div>
-        </div>
+        <Score
+          returnScore={enemyScore}
+          compScore={teamScore}
+          returnPers={enemyPers}
+        />
       </div>
     </div>
   );
