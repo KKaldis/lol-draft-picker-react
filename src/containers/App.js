@@ -33,7 +33,6 @@ const App = ({ onDragEnd }) => {
 
 const mapStateToProps = (state) => ({});
 
-
 const mapDispatchToProps = (dispatch) => ({
   onDragEnd: (e) => {
     if (!e.destination) return;
