@@ -1,53 +1,67 @@
 import { champions } from "../app/heroes";
+import Score from "../components/Score";
+import { countAllChamps } from "../scripts/findCounters";
 import { SEARCH_CHANGED, DRAG_END, CHANGE_PREVIEW } from "./actions";
 
-export const getFilteredChampions = (state) => {
+const agetFilteredChampions = (state) => {
   return state.filteredChampions;
 };
 
-const filteredChampions = (state = champions, action, rootState) => {
-  switch (action.type) {
-    case CHANGE_PREVIEW:
-      if (action.viewSelection === "Reset") {
-        action.lookup = "";
-        return champions;
-      } else {
-        return [...state];
-      }
+export const getFilteredChampions = (state) => {
+  var lookup = getLookup(state);
+  var tier = getTier(state);
+  var sorting = getSorting(state);
 
-    case SEARCH_CHANGED:
-      return getAvailableChampions(rootState).filter((champ) => {
-        return champ.toLowerCase().includes(action.lookup.toLowerCase());
-      });
-
-    case DRAG_END:
-      if (
-        action.destinationDroppable === "champSelect" &&
-        action.sourceDroppable !== "champSelect" &&
-        getLookup(rootState)
-          .toLowerCase()
-          .includes(action.sourceDraggable.toLowerCase())
-      ) {
-        const filteredArray = [...state, action.sourceDraggable];
-        return filteredArray.sort();
-      } else if (
-        action.destinationDroppable in getSelections(rootState) &&
-        action.sourceDroppable === "champSelect"
-      ) {
-        const newState = [
-          ...state.filter((champ) => champ !== action.sourceDraggable),
-          getSelection(rootState, action.destinationDroppable),
-        ];
-        return newState.sort();
-      } else if (action.destinationDroppable !== "champSelect") {
-        return state.filter((champ) => champ !== action.sourceDraggable);
-      } else {
-        return state;
-      }
-
-    default:
-      return state;
+  var selections = getSelections(state);
+  var selectionNames = [];
+  for (const key in selections) {
+    selectionNames.push(selections[key]);
   }
+  1;
+
+  var filtered = champions.filter((c) => !selectionNames.includes(c));
+
+  if (lookup !== "") {
+    filtered = filtered.filter((c) =>
+      c.toUpperCase().includes(lookup.toUpperCase())
+    );
+  }
+
+  const scores = countAllChamps("enemy", tier, sorting, selections);
+
+  if (sorting === "Rating" || sorting === "Popular") {
+    filtered.sort((a, b) => {
+      if (replaceUndefined(scores[a]) > replaceUndefined(scores[b])) {
+        // console.log(replaceUndefined(scores[a], replaceUndefined(scores[b])))
+        return -1;
+      } else {
+        return 1;
+      }
+    });
+  } else if (sorting === "Alphabetical") {
+    filtered.sort((a, b) => {
+      if (a > b) {
+        // console.log(replaceUndefined(scores[a], replaceUndefined(scores[b])))
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+  }
+
+  const sortedByScore = filtered.map((f) => ({
+    name: f,
+    score: replaceUndefined(scores[f]),
+  }));
+  console.log("SCORES:");
+  console.log(sortedByScore);
+
+  return filtered;
+};
+
+const replaceUndefined = (score) => {
+  if (score == null) return 0;
+  else return score;
 };
 
 export const getSelections = (state) => state.selections;
@@ -55,7 +69,7 @@ export const getSelections = (state) => state.selections;
 export const getSelection = (state, playerId) => state.selections[playerId];
 
 export const getSelectionIndex = (state, playerId) =>
-  state.filteredChampions.indexOf(state.selections[playerId]);
+  getFilteredChampions(state).indexOf(state.selections[playerId]);
 
 const selections = (state = {}, action) => {
   switch (action.type) {
@@ -101,14 +115,6 @@ const selections = (state = {}, action) => {
   }
 };
 
-export const getChampions = (state) => state.champions;
-
-export const getAvailableChampions = (state) => {
-  return getChampions(state).filter((champ) => {
-    return Object.values(getSelections(state)).indexOf(champ) === -1;
-  });
-};
-
 export const getSorting = (state) => {
   return state.previewSorting.sorting;
 };
@@ -117,10 +123,7 @@ export const getTier = (state) => {
   return state.previewSorting.tier;
 };
 
-export const previewSorting = (
-  state = { sorting: "Rating", tier: "ALL" },
-  action
-) => {
+const previewSorting = (state = { sorting: "Rating", tier: "ALL" }, action) => {
   switch (action.type) {
     case CHANGE_PREVIEW:
       if (
@@ -165,12 +168,9 @@ export const lookup = (state = "", action) => {
   switch (action.type) {
     case SEARCH_CHANGED:
       return action.lookup;
-
     case CHANGE_PREVIEW:
-      if (action.viewSelection === "Reset") {
-        return "";
-      }
-      break;
+      if (action.viewSelection === "Reset") return "";
+      else return state;
     default:
       return state;
   }
@@ -179,7 +179,6 @@ export const lookup = (state = "", action) => {
 const reducer = (state = {}, action) => ({
   champions: champions,
   selections: selections(state.selections, action),
-  filteredChampions: filteredChampions(state.filteredChampions, action, state),
   previewSorting: previewSorting(state.previewSorting, action),
   lookup: lookup(state.lookup, action),
 });
