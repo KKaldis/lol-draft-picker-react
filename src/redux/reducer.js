@@ -23,7 +23,10 @@ const filteredChampions = (state = champions, action, rootState) => {
     case DRAG_END:
       if (
         action.destinationDroppable === "champSelect" &&
-        action.sourceDroppable !== "champSelect"
+        action.sourceDroppable !== "champSelect" &&
+        rootState.lookup
+          .toLowerCase()
+          .includes(action.sourceDraggable.toLowerCase())
       ) {
         const filteredArray = [...state, action.sourceDraggable];
         return filteredArray.sort();
@@ -150,13 +153,27 @@ export const getSorting = (state) => {
 export const getTier = (state) => {
   return state.previewSorting.tier;
 };
+export const lookup = (state = "", action) => {
+  switch (action.type) {
+    case SEARCH_CHANGED:
+      return action.lookup;
+
+    case CHANGE_PREVIEW:
+      if (action.viewSelection === "Reset") {
+        return "";
+      }
+      break;
+    default:
+      return state;
+  }
+};
 
 const reducer = (state = {}, action) => ({
   champions: champions,
   selections: selections(state.selections, action),
   filteredChampions: filteredChampions(state.filteredChampions, action, state),
   previewSorting: getPreviewType(state.previewSorting, action),
-  lookup: action.lookup,
+  lookup: lookup(state.lookup, action),
 });
 
 export default reducer;
