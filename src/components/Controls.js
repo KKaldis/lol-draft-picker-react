@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { searchChanged } from "../redux/actions";
 import HoverButton from "../components/HoverButton";
 import { getSelections, getTier, getSorting } from "../redux/reducer";
-import { countAllChamps, countScore } from "../scripts/findCounters";
+import { countAllChamps, countScore, persent } from "../scripts/findCounters";
 
 const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
   const enemyChampionsScores = countAllChamps(
@@ -15,6 +15,8 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
   const teamChampionsScores = countAllChamps("team", tier, sorting, selections);
   const enemyScore = countScore("enemy", teamChampionsScores, selections);
   const teamScore = countScore("team", enemyChampionsScores, selections);
+  const enemyPers = ((100 * enemyScore) / (teamScore + enemyScore)).toFixed(1);
+  const teamPers = ((100 * teamScore) / (teamScore + enemyScore)).toFixed(1);
 
   return (
     <div className="contentFix">
@@ -24,12 +26,9 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
             teamScore > enemyScore ? `scoreShadowHigh` : ``
           }`}
         >
-          <div
-            className={`score ${
-              teamScore > enemyScore ? `scoreHigh` : ``
-            }`}
-          >
-            {teamScore}
+          <div className={`score ${teamScore > enemyScore ? `scoreHigh` : ``}`}>
+            <div className="scoreLine">{teamScore} CP</div>{" "}
+            <div>{teamPers} %</div>
           </div>
         </div>
         <div className="buttonWrap">
@@ -112,12 +111,9 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
             enemyScore > teamScore ? `scoreShadowHigh` : ``
           }`}
         >
-          <div
-            className={`score ${
-              enemyScore > teamScore ? `scoreHigh` : ``
-            }`}
-          >
-            {enemyScore}
+          <div className={`score ${enemyScore > teamScore ? `scoreHigh` : ``}`}>
+            <div className="scoreLine">{enemyScore} CP</div>{" "}
+            <div>{enemyPers} %</div>
           </div>
         </div>
       </div>
