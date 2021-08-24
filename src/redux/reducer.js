@@ -24,7 +24,7 @@ const filteredChampions = (state = champions, action, rootState) => {
       if (
         action.destinationDroppable === "champSelect" &&
         action.sourceDroppable !== "champSelect" &&
-        rootState.lookup
+        getLookup(rootState)
           .toLowerCase()
           .includes(action.sourceDraggable.toLowerCase())
       ) {
@@ -51,7 +51,9 @@ const filteredChampions = (state = champions, action, rootState) => {
 };
 
 export const getSelections = (state) => state.selections;
+
 export const getSelection = (state, playerId) => state.selections[playerId];
+
 export const getSelectionIndex = (state, playerId) =>
   state.filteredChampions.indexOf(state.selections[playerId]);
 
@@ -100,13 +102,22 @@ const selections = (state = {}, action) => {
 };
 
 export const getChampions = (state) => state.champions;
+
 export const getAvailableChampions = (state) => {
   return getChampions(state).filter((champ) => {
     return Object.values(getSelections(state)).indexOf(champ) === -1;
   });
 };
 
-export const getPreviewType = (
+export const getSorting = (state) => {
+  return state.previewSorting.sorting;
+};
+
+export const getTier = (state) => {
+  return state.previewSorting.tier;
+};
+
+export const previewSorting = (
   state = { sorting: "Rating", tier: "ALL" },
   action
 ) => {
@@ -146,13 +157,10 @@ export const getPreviewType = (
   }
 };
 
-export const getSorting = (state) => {
-  return state.previewSorting.sorting;
+export const getLookup = (state) => {
+  return state.lookup;
 };
 
-export const getTier = (state) => {
-  return state.previewSorting.tier;
-};
 export const lookup = (state = "", action) => {
   switch (action.type) {
     case SEARCH_CHANGED:
@@ -172,7 +180,7 @@ const reducer = (state = {}, action) => ({
   champions: champions,
   selections: selections(state.selections, action),
   filteredChampions: filteredChampions(state.filteredChampions, action, state),
-  previewSorting: getPreviewType(state.previewSorting, action),
+  previewSorting: previewSorting(state.previewSorting, action),
   lookup: lookup(state.lookup, action),
 });
 

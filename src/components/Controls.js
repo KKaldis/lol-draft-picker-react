@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { searchChanged } from "../redux/actions";
 import HoverButton from "../components/HoverButton";
 import Score from "../components/Score";
-import { getSelections, getTier, getSorting } from "../redux/reducer";
+import { getSelections, getTier, getSorting, getLookup} from "../redux/reducer";
 import { countAllChamps, countScore } from "../scripts/findCounters";
 
 const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
@@ -18,6 +18,9 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
   const teamScore = countScore("team", enemyChampionsScores, selections);
   const enemyPers = ((100 * enemyScore) / (teamScore + enemyScore)).toFixed(1);
   const teamPers = ((100 * teamScore) / (teamScore + enemyScore)).toFixed(1);
+
+  console.log ("enemy counters :", enemyChampionsScores)
+  console.log ("team counters :", teamChampionsScores)
 
   return (
     <div className="contentFix">
@@ -116,7 +119,7 @@ const mapStateToProps = (state) => ({
   selections: getSelections(state),
   sorting: getSorting(state),
   tier: getTier(state),
-  lookup: state.lookup,
+  lookup: getLookup (state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
