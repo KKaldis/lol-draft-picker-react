@@ -1,5 +1,9 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
+import { connect } from "react-redux";
+import { getSelections, getTier, getSorting } from "../redux/reducer";
+import { countAllChamps } from "../scripts/findCounters";
+
 // import ReactTooltip from "react-tooltip";
 
 const jpgNameFix = (string) => {
@@ -21,7 +25,8 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   ...draggableStyle,
 });
 
-const Card = ({ champ, index }) => {
+const Card = ({ champ, index, tier, sorting, selections }) => {
+  const scores = countAllChamps("enemy", tier, sorting, selections);
   return (
     // <div>
     //   <a data-tip = { champ} data-for={'cards'}>
@@ -37,7 +42,13 @@ const Card = ({ champ, index }) => {
           )}
           className={`item ${snapshot.isDragging ? "dragging" : ""}`}
         >
-          <div className="li">
+          <div
+            className={`li ${
+              sorting !== "Alphabetical" && scores[champ] > 1
+                ? "liRating"
+                : ""
+            }`}
+          >
             <div className="champImg">
               <img
                 src={process.env.PUBLIC_URL + "champ/" + jpgNameFix(champ)}
@@ -57,4 +68,12 @@ const Card = ({ champ, index }) => {
   );
 };
 
-export default Card;
+const mapStateToProps = (state) => ({
+  selections: getSelections(state),
+  sorting: getSorting(state),
+  tier: getTier(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Card);
