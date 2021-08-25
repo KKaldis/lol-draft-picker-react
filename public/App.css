@@ -127,11 +127,17 @@
   display: none;
 }
 
-.champImg img {
+.champImg .img {
   border-radius: 15px;
   height: auto;
   width: 100%;
 }
+
+
+.champImg {
+  height: -webkit-fill-available;
+}
+
 
 .filterBar {
   border-radius: 10px;
@@ -404,11 +410,16 @@
   align-content: center;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-column-gap: 15px;
   grid-row-gap: 15px;
   list-style-type: none;
   padding: 15px;
   margin: 0;
+}
+
+#li {
+  height: 140px;
+  width: 90px;
+
 }
 
 .li {
@@ -439,15 +450,17 @@
   align-items: center;
   flex-direction: column;
   align-content: center;
-
+  height: 50px;
 }
 
-.lanesDiv {display: flex;
+.lanesDiv {
+  display: flex;
   flex-direction: row;
   align-content: center;
   justify-content: center;
   align-items: center;
-  flex-wrap: nowrap;}
+
+}
 
 .laneImg {
   width: 20px;
@@ -456,7 +469,7 @@
 
 #myUL li,
 #myUL li a {
-  max-width: 84px;
+  max-width: 90px;
   border-radius: 20px;
   text-decoration: none;
   font-size: 10px;
@@ -478,9 +491,9 @@
 }
 
 .champSpot:hover {
-  border-radius: 20px;
-  width: 90px;
-  height: 120px;
+  border-radius: 22px;
+  width: 100px;
+  height: 140px;
   box-shadow: 0px 0px 10px 5px rgba(174, 156, 108, 0.5);
   transition-timing-function: ease-in-out;
 }
@@ -528,8 +541,8 @@
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
-  width: 90px;
-  height: 120px;
+  width: 100px;
+  height: 140px;
   /* border-radius: 30px; */
   background: radial-gradient(circle,
       rgba(255, 255, 255, 0) 0%,
@@ -548,5 +561,5 @@
   justify-content: center;
   align-items: center;
   width: 90px;
-  height: 120px;
+  height: 140px;
 }

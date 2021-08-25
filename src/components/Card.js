@@ -20,7 +20,7 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   filter: isDragging ? "drop-shadow(0 0 0.25rem #ae9c6c)" : "",
   border: isDragging ? "5px double #ae9c6c" : "",
   cursor: isDragging ? "all-scroll" : "pointer",
-  borderRadius: isDragging ? "25px" : "25px",
+  borderRadius: isDragging ? "25px" : "",
   transition: isDragging ? "1" : "1",
   // styles we need to apply on draggables
   ...draggableStyle,
@@ -36,9 +36,10 @@ const Lanes = (lane) => {
   var singleLane = Object.values(lane);
   console.log(singleLane);
   return (
-    <div className="laneImg">
+    <div>
       <img
-        src={process.env.PUBLIC_URL + "assets/" + singleLane  + ".png"}
+        className="laneImg"
+        src={process.env.PUBLIC_URL + "assets/" + singleLane + ".png"}
         alt={singleLane}
       />
     </div>
@@ -63,13 +64,14 @@ const Card = ({ champ, index, tier, sorting, selections }) => {
             snapshot.isDragging,
             provided.draggableProps.style
           )}
-          className={`item ${snapshot.isDragging ? "dragging" : ""}`}
+          className={` ${snapshot.isDragging ? "dragging" : ""}`}
         >
           <div
             className={`li ${getScore(scores, champ) > 0 ? "liRating" : ""}`}
           >
             <div className="champImg">
               <img
+                className="img"
                 src={
                   process.env.PUBLIC_URL + "champ-small/" + jpgNameFix(champ)
                 }
@@ -79,10 +81,10 @@ const Card = ({ champ, index, tier, sorting, selections }) => {
                 <a> {champ} </a>
 
                 <div className="lanesDiv">
-                {lanes.map((lane) => (
-                  <Lanes lane={lane} />
-                ))}
-</div>
+                  {lanes.map((lane) => (
+                    <Lanes lane={lane} />
+                  ))}
+                </div>
                 <a
                   style={{
                     display:
