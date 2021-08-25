@@ -44,9 +44,7 @@ const Card = ({ champ, index, tier, sorting, selections }) => {
         >
           <div
             className={`li ${
-              sorting !== "Alphabetical" && scores[champ] > 1
-                ? "liRating"
-                : ""
+              sorting !== "Alphabetical" && scores[champ] > 1 ? "liRating" : ""
             }`}
           >
             <div className="champImg">
