@@ -5,17 +5,26 @@ import { getSelections, getTier, getSorting } from "../redux/reducer";
 import { countAllChamps } from "../scripts/findCounters";
 import data from "../app/data.json";
 
-// import ReactTooltip from "react-tooltip";
-
 const jpgNameFix = (string) => {
-  //remove from champion name special characters and spaces to make string with jpg file name
   string = string.replace(/[^A-Z0-9]/gi, "");
-  //make string and path for jpg images
   string = string + ".webp";
   return string;
 };
 
-const getItemStyle = (isDragging, draggableStyle) => ({
+function noEffectOnList(style, snapshot) {
+  if (!snapshot.isDragging) return {};
+  if (!snapshot.isDropAnimating) {
+    return style;
+  }
+
+  return {
+    ...style,
+    // cannot be 0, but make it super tiny
+    transitionDuration: `0.001s`,
+  };
+}
+
+const selectionGlowEffect = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
   filter: isDragging ? "drop-shadow(0 0 0.25rem #ae9c6c)" : "",
   border: isDragging ? "5px double #ae9c6c" : "",
@@ -34,7 +43,7 @@ const getScore = (scores, champion) => {
 
 const Lanes = (lane) => {
   var singleLane = Object.values(lane);
-  console.log(singleLane);
+
   return (
     <div>
       <img
@@ -49,21 +58,17 @@ const Lanes = (lane) => {
 const Card = ({ champ, index, tier, sorting, selections }) => {
   const scores = countAllChamps("enemy", tier, sorting, selections);
   const lanes = Object.keys(data[champ]);
-  // console.log (lanes)
-
   return (
     // <div>
     //   <a data-tip = { champ} data-for={'cards'}>
     <Draggable draggableId={champ} key={champ} index={index}>
-      {(provided, snapshot) => (
+      {({ innerRef, draggableProps, dragHandleProps }, snapshot) => (
         <li
-          ref={provided.innerRef}
-          {...provided.draggableProps}
-          {...provided.dragHandleProps}
-          style={getItemStyle(
-            snapshot.isDragging,
-            provided.draggableProps.style
-          )}
+          ref={innerRef}
+          {...draggableProps}
+          {...dragHandleProps}
+          style={selectionGlowEffect(snapshot.isDragging, draggableProps.style)}
+          // style={noEffectOnList(draggableProps.style, snapshot)}
           className={` ${snapshot.isDragging ? "dragging" : ""}`}
         >
           <div

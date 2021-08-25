@@ -8,12 +8,17 @@ const Champions = ({ filteredChampions }) => {
   return (
     <div className="champs">
       <Droppable droppableId="champSelect" key={"champSelect"}>
-        {(provided) => (
-          <ul id="myUL" ref={provided.innerRef} {...provided.droppableProps}>
+        {({ innerRef, placeholder, droppableProps }) => (
+          <ul id="myUL" ref={innerRef} {...droppableProps}>
             {filteredChampions.map((champ) => (
               <Card champ={champ} index={filteredChampions.indexOf(champ)} />
             ))}
-            {provided.placeholder}
+            <span
+              style={{
+                display: "none",
+              }}
+            ></span>
+            {placeholder}
           </ul>
         )}
       </Droppable>

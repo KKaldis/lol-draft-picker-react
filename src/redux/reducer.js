@@ -43,11 +43,11 @@ export const getFilteredChampions = (state) => {
     //   });
   }
 
-  // const sortedByScore = filtered.map((f) => ({
-  //   name: f,
-  //   score: replaceUndefined(scores[f]),
-  // }));
-  // console.log("SCORES:", sortedByScore);
+  const sortedByScore = filtered.map((f) => ({
+    name: f,
+    score: replaceUndefined(scores[f]),
+  }));
+  console.log("SCORES:", sortedByScore);
 
   return filtered;
 };
