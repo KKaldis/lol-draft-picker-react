@@ -40,7 +40,7 @@ const Card = ({ champ, index }) => {
           <div className="li">
             <div className="champImg">
               <img
-                src={process.env.PUBLIC_URL + "/champ/" + jpgNameFix(champ)}
+                src={process.env.PUBLIC_URL + "champ/" + jpgNameFix(champ)}
                 alt={champ}
               />
               <div className="champTag">
