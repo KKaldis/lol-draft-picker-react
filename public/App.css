@@ -115,7 +115,7 @@
   overflow: scroll;
   /* width: 960px; */
   width: -webkit-fill-available;
-  height: 54vh;
+  height: 53vh;
   -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;
@@ -324,7 +324,7 @@
 
 .banSpot {
   padding: 10px;
-  height: 120px;
+  height: 135px;
   width: 1000px;
   align-items: center;
   border-radius: 10px;
@@ -421,7 +421,7 @@
 
 .liRating {
   border-radius: 20px;
-  border: 5px outset  rgba(174, 156, 108, 0.0);
+  border: 5px outset rgba(174, 156, 108, 0.0);
   text-align: center;
   background-color: #010508;
   box-shadow: 0px 0px 1px 1px rgba(174, 156, 108, 1);
@@ -434,16 +434,29 @@
 }
 
 .champTag {
-  height: 29px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  align-content: center;
+
+}
+
+.lanesDiv {display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;}
+
+.laneImg {
+  width: 20px;
+  height: 20px;
 }
 
 #myUL li,
 #myUL li a {
   max-width: 84px;
-  max-height: 116px;
   border-radius: 20px;
   text-decoration: none;
   font-size: 10px;

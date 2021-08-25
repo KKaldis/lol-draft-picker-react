@@ -3,6 +3,7 @@ import { Draggable } from "react-beautiful-dnd";
 import { connect } from "react-redux";
 import { getSelections, getTier, getSorting } from "../redux/reducer";
 import { countAllChamps } from "../scripts/findCounters";
+import data from "../app/data.json";
 
 // import ReactTooltip from "react-tooltip";
 
@@ -25,8 +26,30 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   ...draggableStyle,
 });
 
+const getScore = (scores, champion) => {
+  const score = scores[champion];
+  if (score == null) return 0;
+  else return score;
+};
+
+const Lanes = (lane) => {
+  var singleLane = Object.values(lane);
+  console.log(singleLane);
+  return (
+    <div className="laneImg">
+      <img
+        src={process.env.PUBLIC_URL + "assets/" + singleLane  + ".png"}
+        alt={singleLane}
+      />
+    </div>
+  );
+};
+
 const Card = ({ champ, index, tier, sorting, selections }) => {
   const scores = countAllChamps("enemy", tier, sorting, selections);
+  const lanes = Object.keys(data[champ]);
+  // console.log (lanes)
+
   return (
     // <div>
     //   <a data-tip = { champ} data-for={'cards'}>
@@ -43,17 +66,45 @@ const Card = ({ champ, index, tier, sorting, selections }) => {
           className={`item ${snapshot.isDragging ? "dragging" : ""}`}
         >
           <div
-            className={`li ${
-              sorting !== "Alphabetical" && scores[champ] > 1 ? "liRating" : ""
-            }`}
+            className={`li ${getScore(scores, champ) > 0 ? "liRating" : ""}`}
           >
             <div className="champImg">
               <img
-                src={process.env.PUBLIC_URL + "champ-small/" + jpgNameFix(champ)}
+                src={
+                  process.env.PUBLIC_URL + "champ-small/" + jpgNameFix(champ)
+                }
                 alt={champ}
               />
               <div className="champTag">
                 <a> {champ} </a>
+
+                <div className="lanesDiv">
+                {lanes.map((lane) => (
+                  <Lanes lane={lane} />
+                ))}
+</div>
+                <a
+                  style={{
+                    display:
+                      sorting === "Rating" && getScore(scores, champ) > 0
+                        ? "block"
+                        : "none",
+                  }}
+                >
+                  {getScore(scores, champ)}
+                  {" CP"}
+                </a>
+                <a
+                  style={{
+                    display:
+                      sorting === "Popular" && getScore(scores, champ) > 0
+                        ? "block"
+                        : "none",
+                  }}
+                >
+                  {getScore(scores, champ)}
+                  {" PP"}
+                </a>
               </div>
             </div>
           </div>
