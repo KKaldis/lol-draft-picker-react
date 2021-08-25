@@ -20,7 +20,7 @@ const Score = ({ returnScore, compScore, returnPers, sorting }) => {
             {" PP"}
           </div>
         </div>
-        <div style={{ display: sorting === "Alphabetical" ? "none" : "block" }}>
+        <div>
           {returnPers} {" %"}
         </div>
       </div>

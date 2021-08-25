@@ -37,14 +37,6 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
         />
         <div className="buttonWrap">
           <HoverButton
-            dataTip={"Sort Alphabetical"}
-            imgFile={"alphab"}
-            hoverFamily={"sorting"}
-            altText={"Alphabetical"}
-            buttonType={sorting}
-          />
-
-          <HoverButton
             dataTip={"Sort by Rating"}
             imgFile={"counter"}
             hoverFamily={"sorting"}
@@ -53,7 +45,7 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
           />
 
           <HoverButton
-            dataTip={"Sort By Popularity"}
+            dataTip={"Sort by Popularity"}
             imgFile={"popular"}
             hoverFamily={"sorting"}
             altText={"Popular"}
@@ -65,6 +57,14 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
             imgFile={"reset"}
             hoverFamily={"sorting"}
             altText={"Reset"}
+            buttonType={sorting}
+          />
+
+          <HoverButton
+            dataTip={"How to Use"}
+            imgFile={"help"}
+            hoverFamily={"sorting"}
+            altText={"Help"}
             buttonType={sorting}
           />
         </div>

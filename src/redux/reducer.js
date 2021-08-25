@@ -32,15 +32,15 @@ export const getFilteredChampions = (state) => {
         return 1;
       }
     });
-  } else if (sorting === "Alphabetical") {
-    filtered.sort((a, b) => {
-      if (a > b) {
-        // console.log(replaceUndefined(scores[a], replaceUndefined(scores[b])))
-        return 1;
-      } else {
-        return -1;
-      }
-    });
+    // } else if (sorting === "Alphabetical") {
+    //   filtered.sort((a, b) => {
+    //     if (a > b) {
+    //       // console.log(replaceUndefined(scores[a], replaceUndefined(scores[b])))
+    //       return 1;
+    //     } else {
+    //       return -1;
+    //     }
+    //   });
   }
 
   // const sortedByScore = filtered.map((f) => ({
@@ -130,7 +130,6 @@ const previewSorting = (state = { sorting: "Rating", tier: "ALL" }, action) => {
           tier: action.viewSelection,
         };
       } else if (
-        action.viewSelection === "Alphabetical" ||
         action.viewSelection === "Popular" ||
         action.viewSelection === "Rating"
       ) {
