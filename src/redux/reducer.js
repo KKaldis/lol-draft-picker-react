@@ -8,6 +8,7 @@ export const getFilteredChampions = (state) => {
   var sorting = getSorting(state);
   var selections = getSelections(state);
   var selectionNames = [];
+
   for (const key in selections) {
     selectionNames.push(selections[key]);
   }
@@ -42,12 +43,11 @@ export const getFilteredChampions = (state) => {
     });
   }
 
-  const sortedByScore = filtered.map((f) => ({
-    name: f,
-    score: replaceUndefined(scores[f]),
-  }));
-  console.log("SCORES:");
-  console.log(sortedByScore);
+  // const sortedByScore = filtered.map((f) => ({
+  //   name: f,
+  //   score: replaceUndefined(scores[f]),
+  // }));
+  // console.log("SCORES:", sortedByScore);
 
   return filtered;
 };
