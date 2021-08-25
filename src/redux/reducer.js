@@ -1,23 +1,16 @@
 import { champions } from "../app/heroes";
-import Score from "../components/Score";
 import { countAllChamps } from "../scripts/findCounters";
 import { SEARCH_CHANGED, DRAG_END, CHANGE_PREVIEW } from "./actions";
-
-const agetFilteredChampions = (state) => {
-  return state.filteredChampions;
-};
 
 export const getFilteredChampions = (state) => {
   var lookup = getLookup(state);
   var tier = getTier(state);
   var sorting = getSorting(state);
-
   var selections = getSelections(state);
   var selectionNames = [];
   for (const key in selections) {
     selectionNames.push(selections[key]);
   }
-  1;
 
   var filtered = champions.filter((c) => !selectionNames.includes(c));
 
