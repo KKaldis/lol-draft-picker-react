@@ -98,6 +98,23 @@ for a in champLinks.find_all('a', href=True):
             for roundDiv in pickTypeDiv.find_all("a", {"class": "radial-progress"}):
                 counterChamp = roundDiv.find("img")['alt'][len("Counter Stats for "):].replace(
                     "-", " ").replace('\n', '')  # get counter champ name
+                if (counterChamp == "Chogath"):
+                    counterChamp = "Cho'Gath"
+                if (counterChamp == "Kaisa"):
+                    counterChamp = "Kai'Sa"
+                elif (counterChamp == "Khazix"):
+                    counterChamp = "Kha'Zix"
+                elif (counterChamp == "Kogmaw"):
+                    counterChamp = "Kog'Maw"
+                elif (counterChamp == "Reksai"):
+                    counterChamp = "Rek'Sai"
+                elif (counterChamp == "Velkoz"):
+                    counterChamp = "Vel'Koz"
+                elif (counterChamp == "Dr mundo"):
+                    counterChamp = "Dr. Mundo"
+                elif (counterChamp == "Nunu willump"):
+                    counterChamp = "Nunu & Willump"
+
                 counterValue = roundDiv.find("span").text.replace(
                     '\n', '')  # get counter champ value
                 counterValue = morphValues(counterValue)
@@ -108,6 +125,24 @@ for a in champLinks.find_all('a', href=True):
             for squareDiv in pickTypeDiv.find_all("div", {"class": "stats-bar"}):
                 counterChamp = squareDiv.find("img")['alt'][:-len(champName)-len(
                     " countering ")].replace("-", " ").replace('\n', '')  # get counter champ name
+
+                if (counterChamp == "Chogath"):
+                    counterChamp = "Cho'Gath"
+                if (counterChamp == "Kaisa"):
+                    counterChamp = "Kai'Sa"
+                elif (counterChamp == "Khazix"):
+                    counterChamp = "Kha'Zix"
+                elif (counterChamp == "Kogmaw"):
+                    counterChamp = "Kog'Maw"
+                elif (counterChamp == "Reksai"):
+                    counterChamp = "Rek'Sai"
+                elif (counterChamp == "Velkoz"):
+                    counterChamp = "Vel'Koz"
+                elif (counterChamp == "Dr mundo"):
+                    counterChamp = "Dr. Mundo"
+                elif (counterChamp == "Nunu willump"):
+                    counterChamp = "Nunu & Willump"
+
                 counterValue = squareDiv.find("span").text.replace(
                     '\n', '')  # get counter champ value
                 counterValue = morphValues(counterValue)
