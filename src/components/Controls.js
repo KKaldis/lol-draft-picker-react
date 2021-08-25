@@ -24,8 +24,8 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
   const enemyPers = ((100 * enemyScore) / (teamScore + enemyScore)).toFixed(1);
   const teamPers = ((100 * teamScore) / (teamScore + enemyScore)).toFixed(1);
 
-  console.log("enemy counters :", enemyChampionsScores);
-  console.log("team counters :", teamChampionsScores);
+  // console.log("enemy counters :", enemyChampionsScores);
+  // console.log("team counters :", teamChampionsScores);
 
   return (
     <div className="contentFix">
