@@ -24,7 +24,7 @@ const HoverButton = ({
             id={altText}
           >
             <img
-              src={"assets/" + imgFile + "30.png"}
+              src={"assets/" + imgFile + "30.webp"}
               alt={altText}
               onClick={handleChange}
               id={altText}

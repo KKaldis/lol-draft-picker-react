@@ -10,7 +10,7 @@ const jpgNameFix = (string) => {
   //remove from champion name special characters and spaces to make string with jpg file name
   string = string.replace(/[^A-Z0-9]/gi, "");
   //make string and path for jpg images
-  string = string + ".jpg";
+  string = string + ".webp";
   return string;
 };
 
@@ -49,7 +49,7 @@ const Card = ({ champ, index, tier, sorting, selections }) => {
           >
             <div className="champImg">
               <img
-                src={process.env.PUBLIC_URL + "champ/" + jpgNameFix(champ)}
+                src={process.env.PUBLIC_URL + "champ-small/" + jpgNameFix(champ)}
                 alt={champ}
               />
               <div className="champTag">
