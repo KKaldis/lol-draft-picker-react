@@ -105,7 +105,6 @@
 }
 
 .dragging {
-
   filter: drop-shadow(0 0 0.25rem #ae9c6c);
   border: 5px double #ae9c6c;
   cursor: all-scroll;

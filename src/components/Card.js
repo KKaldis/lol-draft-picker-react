@@ -56,7 +56,7 @@ const Card = ({ champ, index, tier, sorting, selections }) => {
           ref={innerRef}
           {...draggableProps}
           {...dragHandleProps}
-          style={noEffectOnList(snapshot, draggableProps.style, )}
+          style={noEffectOnList(snapshot, draggableProps.style)}
           className={` ${snapshot.isDragging ? "dragging" : ""}`}
         >
           <div
