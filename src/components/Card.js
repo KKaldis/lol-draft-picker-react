@@ -11,7 +11,7 @@ const jpgNameFix = (string) => {
   return string;
 };
 
-function noEffectOnList(style, snapshot) {
+const noEffectOnList = (snapshot, style) => {
   if (!snapshot.isDragging) return {};
   if (!snapshot.isDropAnimating) {
     return style;
@@ -22,18 +22,7 @@ function noEffectOnList(style, snapshot) {
     // cannot be 0, but make it super tiny
     transitionDuration: `0.001s`,
   };
-}
-
-const selectionGlowEffect = (isDragging, draggableStyle) => ({
-  // some basic styles to make the items look a bit nicer
-  filter: isDragging ? "drop-shadow(0 0 0.25rem #ae9c6c)" : "",
-  border: isDragging ? "5px double #ae9c6c" : "",
-  cursor: isDragging ? "all-scroll" : "pointer",
-  borderRadius: isDragging ? "25px" : "",
-  transition: isDragging ? "1" : "1",
-  // styles we need to apply on draggables
-  ...draggableStyle,
-});
+};
 
 const getScore = (scores, champion) => {
   const score = scores[champion];
@@ -67,8 +56,7 @@ const Card = ({ champ, index, tier, sorting, selections }) => {
           ref={innerRef}
           {...draggableProps}
           {...dragHandleProps}
-          style={selectionGlowEffect(snapshot.isDragging, draggableProps.style)}
-          // style={noEffectOnList(draggableProps.style, snapshot)}
+          style={noEffectOnList(snapshot, draggableProps.style, )}
           className={` ${snapshot.isDragging ? "dragging" : ""}`}
         >
           <div
