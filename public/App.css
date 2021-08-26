@@ -1,7 +1,6 @@
 .body {
   background-size: cover;
   height: 100vh;
-  min-width: 1880px;
   width: 100vw;
   margin: 0px;
   display: flex;
@@ -127,7 +126,7 @@
   overflow: scroll;
   /* width: 960px; */
   width: -webkit-fill-available;
-  height: 53vh;
+  height: 50vh;
   -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;
@@ -405,9 +404,26 @@
   vertical-align: middle;
 }
 
-/* .addLeader,
 .addSky {
-} */
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  border: 3px groove #ae9c6c;
+  margin: 20px;
+  box-shadow: 0px 0px 10px black;
+}
+
+.addLeader {
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  border: 3px groove #ae9c6c;
+  box-shadow: 0px 0px 10px black;
+}
 
 .selections {
 
@@ -519,8 +535,8 @@
 }
 
 .laneImg {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
 }
 
 #myUL li,

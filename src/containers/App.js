@@ -15,14 +15,14 @@ const App = ({ onDragEnd }) => {
         <div className="main">
           <Skyscraper />
           <div className="app">
-            <TeamPicks />
+            {/* <TeamPicks /> */}
             <div className="mid">
               <Controls />
               <Champions />
-              {/* <Picks/> */}
-              <BanPicks />
+              <Picks/>
+              {/* <BanPicks /> */}
             </div>
-            <EnemyPicks />
+            {/* <EnemyPicks /> */}
           </div>
           <Skyscraper />
         </div>

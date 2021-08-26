@@ -26,11 +26,7 @@ export const countEnemies = (state) => {
       }
     });
 
-    const highestSort = Object.fromEntries(
-        Object.entries(oldRating).sort(([, a], [, b]) => b - a)
-    );
-
-    return highestSort;
+    return oldRating;
   }
 };
 
@@ -54,12 +50,7 @@ export const countAllChamps = (type, tier, sorting, selections) => {
         });
       }
     });
-
-    const highestSort = Object.fromEntries(
-      Object.entries(oldRating).sort(([, a], [, b]) => b - a)
-    );
-
-    return highestSort;
+    return oldRating;
   }
 };
 
