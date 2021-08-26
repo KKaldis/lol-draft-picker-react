@@ -17,8 +17,9 @@ const Champions = ({ filteredChampions }) => {
               style={{
                 display: "none",
               }}
-            ></span>
+            >
             {placeholder}
+            </span>
           </ul>
         )}
       </Droppable>
