@@ -1,8 +1,8 @@
-import React from "react";
+import React,{memo} from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { connect } from "react-redux";
 import { getSelections, getTier, getSorting } from "../redux/reducer";
-import { countAllChamps } from "../scripts/findCounters";
+import {countAllChamps, countEnemies} from "../scripts/findCounters";
 import data from "../app/data.json";
 
 const jpgNameFix = (string) => {
@@ -44,8 +44,8 @@ const Lanes = (lane) => {
   );
 };
 
-const Card = ({ champ, index, tier, sorting, selections }) => {
-  const scores = countAllChamps("enemy", tier, sorting, selections);
+const Card = ({ champ, index, tier, sorting, selections,scores }) => {
+  // const scores = countAllChamps("enemy", tier, sorting, selections);
   const lanes = Object.keys(data[champ]);
   return (
     // <div>
@@ -113,9 +113,8 @@ const Card = ({ champ, index, tier, sorting, selections }) => {
 };
 
 const mapStateToProps = (state) => ({
-  selections: getSelections(state),
   sorting: getSorting(state),
-  tier: getTier(state),
+  scores: countEnemies(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({});
