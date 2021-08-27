@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { connect } from "react-redux";
 import { getSorting, getTier, getCardState } from "../redux/reducer";
@@ -11,18 +11,12 @@ import styled from "styled-components";
 import SimpleButton from "./SimpleButton";
 import { cardClicked } from "../redux/actions";
 
-export const Card = ({ champ, index, scores, handleChange }) => {
+export const Card = ({ champ, index, scores, handleChange, card }) => {
   const lanes = Object.keys(data[champ]);
-
-  const [state, setState] = useState("");
-  const toggleAccordion = () => {
-    setState(state === "" ? "active" : "");
-  };
-
   return (
     <Draggable draggableId={champ} key={champ} index={index}>
       {({ innerRef, draggableProps, dragHandleProps }, snapshot) => (
-        <div className={`${state}`} onClick={handleChange}>
+        <div className={`${card[champ]}`} onClick={handleChange}>
           <li
             ref={innerRef}
             {...draggableProps}
@@ -36,7 +30,7 @@ export const Card = ({ champ, index, scores, handleChange }) => {
               }`}
             >
               {" "}
-              <Stats className={`${state}`}>
+              <Stats className={`${card[champ]}`}>
                 <div className="champImg">
                   <img
                     className="img"
@@ -49,7 +43,10 @@ export const Card = ({ champ, index, scores, handleChange }) => {
                   />
 
                   <div className="champTag">
-                    <a id={champ}> {champ} </a>
+                    <a id={champ}>
+                      {" "}
+                      {champ} {card[champ]}{" "}
+                    </a>
                     <div className="lanesDiv">
                       {lanes.map((lane) => (
                         <CardLanes lane={lane} />
@@ -59,7 +56,7 @@ export const Card = ({ champ, index, scores, handleChange }) => {
                   </div>
                 </div>
               </Stats>
-              <Buttons className={`${state}`}>
+              <Buttons className={`${card[champ]}`}>
                 <div className="cardButtons">
                   <SimpleButton
                     dataTip={"Sort by Rating"}
@@ -106,7 +103,7 @@ const mapStateToProps = (state) => ({
   sorting: getSorting(state),
   scores: countEnemies(state),
   tier: getTier(state),
-  cards: getCardState(state),
+  card: getCardState(state),
 });
 
 const mapDispatchToProps = (dispatch, { champ }) => ({
