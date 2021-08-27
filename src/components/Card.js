@@ -14,15 +14,15 @@ import { cardClicked } from "../redux/actions";
 export const Card = ({ champ, index, scores, handleChange }) => {
   const lanes = Object.keys(data[champ]);
 
-  const [state, setState] = useState ("");
+  const [state, setState] = useState("");
   const toggleAccordion = () => {
     setState(state === "" ? "active" : "");
   };
 
   return (
-    <Draggable draggableId={champ} key={champ} index={index} >
+    <Draggable draggableId={champ} key={champ} index={index}>
       {({ innerRef, draggableProps, dragHandleProps }, snapshot) => (
-        <div className={`${state}`}  id={champ} onClick={handleChange} >
+        <div className={`${state}`} onClick={handleChange}>
           <li
             ref={innerRef}
             {...draggableProps}
@@ -49,7 +49,7 @@ export const Card = ({ champ, index, scores, handleChange }) => {
                   />
 
                   <div className="champTag">
-                    <a> {champ} </a>
+                    <a id={champ}> {champ} </a>
                     <div className="lanesDiv">
                       {lanes.map((lane) => (
                         <CardLanes lane={lane} />
@@ -109,8 +109,8 @@ const mapStateToProps = (state) => ({
   cards: getCardState(state),
 });
 
-const mapDispatchToProps = (dispatch, {champ}) => ({
-  handleChange: () => dispatch(cardClicked(champ)),
+const mapDispatchToProps = (dispatch, { champ }) => ({
+  handleChange: (e) => dispatch(cardClicked(champ)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Card);

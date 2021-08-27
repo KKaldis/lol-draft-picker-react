@@ -181,33 +181,21 @@ export const lookup = (state = "", action) => {
 const cards = (state = {}, action) => {
   switch (action.type) {
     case CHANGE_CARD:
-      if (
-        action.cardHero !== state.cardHero
-      ) {
+      if (state[action.cardHero] !== "active") {
         return {
-          ...state,
           [action.cardHero]: "active",
         };
-      } 
-      
-      else if (action.cardHero === state.cardHero){
+      } else if (state[action.cardHero] === "active") {
         return {
-          ...state,
-          [action.cardHero]: "aksan o alvanos",
+          [action.cardHero]: "",
         };
-      
-
       }
+      break;
       
-      // else {
-      //   return { ...state };
-      // }
-    break;
-
     default:
       return state;
+  }
 };
-}
 
 export const getCardState = (state) => {
   return state.cards;
