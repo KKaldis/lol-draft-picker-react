@@ -34,7 +34,7 @@ export const Card = ({ champ, index, scores, tier }) => {
               }`}
             >
               {" "}
-              <Header className={`${state}`}>
+              <Stats className={`${state}`}>
                 <div className="champImg">
                   <img
                     className="img"
@@ -56,8 +56,8 @@ export const Card = ({ champ, index, scores, tier }) => {
                     <CardStats champ={champ} />
                   </div>
                 </div>
-              </Header>
-              <AccordionBodyStyle className={`${state}`}>
+              </Stats>
+              <Buttons className={`${state}`}>
                 <div className="cardButtons">
                   <SimpleButton
                     dataTip={"Sort by Rating"}
@@ -73,7 +73,7 @@ export const Card = ({ champ, index, scores, tier }) => {
                     buttonType={"selectEnemy"}
                   />
                 </div>
-              </AccordionBodyStyle>
+              </Buttons>
             </div>
           </li>
         </div>
@@ -82,7 +82,7 @@ export const Card = ({ champ, index, scores, tier }) => {
   );
 };
 
-const Header = styled.div`
+const Stats = styled.div`
   margin: 0 !important;
 
   &.active {
@@ -90,7 +90,7 @@ const Header = styled.div`
   }
 `;
 
-const AccordionBodyStyle = styled.div`
+const Buttons = styled.div`
   overflow: hidden;
   width: 100%;
   max-height: 0;
