@@ -153,7 +153,6 @@
 .filterBar {
   border-radius: 10px;
   border: 2px groove #ae9c6c;
-  margin: 10px 0px 0px 0px;
   box-shadow: 0px 5px 10px black;
   display: flex;
   width: -webkit-fill-available;
@@ -355,38 +354,32 @@
 
 }
 
-.enemyH {
+.enemyH, .teamH {
   width: -webkit-fill-available;
   padding: 10px;
-  height: 135px;
+  height: 155px;
   align-items: center;
   border-radius: 10px;
+  background-color: #023838;
+  border: 4px groove #ae9c6c;
+  box-shadow: 0px 5px 10px black;
+
+}
+
+.enemyH{
   background: radial-gradient(circle,
       rgba(255, 255, 255, 0) 0%,
       rgba(0, 0, 0, 1) 100%),
     url("assets/texture3.webp");
-  background-color: #023838;
-  border: 4px groove #ae9c6c;
-  margin: 0px 0px 12px;
-  box-shadow: 0px 5px 10px black;
-
-
 }
 
 .teamH {
-  width: -webkit-fill-available;
-  padding: 10px;
-  height: 135px;
-  align-items: center;
-  border-radius: 10px;
+
   background: radial-gradient(circle,
       rgba(255, 255, 255, 0) 0%,
       rgba(0, 0, 0, 1) 100%),
     url("assets/texture2.webp");
-  background-color: #023838;
-  border: 4px groove #ae9c6c;
-  margin: 0px 0px 12px;
-  box-shadow: 0px 5px 10px black;
+
 }
 
 
