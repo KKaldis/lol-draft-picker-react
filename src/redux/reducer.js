@@ -181,21 +181,28 @@ export const lookup = (state = "", action) => {
 const cards = (state = {}, action) => {
   switch (action.type) {
     case CHANGE_CARD:
-      // if (
-      //   action.viewSelection === "ALL" ||
-      //   action.viewSelection === "DIAMOND" ||
-      //   action.viewSelection === "MASTER" ||
-      //   action.viewSelection === "PLATINUM"
-      // ) {
+      if (
+        action.cardHero !== state.cardHero
+      ) {
         return {
           ...state,
           [action.cardHero]: "active",
         };
-      // } 
+      } 
+      
+      else if (action.cardHero === state.cardHero){
+        return {
+          ...state,
+          [action.cardHero]: "aksan o alvanos",
+        };
+      
+
+      }
       
       // else {
       //   return { ...state };
       // }
+    break;
 
     default:
       return state;
