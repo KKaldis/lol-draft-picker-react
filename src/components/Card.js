@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { connect } from "react-redux";
-import { getSorting, getTier } from "../redux/reducer";
+import { getSorting, getTier, getCardState } from "../redux/reducer";
 import { countEnemies, getScoreNullCheck } from "../scripts/findCounters";
 import data from "../app/data.json";
 import CardLanes from "./CardLanes";
@@ -9,18 +9,20 @@ import CardStats from "./CardStats";
 import { noEffectOnList, jpgNameFix } from "./CardXtras";
 import styled from "styled-components";
 import SimpleButton from "./SimpleButton";
+import { cardClicked } from "../redux/actions";
 
-export const Card = ({ champ, index, scores, tier }) => {
+export const Card = ({ champ, index, scores, handleChange }) => {
   const lanes = Object.keys(data[champ]);
-  const [state, setState] = useState("");
+
+  const [state, setState] = useState ("");
   const toggleAccordion = () => {
     setState(state === "" ? "active" : "");
   };
 
   return (
-    <Draggable draggableId={champ} key={champ} index={index}>
+    <Draggable draggableId={champ} key={champ} index={index} >
       {({ innerRef, draggableProps, dragHandleProps }, snapshot) => (
-        <div className={`${state}`} onClick={toggleAccordion}>
+        <div className={`${state}`}  id={champ} onClick={handleChange} >
           <li
             ref={innerRef}
             {...draggableProps}
@@ -104,8 +106,11 @@ const mapStateToProps = (state) => ({
   sorting: getSorting(state),
   scores: countEnemies(state),
   tier: getTier(state),
+  cards: getCardState(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch, {champ}) => ({
+  handleChange: () => dispatch(cardClicked(champ)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Card);

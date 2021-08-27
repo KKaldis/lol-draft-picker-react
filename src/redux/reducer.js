@@ -1,6 +1,11 @@
 import { champions } from "../app/heroes";
 import { countAllChamps } from "../scripts/findCounters";
-import { SEARCH_CHANGED, DRAG_END, CHANGE_PREVIEW } from "./actions";
+import {
+  SEARCH_CHANGED,
+  DRAG_END,
+  CHANGE_PREVIEW,
+  CHANGE_CARD,
+} from "./actions";
 
 export const getFilteredChampions = (state) => {
   var lookup = getLookup(state);
@@ -168,11 +173,45 @@ export const lookup = (state = "", action) => {
   }
 };
 
+// const [state, setState] = useState ("");
+// const toggleAccordion = () => {
+//   setState(state === "" ? "active" : "");
+// };
+
+const cards = (state = {}, action) => {
+  switch (action.type) {
+    case CHANGE_CARD:
+      // if (
+      //   action.viewSelection === "ALL" ||
+      //   action.viewSelection === "DIAMOND" ||
+      //   action.viewSelection === "MASTER" ||
+      //   action.viewSelection === "PLATINUM"
+      // ) {
+        return {
+          ...state,
+          [action.cardHero]: "active",
+        };
+      // } 
+      
+      // else {
+      //   return { ...state };
+      // }
+
+    default:
+      return state;
+};
+}
+
+export const getCardState = (state) => {
+  return state.cards;
+};
+
 const reducer = (state = {}, action) => ({
   champions: champions,
   selections: selections(state.selections, action),
   previewSorting: previewSorting(state.previewSorting, action),
   lookup: lookup(state.lookup, action),
+  cards: cards(state.cards, action),
 });
 
 export default reducer;

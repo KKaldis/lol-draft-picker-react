@@ -1,15 +1,21 @@
 export const SEARCH_CHANGED = "SEARCH_CHANGED";
 export const DRAG_END = "DRAG_END";
 export const CHANGE_PREVIEW = "CHANGE_PREVIEW";
+export const CHANGE_CARD = "CHANGE_CARD";
 
 export const searchChanged = (lookup) => ({
   type: SEARCH_CHANGED,
-  lookup, // lookup: lookup / eqivalent code
+  lookup,
 });
 
 export const previewStyle = (viewSelection) => ({
   type: CHANGE_PREVIEW,
   viewSelection,
+});
+
+export const cardClicked = (cardHero) => ({
+  type: CHANGE_CARD,
+  cardHero,
 });
 
 export const dragNdrop = (
@@ -18,7 +24,7 @@ export const dragNdrop = (
   destinationDroppable
 ) => ({
   type: DRAG_END,
-  sourceDraggable, // lookup: lookup / eqivalent code
+  sourceDraggable,
   sourceDroppable,
   destinationDroppable,
 });
