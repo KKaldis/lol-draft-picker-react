@@ -2,9 +2,10 @@ import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { connect } from "react-redux";
 import { getSorting } from "../redux/reducer";
-import { countEnemies, getScoreNullCheck} from "../scripts/findCounters";
+import { countEnemies, getScoreNullCheck } from "../scripts/findCounters";
 import data from "../app/data.json";
-import CardLanes from "./CardLanes"
+import CardLanes from "./CardLanes";
+import CardStats from "./CardStats";
 
 const jpgNameFix = (string) => {
   string = string.replace(/[^A-Z0-9]/gi, "");
@@ -25,9 +26,7 @@ const noEffectOnList = (snapshot, style) => {
   };
 };
 
-
-
-const Card = ({ champ, index, sorting ,scores }) => {
+const Card = ({ champ, index, sorting, scores }) => {
   // const scores = countAllChamps("enemy", tier, sorting, selections);
   const lanes = Object.keys(data[champ]);
   return (
@@ -43,7 +42,9 @@ const Card = ({ champ, index, sorting ,scores }) => {
           className={` ${snapshot.isDragging ? "dragging" : ""}`}
         >
           <div
-            className={`li ${getScoreNullCheck(scores, champ) > 0 ? "liRating" : ""}`}
+            className={`li ${
+              getScoreNullCheck(scores, champ) > 0 ? "liRating" : ""
+            }`}
           >
             <div className="champImg">
               <img
@@ -61,28 +62,7 @@ const Card = ({ champ, index, sorting ,scores }) => {
                     <CardLanes lane={lane} />
                   ))}
                 </div>
-                <a
-                  style={{
-                    display:
-                      sorting === "Rating" && getScoreNullCheck(scores, champ) > 0
-                        ? "block"
-                        : "none",
-                  }}
-                >
-                  {getScoreNullCheck(scores, champ)}
-                  {" CP"}
-                </a>
-                <a
-                  style={{
-                    display:
-                      sorting === "Popular" && getScoreNullCheck(scores, champ) > 0
-                        ? "block"
-                        : "none",
-                  }}
-                >
-                  {getScoreNullCheck(scores, champ)}
-                  {" PP"}
-                </a>
+                <CardStats champ={champ} />
               </div>
             </div>
           </div>
@@ -97,7 +77,7 @@ const Card = ({ champ, index, sorting ,scores }) => {
 
 const mapStateToProps = (state) => ({
   sorting: getSorting(state),
-  scores: countEnemies(state)
+  scores: countEnemies(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({});
