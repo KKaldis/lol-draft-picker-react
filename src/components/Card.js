@@ -1,9 +1,10 @@
-import React,{memo} from "react";
+import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { connect } from "react-redux";
-import { getSelections, getTier, getSorting } from "../redux/reducer";
-import {countAllChamps, countEnemies} from "../scripts/findCounters";
+import { getSorting } from "../redux/reducer";
+import { countEnemies, getScoreNullCheck} from "../scripts/findCounters";
 import data from "../app/data.json";
+import CardLanes from "./CardLanes"
 
 const jpgNameFix = (string) => {
   string = string.replace(/[^A-Z0-9]/gi, "");
@@ -24,27 +25,9 @@ const noEffectOnList = (snapshot, style) => {
   };
 };
 
-const getScore = (scores, champion) => {
-  const score = scores[champion];
-  if (score == null) return 0;
-  else return score;
-};
 
-const Lanes = (lane) => {
-  var singleLane = Object.values(lane);
 
-  return (
-    <div>
-      <img
-        className="laneImg"
-        src={process.env.PUBLIC_URL + "assets/" + singleLane + ".png"}
-        alt={singleLane}
-      />
-    </div>
-  );
-};
-
-const Card = ({ champ, index, tier, sorting, selections,scores }) => {
+const Card = ({ champ, index, sorting ,scores }) => {
   // const scores = countAllChamps("enemy", tier, sorting, selections);
   const lanes = Object.keys(data[champ]);
   return (
@@ -60,7 +43,7 @@ const Card = ({ champ, index, tier, sorting, selections,scores }) => {
           className={` ${snapshot.isDragging ? "dragging" : ""}`}
         >
           <div
-            className={`li ${getScore(scores, champ) > 0 ? "liRating" : ""}`}
+            className={`li ${getScoreNullCheck(scores, champ) > 0 ? "liRating" : ""}`}
           >
             <div className="champImg">
               <img
@@ -75,29 +58,29 @@ const Card = ({ champ, index, tier, sorting, selections,scores }) => {
 
                 <div className="lanesDiv">
                   {lanes.map((lane) => (
-                    <Lanes lane={lane} />
+                    <CardLanes lane={lane} />
                   ))}
                 </div>
                 <a
                   style={{
                     display:
-                      sorting === "Rating" && getScore(scores, champ) > 0
+                      sorting === "Rating" && getScoreNullCheck(scores, champ) > 0
                         ? "block"
                         : "none",
                   }}
                 >
-                  {getScore(scores, champ)}
+                  {getScoreNullCheck(scores, champ)}
                   {" CP"}
                 </a>
                 <a
                   style={{
                     display:
-                      sorting === "Popular" && getScore(scores, champ) > 0
+                      sorting === "Popular" && getScoreNullCheck(scores, champ) > 0
                         ? "block"
                         : "none",
                   }}
                 >
-                  {getScore(scores, champ)}
+                  {getScoreNullCheck(scores, champ)}
                   {" PP"}
                 </a>
               </div>

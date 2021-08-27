@@ -72,3 +72,12 @@ export const countScore = (type, championScore, selections) => {
     return score;
   }
 };
+
+
+export const getScoreNullCheck = (scores, champion) => {
+  const score = scores[champion];
+  if (score == null) return 0;
+  else return score;
+};
+
+
