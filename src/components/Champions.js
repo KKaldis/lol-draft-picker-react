@@ -18,7 +18,7 @@ const Champions = ({ filteredChampions }) => {
                 display: "none",
               }}
             >
-            {placeholder}
+              {placeholder}
             </span>
           </ul>
         )}

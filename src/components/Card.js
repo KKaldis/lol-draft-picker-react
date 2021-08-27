@@ -1,58 +1,109 @@
-import React from "react";
+import React, { useState } from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { connect } from "react-redux";
-import { getSorting } from "../redux/reducer";
+import { getSorting, getTier } from "../redux/reducer";
 import { countEnemies, getScoreNullCheck } from "../scripts/findCounters";
 import data from "../app/data.json";
 import CardLanes from "./CardLanes";
 import CardStats from "./CardStats";
 import { noEffectOnList, jpgNameFix } from "./CardXtras";
+import styled from "styled-components";
+import SimpleButton from "./SimpleButton";
 
-const Card = ({ champ, index, scores }) => {
+export const Card = ({ champ, index, scores, tier }) => {
   const lanes = Object.keys(data[champ]);
+  const [state, setState] = useState("");
+  const toggleAccordion = () => {
+    setState(state === "" ? "active" : "");
+  };
+
   return (
     <Draggable draggableId={champ} key={champ} index={index}>
       {({ innerRef, draggableProps, dragHandleProps }, snapshot) => (
-        <li
-          ref={innerRef}
-          {...draggableProps}
-          {...dragHandleProps}
-          style={noEffectOnList(snapshot, draggableProps.style)}
-          className={` ${snapshot.isDragging ? "dragging" : ""}`}
-        >
-          <div
-            className={`li ${
-              getScoreNullCheck(scores, champ) > 0 ? "liRating" : ""
-            }`}
+        <div className={`${state}`} onClick={toggleAccordion}>
+          <li
+            ref={innerRef}
+            {...draggableProps}
+            {...dragHandleProps}
+            style={noEffectOnList(snapshot, draggableProps.style)}
+            className={` ${snapshot.isDragging ? "dragging" : ""}`}
           >
-            <div className="champImg">
-              <img
-                className="img"
-                src={
-                  process.env.PUBLIC_URL + "champ-small/" + jpgNameFix(champ)
-                }
-                alt={champ}
-              />
-              <div className="champTag">
-                <a> {champ} </a>
-                <div className="lanesDiv">
-                  {lanes.map((lane) => (
-                    <CardLanes lane={lane} />
-                  ))}
+            <div
+              className={`li ${
+                getScoreNullCheck(scores, champ) > 0 ? "liRating" : ""
+              }`}
+            >
+              {" "}
+              <Header className={`${state}`}>
+                <div className="champImg">
+                  <img
+                    className="img"
+                    src={
+                      process.env.PUBLIC_URL +
+                      "champ-small/" +
+                      jpgNameFix(champ)
+                    }
+                    alt={champ}
+                  />
+
+                  <div className="champTag">
+                    <a> {champ} </a>
+                    <div className="lanesDiv">
+                      {lanes.map((lane) => (
+                        <CardLanes lane={lane} />
+                      ))}
+                    </div>
+                    <CardStats champ={champ} />
+                  </div>
                 </div>
-                <CardStats champ={champ} />
-              </div>
+              </Header>
+              <AccordionBodyStyle className={`${state}`}>
+                <div className="cardButtons">
+                  <SimpleButton
+                    dataTip={"Sort by Rating"}
+                    imgFile={"counter"}
+                    altText={"Rating"}
+                    buttonType={"selectTeam"}
+                  />
+
+                  <SimpleButton
+                    dataTip={"Sort by Rating"}
+                    imgFile={"counter"}
+                    altText={"Rating"}
+                    buttonType={"selectEnemy"}
+                  />
+                </div>
+              </AccordionBodyStyle>
             </div>
-          </div>
-        </li>
+          </li>
+        </div>
       )}
     </Draggable>
   );
 };
 
+const Header = styled.div`
+  margin: 0 !important;
+
+  &.active {
+    display: none;
+  }
+`;
+
+const AccordionBodyStyle = styled.div`
+  overflow: hidden;
+  width: 100%;
+  max-height: 0;
+  transition: max-height 0s ease-in-out;
+  &.active {
+    max-height: 300px;
+  }
+`;
+
 const mapStateToProps = (state) => ({
   sorting: getSorting(state),
   scores: countEnemies(state),
+  tier: getTier(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({});

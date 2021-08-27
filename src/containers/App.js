@@ -5,7 +5,7 @@ import Champions from "../components/Champions";
 import { DragDropContext } from "react-beautiful-dnd";
 import { dragNdrop } from "../redux/actions";
 import { Leaderboard, Skyscraper } from "../components/Ads";
-import { EnemyPicks, TeamPicks, BanPicks, Picks } from "../components/Picks";
+import { Picks } from "../components/Picks";
 
 const App = ({ onDragEnd }) => {
   return (

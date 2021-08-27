@@ -21,7 +21,14 @@ const ChampSlot = ({ playerId, selection, selectionIndex, selections }) => {
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
-            {provided.placeholder}
+            <span
+              style={{
+                display: "none",
+              }}
+            >
+              {provided.placeholder}
+            </span>
+
             {selection != null && (
               <Card champ={selection} index={selectionIndex} />
             )}
