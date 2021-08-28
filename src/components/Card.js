@@ -29,7 +29,6 @@ export const Card = ({ champ, index, scores, handleChange, card }) => {
                 getScoreNullCheck(scores, champ) > 0 ? "liRating" : ""
               }`}
             >
-              {" "}
               <Stats className={`${card[champ]}`}>
                 <div className="champImg">
                   <img
@@ -44,7 +43,6 @@ export const Card = ({ champ, index, scores, handleChange, card }) => {
 
                   <div className="champTag">
                     <a id={champ}>
-                      {" "}
                       {champ} {card[champ]}{" "}
                     </a>
                     <div className="lanesDiv">
