@@ -1,23 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 
-const SimpleButton = ({ imgFile, altText, handleChange, buttonType }) => {
+const SimpleButton = ({ imgFile, handleChange, buttonType }) => {
   return (
-
-      <div
-        className={buttonType}
-        alt={altText}
-        onClick={handleChange}
-        id={altText}
-      >
-        <img
-          src={"assets/" + imgFile + "30.webp"}
-          alt={altText}
-          onClick={handleChange}
-          id={altText}
-        />
-      </div>
-
+    <div className={buttonType} onClick={handleChange}>
+      <img src={"assets/" + imgFile + "30.webp"} onClick={handleChange} />
+    </div>
   );
 };
 

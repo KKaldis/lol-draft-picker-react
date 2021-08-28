@@ -56,19 +56,9 @@ export const Card = ({ champ, index, scores, handleChange, card }) => {
               </Stats>
               <Buttons className={`${card[champ]}`}>
                 <div className="cardButtons">
-                  <SimpleButton
-                    dataTip={"Sort by Rating"}
-                    imgFile={"counter"}
-                    altText={"Rating"}
-                    buttonType={"selectTeam"}
-                  />
+                  <SimpleButton imgFile={"add"} buttonType={"selectTeam"} />
 
-                  <SimpleButton
-                    dataTip={"Sort by Rating"}
-                    imgFile={"counter"}
-                    altText={"Rating"}
-                    buttonType={"selectEnemy"}
-                  />
+                  <SimpleButton imgFile={"add"} buttonType={"selectEnemy"} />
                 </div>
               </Buttons>
             </div>
