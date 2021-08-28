@@ -165,6 +165,7 @@
       rgba(0, 0, 0, 1) 100%);
   background-repeat: no-repeat;
   background-size: cover;
+
 }
 
 .tooltip {
@@ -326,6 +327,7 @@
   justify-content: space-around;
   align-items: center;
   width: -webkit-fill-available;
+  overflow: hidden;
 }
 
 .banSpot {
@@ -356,6 +358,8 @@
   background-color: #023838;
   border: 4px groove #ae9c6c;
   box-shadow: 0px 5px 10px black;
+  overflow: hidden;
+
 }
 
 .enemyH {
@@ -703,3 +707,4 @@
   outline: none !important;
   text-shadow: 0px 0px 6px #ae9c6c !important;
 }
+
