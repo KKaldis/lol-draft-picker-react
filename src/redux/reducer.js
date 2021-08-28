@@ -191,7 +191,15 @@ const cards = (state = {}, action) => {
         };
       }
       break;
-      
+    case DRAG_END:
+      return { state };
+
+    // case CHANGE_PREVIEW:
+    //   return {state}
+
+    // case SEARCH_CHANGED:
+    //   return {state}
+
     default:
       return state;
   }
