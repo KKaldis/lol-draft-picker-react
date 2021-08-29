@@ -1,23 +1,48 @@
-// import matchlist  from "matchLists/matchlist_eun1.json";
-
-// for (const val of matchlist) { // You can use `let` instead of `const` if you like
-//     console.log(val);
-// }
-
+const apikey = "RGAPI-6d95b220-86fb-42d6-96d4-fc5d2df9bccd";
 const api_url =
-  "https://eun1.api.riotgames.com/lol/match/v4/matches/2914193919?api_key=RGAPI-00d33b67-8465-4b2a-b78e-809b39fded6e";
+  "https://eun1.api.riotgames.com/lol/match/v4/matches/2914193919?api_key=" +
+  apikey;
 
 // Defining async function
 async function getapi(url) {
   // Storing response
   const response = await fetch(url);
-
   // Storing data in form of JSON
   var data = await response.json();
 
-  if (data["gameMode"] === "CLASSIC" && data["gametype"] === "MATCHED_GAME" && data["mapId"] === 11);
+  // Check Game Type (mode, )
+  if (
+    data["gameMode"] === "CLASSIC" &&
+    data["gametype"] === "MATCHED_GAME" &&
+    data["mapId"] === 11
+  );
   {
     console.log(data);
+    var matchData = {};
+
+    for (let i = 0; i < data["participants"].length; i++) {
+      var team = data["participants"][i]["teamId"];
+      var champion = data["participants"][i]["championId"];
+      var lane = data["participants"][i]["timeline"]["lane"];
+      var role = data["participants"][i]["timeline"]["role"];
+      var kills = data["participants"][i]["stats"]["kills"];
+      var deaths = data["participants"][i]["stats"]["deaths"];
+      var assists = data["participants"][i]["stats"]["assists"];
+      var win = data["participants"][i]["stats"]["win"];
+      var xpDif = data["participants"][i]["timeline"]["xpDiffPerMinDeltas"];
+      var csDif = data["participants"][i]["timeline"]["csDiffPerMinDeltas"];
+      var dtDif = data["participants"][i]["timeline"]["damageTakenDiffPerMinDeltas"];
+
+      //   console.log(JSON.stringify({ team, champion, lane, role }));
+      //   console.log(JSON.stringify({ kills, deaths, assists, win, xpDif }));
+
+     
+      if (lane === "TOP" && team === 100) {
+        console.log({ team, champion, lane, role });
+        console.log({ kills, deaths, assists, win });
+        console.log({ xpDif,csDif , dtDif});
+      }
+    }
   }
 
   if (response) {
