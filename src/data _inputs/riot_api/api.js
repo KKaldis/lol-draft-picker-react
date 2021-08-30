@@ -17,7 +17,7 @@ async function getapi(url) {
     data["mapId"] === 11
   );
   {
-    console.log(data);
+    // console.log(data);
     var matchData = {};
 
     for (let i = 0; i < data["participants"].length; i++) {
@@ -37,7 +37,7 @@ async function getapi(url) {
       //   console.log(JSON.stringify({ kills, deaths, assists, win, xpDif }));
 
      
-      if (lane === "TOP" && team === 100) {
+      if (lane === "BOTTOM") {
         console.log({ team, champion, lane, role });
         console.log({ kills, deaths, assists, win });
         console.log({ xpDif,csDif , dtDif});
