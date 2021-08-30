@@ -32,15 +32,18 @@ async function getapi(url) {
       var xpDif = data["participants"][i]["timeline"]["xpDiffPerMinDeltas"];
       var csDif = data["participants"][i]["timeline"]["csDiffPerMinDeltas"];
       var dtDif = data["participants"][i]["timeline"]["damageTakenDiffPerMinDeltas"];
+      const kaldor =[{ team, champion, lane, role }, { kills, deaths, assists, win },{ xpDif,csDif , dtDif}]
+
 
       //   console.log(JSON.stringify({ team, champion, lane, role }));
       //   console.log(JSON.stringify({ kills, deaths, assists, win, xpDif }));
 
      
       if (lane === "BOTTOM") {
-        console.log({ team, champion, lane, role });
-        console.log({ kills, deaths, assists, win });
-        console.log({ xpDif,csDif , dtDif});
+        console.log(kaldor);
+        // console.log({ team, champion, lane, role });
+        // console.log({ kills, deaths, assists, win });
+        // console.log({ xpDif,csDif , dtDif});
       }
     }
   }
