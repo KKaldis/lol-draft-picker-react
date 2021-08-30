@@ -232,7 +232,7 @@
 .scoreShadow {
   border-radius: 50px;
   margin: 10px;
-  box-shadow: 0px 0px 10px #00b191;
+  box-shadow: 0px 0px 5px #00b191;
   transition: 1s;
   transition-timing-function: ease-in-out;
 }
@@ -388,7 +388,7 @@
   flex-direction: column;
   display: flex;
   align-items: center;
-  border: 3px solid #8c74b1;
+  border: 3px solid #e6dbe2;
   margin: 20px;
   box-shadow: 0px 0px 10px black;
 }
@@ -399,7 +399,7 @@
   flex-direction: column;
   display: flex;
   align-items: center;
-  border: 3px solid #8c74b1;
+  border: 3px solid #e6dbe2;
   box-shadow: 0px 0px 10px black;
 }
 
@@ -477,7 +477,6 @@
   text-align: center;
   background-color: #e6dbe2;
   color: #3d2f54;
-  &: h;
 }
 
 .liRating {

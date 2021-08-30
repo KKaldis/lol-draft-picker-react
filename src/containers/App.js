@@ -10,16 +10,16 @@ import { Picks } from "../components/Picks";
 const App = ({ onDragEnd }) => {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div className="body" >
+      <div className="body">
         {/* <Leaderboard /> */}
-        <div className="main" >
+        <div className="main">
           {/* <Skyscraper /> */}
           <div className="app">
             {/* <TeamPicks /> */}
-            <div className="mid" style={{ width: "1200px"}} >
+            <div className="mid" style={{ width: "1200px" }}>
               <Controls />
               <Champions />
-              <Picks/>
+              <Picks />
               {/* <BanPicks /> */}
             </div>
             {/* <EnemyPicks /> */}
