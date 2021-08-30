@@ -3,7 +3,7 @@ import { Draggable } from "react-beautiful-dnd";
 import { connect } from "react-redux";
 import { getSorting, getTier, getCardState } from "../redux/reducer";
 import { countEnemies, getScoreNullCheck } from "../scripts/findCounters";
-import data from "../app/data.json";
+import champLanes from "../app/lanes.json";
 import CardLanes from "./CardLanes";
 import CardStats from "./CardStats";
 import { noEffectOnList, jpgNameFix } from "./CardXtras";
@@ -12,7 +12,8 @@ import SimpleButton from "./SimpleButton";
 import { cardClicked } from "../redux/actions";
 
 export const Card = ({ champ, index, scores, handleChange, card }) => {
-  const lanes = Object.keys(data[champ]);
+  const lanes = champLanes[champ];
+
   return (
     <Draggable draggableId={champ} key={champ} index={index}>
       {({ innerRef, draggableProps, dragHandleProps }, snapshot) => (
