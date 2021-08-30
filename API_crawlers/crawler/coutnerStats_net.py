@@ -72,7 +72,7 @@ for a in champLinks.find_all('a', href=True):
         else:
             lane = "Support"
 
-        counterData[champName][lane] = {}
+        
 
         for pickTypeDiv in laneBox.find_all("div", {"class": "champ-box"}):
 
@@ -89,10 +89,10 @@ for a in champLinks.find_all('a', href=True):
             del pickCategory[0]
             pickCategory = (str(pickCategory))[2:-2]
 
-            if pickCategory not in counterData[champName][lane]:
-                counterData[champName][lane][pickCategory] = {}
+            if pickCategory not in counterData[champName]:
+                counterData[champName][pickCategory] = {}
 
-            counterData[champName][lane][pickCategory][pickType] = {}
+            counterData[champName][pickCategory][pickType] = {}
 
             # find all round graph div
             for roundDiv in pickTypeDiv.find_all("a", {"class": "radial-progress"}):
@@ -118,7 +118,7 @@ for a in champLinks.find_all('a', href=True):
                 counterValue = roundDiv.find("span").text.replace(
                     '\n', '')  # get counter champ value
                 counterValue = morphValues(counterValue)
-                counterData[champName][lane][pickCategory][pickType][counterChamp] = (
+                counterData[champName][pickCategory][pickType][counterChamp] = (
                     counterValue)
 
             # find all square graph div
@@ -146,7 +146,7 @@ for a in champLinks.find_all('a', href=True):
                 counterValue = squareDiv.find("span").text.replace(
                     '\n', '')  # get counter champ value
                 counterValue = morphValues(counterValue)
-                counterData[champName][lane][pickCategory][pickType][counterChamp] = (
+                counterData[champName][pickCategory][pickType][counterChamp] = (
                     counterValue)
 
     pp = pprint.PrettyPrinter(depth=4)
