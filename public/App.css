@@ -201,7 +201,7 @@
   align-items: center;
   justify-content: center;
   display: flex;
-  border: 3px outset #8c74b1;
+  border: 3px solid #8c74b1;
   border-radius: 50px;
   transition: 1s;
   transition-timing-function: ease-in-out;
