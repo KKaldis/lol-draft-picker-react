@@ -148,7 +148,7 @@
 
 .filterBar {
   border-radius: 10px;
-  border: 2px groove #e6dbe2;
+  border: 2px solid #e6dbe2;
   box-shadow: 0px 5px 10px black;
   display: flex;
   width: -webkit-fill-available;
@@ -256,7 +256,7 @@
 .enemy {
   padding: 5px;
   text-shadow: 0px 0px 10px #8c74b1;
-  border: 4px groove #8c74b1;
+  border: 4px solid #8c74b1;
   min-width: 100px;
   display: flex;
   flex-direction: column;
@@ -341,7 +341,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #023838;
-  border: 4px groove #8c74b1;
+  border: 4px solid #8c74b1;
   margin: 0px 0px 12px;
   box-shadow: 0px 5px 10px black;
   width: -webkit-fill-available;
@@ -361,13 +361,11 @@
 }
 
 .enemyH {
-  background: radial-gradient(circle,
-      rgb(247 6 6 / 0%) 0%,
-      rgb(136 63 93) 100%);
+  background: radial-gradient(circle, rgb(247 6 6 / 0%) 0%, rgb(136 63 93) 100%), url(assets/texture3.webp);
 }
 
 .teamH {
-  background: radial-gradient(circle, rgb(247 6 6 / 0%) 0%, rgb(35 91 117) 100%);
+  background: radial-gradient(circle, rgb(247 6 6 / 0%) 0%, rgb(35 91 117) 100%), url(assets/texture2.webp);
 }
 
 .team {
@@ -390,7 +388,7 @@
   flex-direction: column;
   display: flex;
   align-items: center;
-  border: 3px groove #8c74b1;
+  border: 3px solid #8c74b1;
   margin: 20px;
   box-shadow: 0px 0px 10px black;
 }
@@ -401,7 +399,7 @@
   flex-direction: column;
   display: flex;
   align-items: center;
-  border: 3px groove #8c74b1;
+  border: 3px solid #8c74b1;
   box-shadow: 0px 0px 10px black;
 }
 
@@ -542,7 +540,7 @@
 }
 
 .champSpot:hover {
-  border-radius: 22px;
+  border-radius: 23px;
   width: 90px;
   height: 143px;
   box-shadow: 0px 0px 5px 2px #e6dbe2;
@@ -584,7 +582,7 @@
 }
 
 .champSpotFilled {
-  border-radius: 22px;
+  border-radius: 23px;
   margin: 5px 0px 5px;
   display: flex;
   flex-direction: row;
@@ -599,7 +597,7 @@
       rgba(255, 255, 255, 0) 0%,
       rgba(0, 0, 0, 0.5) 100%);
   border-color: #010508;
-  border: 2px groove #8c74b1;
+  border: 2px solid #8c74b1;
   transition: 0.25s;
   transition-timing-function: ease-in-out;
 }
@@ -691,17 +689,11 @@
 }
 
 .selectTeam {
-  background: radial-gradient(circle,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(0, 0, 0, 1) 100%),
-    url("assets/texture2.webp");
+  background: radial-gradient(circle, rgb(247 6 6 / 0%) 0%, rgb(35 91 117) 100%), url("assets/texture2.webp");
 }
 
 .selectEnemy {
-  background: radial-gradient(circle,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(0, 0, 0, 1) 100%),
-    url("assets/texture3.webp");
+  background: radial-gradient(circle, rgb(247 6 6 / 0%) 0%, rgb(136 63 93) 100%), url(assets/texture3.webp);
 }
 
 .selectTeam:hover,
