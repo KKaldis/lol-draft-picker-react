@@ -20,12 +20,6 @@ body {
   align-content: center;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(
-      circle,
-      rgba(2, 56, 56, 0.75) 0%,
-      rgba(0, 5, 9, 1) 100%
-    ),
-    url("/public/assets/back.webp");
   background-size: cover;
   min-height: 800px;
   margin: 0;

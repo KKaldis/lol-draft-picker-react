@@ -52,7 +52,7 @@ export const getFilteredChampions = (state) => {
     name: f,
     score: replaceUndefined(scores[f]),
   }));
-  console.log("SCORES:", sortedByScore);
+  // console.log("SCORES:", sortedByScore);
   // console.log("filtered:",  filtered);
   return filtered;
 };
