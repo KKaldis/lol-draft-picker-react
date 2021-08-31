@@ -13,7 +13,7 @@
   align-items: center;
   min-height: 850px;
   background: radial-gradient(circle, rgb(58 23 52 / 75%) 0%, rgb(49 67 88 / 86%) 100%), url(assets/texture1.webp);
-  background-size: contain;
+  background-size: cover;
   /* background: radial-gradient(circle, rgb(56 2 48 / 75%) 0%, rgb(62 90 125) 100%); */
 }
 
@@ -311,7 +311,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   color: #8c74b1;
   font-family: monospace;
   vertical-align: middle;
@@ -603,8 +603,8 @@
   background: radial-gradient(circle,
       rgba(255, 255, 255, 0) 0%,
       rgba(0, 0, 0, 0.5) 100%);
-  border-color: #010508;
-  border: 2px solid #8c74b1;
+  /* border-color: #010508; */
+  /* border: 2px solid #8c74b1; */
   transition: 0.25s;
   transition-timing-function: ease-in-out;
   box-shadow: 0px 0px 0px 3px #e6dbe2;
@@ -713,4 +713,27 @@
   outline: none !important;
   text-shadow: 3px 3px 4px #00b191 !important;
   border: 3px solid #e6dbe2;
+}
+
+
+.champSpotFilled {
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  animation: animatedgradient 3s ease alternate infinite;
+  background-size: 300% 300%;
+  padding: 3px;
+  border: 0px solid #e6dbe2;
+}
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
