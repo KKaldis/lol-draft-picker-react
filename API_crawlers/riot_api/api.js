@@ -1,4 +1,4 @@
-const apikey = "RGAPI-6d95b220-86fb-42d6-96d4-fc5d2df9bccd";
+const apikey = "";
 const api_url =
   "https://eun1.api.riotgames.com/lol/match/v4/matches/2914193919?api_key=" +
   apikey;
