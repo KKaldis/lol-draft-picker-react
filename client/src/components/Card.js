@@ -15,7 +15,7 @@ export const Card = ({ champ, index, scores, handleChange, card }) => {
   const lanes = champLanes[champ];
 
   return (
-    <Draggable draggableId={champ} key={champ} index={index}>
+    <Draggable draggableId={champ} key={champ} index={index} >
       {({ innerRef, draggableProps, dragHandleProps }, snapshot) => (
         <div className={`${card[champ]}`} onClick={handleChange}>
           <li

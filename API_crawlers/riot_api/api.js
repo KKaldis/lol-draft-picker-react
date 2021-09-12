@@ -1,4 +1,4 @@
-const apikey = "RGAPI-6d95b220-86fb-42d6-96d4-fc5d2df9bccd";
+const apikey = "RGAPI-4c485b01-6e90-4d07-a8ae-6c9e1a0f26c0";
 const api_url =
   "https://eun1.api.riotgames.com/lol/match/v4/matches/2914193919?api_key=" +
   apikey;
@@ -9,6 +9,7 @@ async function getapi(url) {
   const response = await fetch(url);
   // Storing data in form of JSON
   var data = await response.json();
+  console.log(data)
 
   // Check Game Type (mode, )
   if (
@@ -39,8 +40,8 @@ async function getapi(url) {
       //   console.log(JSON.stringify({ kills, deaths, assists, win, xpDif }));
 
      
-      if (lane === "BOTTOM") {
-        console.log(kaldor);
+      if (lane === "TOP") {
+        // console.log(kaldor);
         // console.log({ team, champion, lane, role });
         // console.log({ kills, deaths, assists, win });
         // console.log({ xpDif,csDif , dtDif});

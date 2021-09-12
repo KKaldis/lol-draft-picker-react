@@ -15,6 +15,7 @@
   background: radial-gradient(circle, rgb(58 23 52 / 75%) 0%, rgb(49 67 88 / 86%) 100%), url(assets/texture1.webp);
   background-size: cover;
   /* background: radial-gradient(circle, rgb(56 2 48 / 75%) 0%, rgb(62 90 125) 100%); */
+  cursor:url(assets/cursorg2.png) , default;
 }
 
 .mid {
@@ -44,7 +45,7 @@
   align-content: center;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+  cursor:url(assets/pointer.png) , default !important;
   -webkit-user-drag: none;
   -khtml-user-drag: none;
   -moz-user-drag: none;
@@ -59,6 +60,10 @@
   box-shadow: 0px 0px 10px #010508;
 }
 
+.li{
+  cursor:url(assets/pick.png) , default !important;
+}
+
 .tierSelectImgActive {
   height: 40px;
   width: 35px;
@@ -67,7 +72,7 @@
   align-content: center;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+  cursor:url(assets/pointer.png) , default !important;
   -webkit-user-drag: none;
   -khtml-user-drag: none;
   -moz-user-drag: none;
@@ -106,7 +111,7 @@
   filter: drop-shadow(0 0 1rem #00b191);
   box-shadow: 0px 0px 2px 4px #00b191;
   /* border: 5px double #ae9c6c; */
-  cursor: all-scroll;
+  /* cursor: all-scroll; */
   border-radius: 25px;
 }
 
@@ -431,6 +436,7 @@
   margin: 12px;
   box-shadow: 0px 0px 10px black;
   transition: 0.25s;
+  cursor: url(assets/pointer.png), default !important;
 }
 
 ::-webkit-search-cancel-button {
@@ -589,7 +595,7 @@
 }
 
 .champSpotFilled {
-  border-radius: 23px;
+  border-radius: 25px;
   margin: 5px 0px 5px;
   display: flex;
   flex-direction: row;
@@ -607,7 +613,7 @@
   /* border: 2px solid #8c74b1; */
   transition: 0.25s;
   transition-timing-function: ease-in-out;
-  box-shadow: 0px 0px 0px 3px #e6dbe2;
+  box-shadow: 0px 0px 0px 2px #e6dbe2;
 }
 
 .champDiv {
@@ -674,7 +680,6 @@
   align-content: center;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   -webkit-user-drag: none;
   -khtml-user-drag: none;
   -moz-user-drag: none;
@@ -717,10 +722,10 @@
 
 
 .champSpotFilled {
-  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
-  animation: animatedgradient 3s ease alternate infinite;
-  background-size: 300% 300%;
-  padding: 3px;
+  background: linear-gradient(45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  animation: animatedgradient 2s ease-in-out alternate infinite;
+  background-size: 333% 333%;
+  padding: 6px;
   border: 0px solid #e6dbe2;
 }
 
