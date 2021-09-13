@@ -193,7 +193,7 @@ const cards = (state = {}, action) => {
             }
             break;
         case DRAG_END:
-            return {state};
+            return {};
 
         // case CHANGE_PREVIEW:
         //   return {state}
