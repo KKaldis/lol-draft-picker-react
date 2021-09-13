@@ -1,40 +1,10 @@
 import data from "../app/data.json";
-import {getSelections, getSorting, getTier} from "../redux/reducer";
 
-export const countEnemies = (state) => {
-  const type = "enemy"
-  const sorting = getSorting(state)
-  const selections = getSelections(state)
-  const tier = getTier(state)
+export const countAllChamps = (teamSide, tier, sorting, selections) => {
   if (sorting === "Rating" || sorting === "Popular") {
     var oldRating = {};
     Object.entries(selections).forEach(([keyChampDiv, valChamp]) => {
-      if (keyChampDiv.startsWith(type)) {
-        const laneKeyObj = data[valChamp];
-
-        Object.entries(laneKeyObj).forEach(([keyLane, valTier]) => {
-          var newRating = valTier[tier][sorting];
-          oldRating = Object.entries(newRating).reduce(
-              (acc, [key, value]) => ({
-                ...acc,
-                [key]: (acc[key] || 0) + value,
-              }),
-              { ...oldRating }
-          );
-          // console.log(valChamp, " : " ,keyLane, " : ", newRating);
-        });
-      }
-    });
-
-    return oldRating;
-  }
-};
-
-export const countAllChamps = (type, tier, sorting, selections) => {
-  if (sorting === "Rating" || sorting === "Popular") {
-    var oldRating = {};
-    Object.entries(selections).forEach(([keyChampDiv, valChamp]) => {
-      if (keyChampDiv.startsWith(type)) {
+      if (keyChampDiv.startsWith(teamSide)) {
         const laneKeyObj = data[valChamp];
 
         Object.entries(laneKeyObj).forEach(([keyLane, valTier]) => {
@@ -54,11 +24,11 @@ export const countAllChamps = (type, tier, sorting, selections) => {
   }
 };
 
-export const countScore = (type, championScore, selections) => {
+export const countScore = (teamSide, championScore, selections) => {
   if (championScore != null) {
     let score = 0;
     Object.entries(selections).forEach(([keyChampDiv, valChamp]) => {
-      if (keyChampDiv.startsWith(type)) {
+      if (keyChampDiv.startsWith(teamSide)) {
         Object.entries(championScore).forEach(([keyChamp, valScore]) => {
           if (
             keyChamp.toUpperCase().replace(/([^\w]+|\s+)/g, "") ===

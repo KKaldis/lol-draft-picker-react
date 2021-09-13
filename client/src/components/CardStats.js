@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getSorting } from "../redux/reducer";
-import { countEnemies, getScoreNullCheck } from "../scripts/findCounters";
+import { getSelections, getSorting, getTier } from "../redux/reducer";
+import { countAllChamps, getScoreNullCheck } from "../scripts/findCounters";
 
 export const CardStats = ({ champ, scores, sorting }) => {
   return (
@@ -34,7 +34,7 @@ export const CardStats = ({ champ, scores, sorting }) => {
 
 const mapStateToProps = (state) => ({
   sorting: getSorting(state),
-  scores: countEnemies(state),
+  scores: countAllChamps("enemy", getTier(state), getSorting(state), getSelections(state)),
 });
 
 const mapDispatchToProps = (dispatch) => ({});

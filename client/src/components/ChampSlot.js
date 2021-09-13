@@ -1,14 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  getSelection,
-  getSelectionIndex,
-  getSelections,
-} from "../redux/reducer";
+import { getSelection, getSelectionIndex } from "../redux/reducer";
 import { Droppable } from "react-beautiful-dnd";
 import Card from "../components/Card";
 
-const ChampSlot = ({ playerId, selection, selectionIndex, selections }) => {
+const ChampSlot = ({ playerId, selection, selectionIndex }) => {
   return (
     <div className="champDiv">
       <Droppable droppableId={playerId} key={playerId}>
@@ -42,7 +38,6 @@ const ChampSlot = ({ playerId, selection, selectionIndex, selections }) => {
 const mapStateToProps = (state, ownProps) => ({
   selection: getSelection(state, ownProps.playerId),
   selectionIndex: getSelectionIndex(state, ownProps.playerId),
-  selections: getSelections(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({});

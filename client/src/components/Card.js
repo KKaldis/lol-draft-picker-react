@@ -1,8 +1,8 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { connect } from "react-redux";
-import { getSorting, getTier, getCardState } from "../redux/reducer";
-import { countEnemies, getScoreNullCheck } from "../scripts/findCounters";
+import { getSorting, getTier, getCardState, getSelections } from "../redux/reducer";
+import { countAllChamps, getScoreNullCheck } from "../scripts/findCounters";
 import champLanes from "../app/lanes.json";
 import CardLanes from "./CardLanes";
 import CardStats from "./CardStats";
@@ -89,9 +89,7 @@ const Buttons = styled.div`
 `;
 
 const mapStateToProps = (state) => ({
-  sorting: getSorting(state),
-  scores: countEnemies(state),
-  tier: getTier(state),
+  scores: countAllChamps("enemy", getTier(state), getSorting(state), getSelections(state)),
   card: getCardState(state),
 });
 
