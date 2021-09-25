@@ -20,7 +20,7 @@ const App = ({ onDragEnd }) => {
               <Controls />
               <Champions />
               <Picks />
-              {/* <BanPicks /> */}
+              <BanPicks />
             </div>
             {/* <EnemyPicks /> */}
           </div>
