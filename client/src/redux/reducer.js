@@ -1,5 +1,4 @@
 import { champions } from "../app/heroes";
-import { countAllChamps } from "../scripts/findCounters";
 import data from "../app/data.json";
 import {
   SEARCH_CHANGED,
@@ -27,16 +26,17 @@ export const getFilteredChampions = (state) => {
     );
   }
 
-  const scores = countAllChamps("enemy", tier, sorting, selections);
+  const scores = getScores(state);
 
   if (sorting === "Rating" || sorting === "Popular") {
     filtered.sort((a, b) => {
+      if (scores !== undefined){
       if (replaceUndefined(scores[a]) > replaceUndefined(scores[b])) {
         // console.log(replaceUndefined(scores[a], replaceUndefined(scores[b])))
         return -1;
       } else {
         return 1;
-      }
+      }}
     });
     // //ALPHABETICAL ORDERING
     // } else if (sorting === "Alphabetical") {
@@ -50,10 +50,12 @@ export const getFilteredChampions = (state) => {
     //   });
   }
 
-  const sortedByScore = filtered.map((f) => ({
+  const sortedByScore = filtered.map((f) => {
+    if (scores !== undefined) return {
     name: f,
     score: replaceUndefined(scores[f]),
-  }));
+    }
+  });
   // console.log("SCORES:", sortedByScore);
   // console.log("filtered:",  filtered);
   return filtered;
@@ -211,13 +213,13 @@ export const getCardState = (state) => {
   return state.cards;
 };
 
-const modifyScores = (state, action, rootState, command) => {
+const modifyScores = (state, target, rootState, command) => {
   const tier = getTier(rootState);
   const sorting = getSorting(rootState);
   for (const hero of rootState.champions) {
     for (const lane in data[hero]) {
-      if (lane in data[action.sourceDraggable]) {
-        var score = data[action.sourceDraggable][lane][tier][sorting][hero];
+      if (lane in data[target]) {
+        var score = data[target][lane][tier][sorting][hero];
         if (!(hero in state)) {
           state[hero] = {};
         }
@@ -232,28 +234,57 @@ const modifyScores = (state, action, rootState, command) => {
   return state;
 };
 
-export const getScores = (state) =>{
-  state.scores
-}
+export const getScores = (state) => {
+  state.scores;
+};
 
 const scores = (state = {}, action, rootState) => {
   switch (action.type) {
     case DRAG_END:
-      if (action.destinationDroppable.startsWith("enemy")) {
-        return modifyScores(
+      // APO FRIEND SE ENEMY
+      if (
+        rootState.selections[action.destinationDroppable] !== undefined &&
+        action.destinationDroppable.startsWith("enemy")
+      ) {
+        modifyScores(
           state,
-          action,
-          rootState,
-          (state, hero, lane, score) => (state[hero][lane] += score)
-        );
-      } else if (action.destinationDroppable !== action.destinationDroppable.startsWith("enemy")) {
-        return modifyScores(
-          state,
-          action,
+          rootState.selections[action.destinationDroppable],
           rootState,
           (state, hero, lane, score) => (state[hero][lane] -= score)
         );
-      } else return state;
+
+        return modifyScores(
+          state,
+          action.sourceDraggable,
+          rootState,
+          (state, hero, lane, score) => (state[hero][lane] += score)
+        );
+      } else {
+        //APO ENEMY SE FRIEND H CHAMPSELECT
+        if (
+          action.sourceDroppable.startsWith("enemy") &&
+          !action.destinationDroppable.startsWith("enemy")
+        ) {
+          return modifyScores(
+            state,
+            rootState.selections[action.sourceDroppable],
+            rootState,
+            (state, hero, lane, score) => (state[hero][lane] -= score)
+          );
+        }
+        //APO CHAMPSELECT H FRIEND SE ENEMY
+        else if (
+          action.destinationDroppable.startsWith("enemy") &&
+          !action.sourceDroppable.startsWith("enemy")
+        ) {
+          return modifyScores(
+            state,
+            action.sourceDraggable,
+            rootState,
+            (state, hero, lane, score) => (state[hero][lane] += score)
+          );
+        } else return state;
+      }
     default:
       return state;
   }

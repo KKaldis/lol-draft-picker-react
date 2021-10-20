@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getSelections, getSorting, getTier } from "../redux/reducer";
-import { countAllChamps, getScoreNullCheck } from "../scripts/findCounters";
+import { getSelections, getSorting, getTier,getScores } from "../redux/reducer";
+import {  getScoreNullCheck  } from "../scripts/findCounters";
 
 export const CardStats = ({ champ, scores, sorting }) => {
   return (
@@ -9,23 +9,25 @@ export const CardStats = ({ champ, scores, sorting }) => {
       <a
         style={{
           display:
-            sorting === "Rating" && getScoreNullCheck(scores, champ) > 0
+            sorting === "Rating" 
+            // && getScoreNullCheck(scores, champ) > 0
               ? "block"
               : "none",
         }}
       >
-        {getScoreNullCheck(scores, champ)}
+        {/* {getScoreNullCheck(scores, champ)} */}
         {" CP"}
       </a>
       <a
         style={{
           display:
-            sorting === "Popular" && getScoreNullCheck(scores, champ) > 0
+            sorting === "Popular" 
+            // && getScoreNullCheck(scores, champ) > 0
               ? "block"
               : "none",
         }}
       >
-        {getScoreNullCheck(scores, champ)}
+        {/* {getScoreNullCheck(scores, champ)} */}
         {" PP"}
       </a>
     </div>
@@ -34,7 +36,7 @@ export const CardStats = ({ champ, scores, sorting }) => {
 
 const mapStateToProps = (state) => ({
   sorting: getSorting(state),
-  scores: countAllChamps("enemy", getTier(state), getSorting(state), getSelections(state)),
+  scores: getScores(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({});

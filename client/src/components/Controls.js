@@ -12,15 +12,17 @@ import {
 import { countAllChamps, countScore } from "../scripts/findCounters";
 
 const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
-  const enemyChampionsScores = countAllChamps(
-    "enemy",
-    tier,
-    sorting,
-    selections
-  );
-  const teamChampionsScores = countAllChamps("team", tier, sorting, selections);
-  const enemyScore = countScore("enemy", teamChampionsScores, selections);
-  const teamScore = countScore("team", enemyChampionsScores, selections);
+  // const enemyChampionsScores = countAllChamps(
+  //   "enemy",
+  //   tier,
+  //   sorting,
+  //   selections
+  // );
+  // const teamChampionsScores = countAllChamps("team", tier, sorting, selections);
+  // const enemyScore = countScore("enemy", teamChampionsScores, selections);
+  // const teamScore = countScore("team", enemyChampionsScores, selections);
+  const enemyScore = 50;
+  const teamScore = 90;
   const enemyPers = ((100 * enemyScore) / (teamScore + enemyScore)).toFixed(1);
   const teamPers = ((100 * teamScore) / (teamScore + enemyScore)).toFixed(1);
 

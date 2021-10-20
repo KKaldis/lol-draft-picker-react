@@ -1,8 +1,8 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { connect } from "react-redux";
-import { getSorting, getTier, getCardState, getSelections } from "../redux/reducer";
-import { countAllChamps, getScoreNullCheck } from "../scripts/findCounters";
+import { getSorting, getTier, getCardState, getSelections, getScores} from "../redux/reducer";
+import {  getScoreNullCheck } from "../scripts/findCounters";
 import champLanes from "../app/lanes.json";
 import CardLanes from "./CardLanes";
 import CardStats from "./CardStats";
@@ -26,9 +26,9 @@ export const Card = ({ champ, index, scores, handleChange, card }) => {
             className={` ${snapshot.isDragging ? "dragging" : ""}`}
           >
             <div
-              className={`li ${
-                getScoreNullCheck(scores, champ) > 0 ? "liRating" : ""
-              }`}
+              // className={`li ${
+              //   getScoreNullCheck(scores, champ) > 0 ? "liRating" : ""
+              // }`}
             >
               <Stats className={`${card[champ]}`}>
                 <div className="champImg">
@@ -89,7 +89,7 @@ const Buttons = styled.div`
 `;
 
 const mapStateToProps = (state) => ({
-  scores: countAllChamps("enemy", getTier(state), getSorting(state), getSelections(state)),
+  scores: getScores(state),
   card: getCardState(state),
 });
 
