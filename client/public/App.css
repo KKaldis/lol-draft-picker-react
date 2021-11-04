@@ -15,7 +15,7 @@
   background: radial-gradient(circle, rgb(58 23 52 / 75%) 0%, rgb(49 67 88 / 86%) 100%), url(assets/texture1.webp);
   background-size: cover;
   /* background: radial-gradient(circle, rgb(56 2 48 / 75%) 0%, rgb(62 90 125) 100%); */
-  cursor:url(assets/cursorg2.png) , default;
+  /* cursor:url(assets/cursorg2.png) , default; */
 }
 
 .mid {
@@ -45,7 +45,7 @@
   align-content: center;
   justify-content: center;
   align-items: center;
-  cursor:url(assets/pointer.png) , default !important;
+  /* cursor:url(assets/pointer.png) , default !important; */
   -webkit-user-drag: none;
   -khtml-user-drag: none;
   -moz-user-drag: none;
@@ -61,7 +61,7 @@
 }
 
 .li{
-  cursor:url(assets/pick.png) , default !important;
+  /* cursor:url(assets/pick.png) , default !important; */
 }
 
 .tierSelectImgActive {
@@ -72,7 +72,7 @@
   align-content: center;
   justify-content: center;
   align-items: center;
-  cursor:url(assets/pointer.png) , default !important;
+  /* cursor:url(assets/pointer.png) , default !important; */
   -webkit-user-drag: none;
   -khtml-user-drag: none;
   -moz-user-drag: none;
@@ -111,7 +111,7 @@
   filter: drop-shadow(0 0 1rem #00b191);
   box-shadow: 0px 0px 2px 4px #00b191;
   /* border: 5px double #ae9c6c; */
-  /* cursor: all-scroll; */
+  cursor: all-scroll;
   border-radius: 25px;
 }
 
@@ -436,7 +436,7 @@
   margin: 12px;
   box-shadow: 0px 0px 10px black;
   transition: 0.25s;
-  cursor: url(assets/pointer.png), default !important;
+  /* cursor: url(assets/pointer.png), default !important; */
 }
 
 ::-webkit-search-cancel-button {
@@ -711,10 +711,10 @@
 
 .selectTeam:hover,
 .selectEnemy:hover {
-  height: 50px;
-  width: 50px;
+  cursor: pointer;
+  transform: scale(1.2);
   filter: drop-shadow(0 0 0.25rem #00b191);
-  box-shadow: 2px 2px 0px 4px #00b191 !important;
+  box-shadow: 0px 0px 1px 2px #00b191 !important;
   outline: none !important;
   text-shadow: 3px 3px 4px #00b191 !important;
   border: 3px solid #e6dbe2;
