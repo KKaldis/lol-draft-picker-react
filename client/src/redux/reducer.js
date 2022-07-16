@@ -49,13 +49,13 @@ export const getFilteredChampions = (state) => {
     //     }
     //   });
   }
-
-  const sortedByScore = filtered.map((f) => ({
-    name: f,
-    score: replaceUndefined(scores[f]),
-  }));
-  // console.log("SCORES:", sortedByScore);
-  // console.log("filtered:",  filtered);
+  // //SCORE ORDERING
+  // const sortedByScore = filtered.map((f) => ({
+  //   name: f,
+  //   score: replaceUndefined(scores[f]),
+  // }));
+  // // console.log("SCORES:", sortedByScore);
+  // // console.log("filtered:",  filtered);
   return filtered;
 };
 
@@ -214,6 +214,7 @@ export const getCardState = (state) => {
 const modifyScores = (state, action, rootState, command) => {
   const tier = getTier(rootState);
   const sorting = getSorting(rootState);
+
   for (const hero of rootState.champions) {
     for (const lane in data[hero]) {
       if (lane in data[action.sourceDraggable]) {
@@ -229,12 +230,11 @@ const modifyScores = (state, action, rootState, command) => {
       }
     }
   }
+
   return state;
 };
 
-export const getScores = (state) =>{
-  state.scores
-}
+export const getScores = (state) => state.scores;
 
 const scores = (state = {}, action, rootState) => {
   switch (action.type) {
@@ -246,7 +246,10 @@ const scores = (state = {}, action, rootState) => {
           rootState,
           (state, hero, lane, score) => (state[hero][lane] += score)
         );
-      } else if (action.destinationDroppable !== action.destinationDroppable.startsWith("enemy")) {
+      } else if (
+        action.destinationDroppable !==
+        action.destinationDroppable.startsWith("enemy")
+      ) {
         return modifyScores(
           state,
           action,

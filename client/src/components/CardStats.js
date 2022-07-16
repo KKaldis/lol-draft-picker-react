@@ -34,7 +34,12 @@ export const CardStats = ({ champ, scores, sorting }) => {
 
 const mapStateToProps = (state) => ({
   sorting: getSorting(state),
-  scores: countAllChamps("enemy", getTier(state), getSorting(state), getSelections(state)),
+  scores: countAllChamps(
+    "enemy",
+    getTier(state),
+    getSorting(state),
+    getSelections(state)
+  ),
 });
 
 const mapDispatchToProps = (dispatch) => ({});

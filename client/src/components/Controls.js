@@ -10,7 +10,7 @@ import {
   getLookup,
 } from "../redux/reducer";
 import { countAllChamps, countScore } from "../scripts/findCounters";
-
+import { tierButtons, sortButtons } from "../app/uiObs";
 const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
   const enemyChampionsScores = countAllChamps(
     "enemy",
@@ -36,37 +36,16 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
           returnPers={teamPers}
         />
         <div className="buttonWrap">
-          <HoverButton
-            dataTip={"Sort by Rating"}
-            imgFile={"counter"}
-            hoverFamily={"sorting"}
-            altText={"Rating"}
-            buttonType={sorting}
-          />
-
-          <HoverButton
-            dataTip={"Sort by Popularity"}
-            imgFile={"popular"}
-            hoverFamily={"sorting"}
-            altText={"Popular"}
-            buttonType={sorting}
-          />
-
-          <HoverButton
-            dataTip={"Reset Selections"}
-            imgFile={"reset"}
-            hoverFamily={"sorting"}
-            altText={"Reset"}
-            buttonType={sorting}
-          />
-
-          <HoverButton
-            dataTip={"How to Use"}
-            imgFile={"help"}
-            hoverFamily={"sorting"}
-            altText={"Help"}
-            buttonType={sorting}
-          />
+          {sortButtons.map((button, i) => (
+            <HoverButton
+              dataTip={button.dataTip}
+              imgFile={button.imgFile}
+              hoverFamily={button.hoverFamily}
+              altText={button.altText}
+              buttonType={sorting}
+              key={i}
+            />
+          ))}
         </div>
         <div>
           <input
@@ -78,37 +57,16 @@ const Controls = ({ handleChange, lookup, tier, sorting, selections }) => {
           />
         </div>
         <div className="buttonWrap">
-          <HoverButton
-            dataTip={"All"}
-            imgFile={"all"}
-            hoverFamily={"tier"}
-            altText={"ALL"}
-            buttonType={tier}
-          />
-
-          <HoverButton
-            dataTip={"Platinum"}
-            imgFile={"platinum"}
-            hoverFamily={"tier"}
-            altText={"PLATINUM"}
-            buttonType={tier}
-          />
-
-          <HoverButton
-            dataTip={"Diamond"}
-            imgFile={"diamond"}
-            hoverFamily={"tier"}
-            altText={"DIAMOND"}
-            buttonType={tier}
-          />
-
-          <HoverButton
-            dataTip={"Master"}
-            imgFile={"master"}
-            hoverFamily={"tier"}
-            altText={"MASTER"}
-            buttonType={tier}
-          />
+          {tierButtons.map((button, i) => (
+            <HoverButton
+              dataTip={button.dataTip}
+              imgFile={button.imgFile}
+              hoverFamily={button.hoverFamily}
+              altText={button.altText}
+              buttonType={sorting}
+              key={i}
+            />
+          ))}
         </div>
         <Score
           returnScore={enemyScore}

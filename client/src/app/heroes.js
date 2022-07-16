@@ -1,4 +1,3 @@
-
 export const champions = [
   "Aatrox",
   "Ahri",
@@ -155,5 +154,5 @@ export const champions = [
   "Ziggs",
   "Zilean",
   "Zoe",
-  "Zyra"
-]
+  "Zyra",
+];

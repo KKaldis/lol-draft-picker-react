@@ -12,7 +12,12 @@
   justify-content: center;
   align-items: center;
   min-height: 850px;
-  background: radial-gradient(circle, rgb(58 23 52 / 75%) 0%, rgb(49 67 88 / 86%) 100%), url(assets/texture1.webp);
+  background: radial-gradient(
+      circle,
+      rgb(58 23 52 / 75%) 0%,
+      rgb(49 67 88 / 86%) 100%
+    ),
+    url(assets/texture1.webp);
   background-size: cover;
   /* background: radial-gradient(circle, rgb(56 2 48 / 75%) 0%, rgb(62 90 125) 100%); */
   /* cursor:url(assets/cursorg2.png) , default; */
@@ -60,7 +65,7 @@
   box-shadow: 0px 0px 10px #010508;
 }
 
-.li{
+.li {
   /* cursor:url(assets/pick.png) , default !important; */
 }
 
@@ -165,9 +170,11 @@
   align-items: center;
   flex-wrap: nowrap;
   /* z-index: 9; */
-  background: radial-gradient(circle,
-      rgba(255, 255, 255, 0) 0%,
-      rgb(154 199 189 / 25%) 100%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0) 0%,
+    rgb(154 199 189 / 25%) 100%
+  );
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -284,18 +291,22 @@
 }
 
 .team {
-  background: radial-gradient(circle,
+  background: radial-gradient(
+      circle,
       rgba(255, 255, 255, 0) 0%,
-      rgba(0, 0, 0, 1) 100%),
+      rgba(0, 0, 0, 1) 100%
+    ),
     url("assets/texture2.webp");
   background-repeat: repeat;
   background-size: 300px auto;
 }
 
 .enemy {
-  background: radial-gradient(circle,
+  background: radial-gradient(
+      circle,
       rgba(255, 255, 255, 0) 0%,
-      rgba(0, 0, 0, 1) 100%),
+      rgba(0, 0, 0, 1) 100%
+    ),
     url("assets/texture3.webp");
   background-repeat: repeat;
   background-size: 300px auto;
@@ -342,9 +353,11 @@
   height: 135px;
   align-items: center;
   border-radius: 10px;
-  background: radial-gradient(circle,
+  background: radial-gradient(
+      circle,
       rgba(255, 255, 255, 0) 0%,
-      rgba(0, 0, 0, 1) 100%),
+      rgba(0, 0, 0, 1) 100%
+    ),
     url("assets/texture1.webp");
   background-repeat: no-repeat;
   background-size: cover;
@@ -371,12 +384,14 @@
 
 .enemyH {
   margin-left: 10px;
-  background: radial-gradient(circle, rgb(247 6 6 / 0%) 0%, rgb(136 63 93) 100%), url(assets/texture3.webp);
+  background: radial-gradient(circle, rgb(247 6 6 / 0%) 0%, rgb(136 63 93) 100%),
+    url(assets/texture3.webp);
 }
 
 .teamH {
   margin-right: 10px;
-  background: radial-gradient(circle, rgb(247 6 6 / 0%) 0%, rgb(35 91 117) 100%), url(assets/texture2.webp);
+  background: radial-gradient(circle, rgb(247 6 6 / 0%) 0%, rgb(35 91 117) 100%),
+    url(assets/texture2.webp);
 }
 
 .team {
@@ -572,9 +587,11 @@
   width: 100px;
   height: 143px;
   /* border-radius: 30px; */
-  background: radial-gradient(circle,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(0, 0, 0, 0.5) 100%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
   border-color: #010508;
   border: 3px solid #e6dbe2;
   -moz-box-shadow: inset 0 0 20px #000000;
@@ -606,9 +623,11 @@
   width: 100px;
   height: 143px;
   /* border-radius: 30px; */
-  background: radial-gradient(circle,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(0, 0, 0, 0.5) 100%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
   /* border-color: #010508; */
   /* border: 2px solid #8c74b1; */
   transition: 0.25s;
@@ -702,11 +721,13 @@
 }
 
 .selectTeam {
-  background: radial-gradient(circle, rgb(247 6 6 / 0%) 0%, rgb(35 91 117) 100%), url(assets/texture2.webp);
+  background: radial-gradient(circle, rgb(247 6 6 / 0%) 0%, rgb(35 91 117) 100%),
+    url(assets/texture2.webp);
 }
 
 .selectEnemy {
-  background: radial-gradient(circle, rgb(247 6 6 / 0%) 0%, rgb(136 63 93) 100%), url(assets/texture3.webp);
+  background: radial-gradient(circle, rgb(247 6 6 / 0%) 0%, rgb(136 63 93) 100%),
+    url(assets/texture3.webp);
 }
 
 .selectTeam:hover,
@@ -720,9 +741,18 @@
   border: 3px solid #e6dbe2;
 }
 
-
 .champSpotFilled {
-  background: linear-gradient(45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  background: linear-gradient(
+    45deg,
+    #f79533,
+    #f37055,
+    #ef4e7b,
+    #a166ab,
+    #5073b8,
+    #1098ad,
+    #07b39b,
+    #6fba82
+  );
   animation: animatedgradient 2s ease-in-out alternate infinite;
   background-size: 333% 333%;
   padding: 6px;

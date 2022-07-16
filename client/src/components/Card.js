@@ -1,7 +1,12 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { connect } from "react-redux";
-import { getSorting, getTier, getCardState, getSelections } from "../redux/reducer";
+import {
+  getSorting,
+  getTier,
+  getCardState,
+  getSelections,
+} from "../redux/reducer";
 import { countAllChamps, getScoreNullCheck } from "../scripts/findCounters";
 import champLanes from "../app/lanes.json";
 import CardLanes from "./CardLanes";
@@ -15,7 +20,7 @@ export const Card = ({ champ, index, scores, handleChange, card }) => {
   const lanes = champLanes[champ];
 
   return (
-    <Draggable draggableId={champ} key={champ} index={index} >
+    <Draggable draggableId={champ} key={champ} index={index}>
       {({ innerRef, draggableProps, dragHandleProps }, snapshot) => (
         <div className={`${card[champ]}`} onClick={handleChange}>
           <li
@@ -47,8 +52,8 @@ export const Card = ({ champ, index, scores, handleChange, card }) => {
                       {champ} {card[champ]}{" "}
                     </a>
                     <div className="lanesDiv">
-                      {lanes.map((lane) => (
-                        <CardLanes lane={lane} />
+                      {lanes.map((lane, i) => (
+                        <CardLanes lane={lane} key={lane + i} />
                       ))}
                     </div>
                     <CardStats champ={champ} />
@@ -89,7 +94,12 @@ const Buttons = styled.div`
 `;
 
 const mapStateToProps = (state) => ({
-  scores: countAllChamps("enemy", getTier(state), getSorting(state), getSelections(state)),
+  scores: countAllChamps(
+    "enemy",
+    getTier(state),
+    getSorting(state),
+    getSelections(state)
+  ),
   card: getCardState(state),
 });
 

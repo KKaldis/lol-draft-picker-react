@@ -4,7 +4,7 @@ import Controls from "../components/Controls";
 import Champions from "../components/Champions";
 import { DragDropContext } from "react-beautiful-dnd";
 import { dragNdrop } from "../redux/actions";
-import { Leaderboard, Skyscraper } from "../components/Ads";
+// import { Leaderboard, Skyscraper } from "../components/Ads";
 import { Picks } from "../components/Picks";
 
 const App = ({ onDragEnd }) => {
@@ -20,7 +20,6 @@ const App = ({ onDragEnd }) => {
               <Controls />
               <Champions />
               <Picks />
-              {/* <BanPicks /> */}
             </div>
             {/* <EnemyPicks /> */}
           </div>
